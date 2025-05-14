@@ -14,34 +14,100 @@
       font-family: system-ui, sans-serif;
       padding: 2rem;
       transition: all 0.3s ease;
+      line-height: 1.5;
+      color: #333;
+      margin: 0;
     }
     
     .container {
-      max-width: 800px;
+      max-width: 1200px;
       margin: 0 auto;
     }
     
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
     h1 {
+      font-size: 2.5rem;
       margin-bottom: 1rem;
     }
     
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    p {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    
+    /* Layout */
+    .section {
+      margin-bottom: 3rem;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-right: -0.75rem;
+      margin-left: -0.75rem;
+    }
+    
+    .col {
+      flex: 1 0 0%;
+      padding-right: 0.75rem;
+      padding-left: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      .row {
+        flex-direction: column;
+      }
+    }
+    
+    /* Theme Switcher */
     .theme-buttons {
       display: flex;
+      flex-wrap: wrap;
       gap: 0.5rem;
       margin-bottom: 2rem;
     }
     
     .theme-button {
-      padding: 0.5rem 1rem;
+      padding: 0.75rem 1.25rem;
       border: none;
       border-radius: 0.25rem;
       cursor: pointer;
       font-weight: bold;
+      transition: all 0.2s ease;
     }
     
+    .theme-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Color Samples */
     .color-samples {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 1rem;
       margin-bottom: 2rem;
     }
@@ -54,13 +120,166 @@
       justify-content: center;
       color: white;
       font-weight: bold;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Component Showcase */
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .component-card {
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .component-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .component-header {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .component-body {
+      padding: 1rem;
+    }
+    
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      font-weight: 500;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+    
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .form-control {
+      display: block;
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      margin-bottom: 1rem;
+    }
+    
+    .form-control:focus {
+      outline: none;
+    }
+    
+    /* Alerts */
+    .alert {
+      position: relative;
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 1rem;
+      border: 1px solid transparent;
+      border-radius: 0.25rem;
+    }
+    
+    /* Cards */
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-clip: border-box;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1.5rem;
+    }
+    
+    .card-header {
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-body {
+      padding: 1.25rem;
+    }
+    
+    .card-footer {
+      padding: 0.75rem 1.25rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 0.25em 0.4em;
+      font-size: 75%;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: baseline;
+      border-radius: 0.25rem;
+      margin-right: 0.25rem;
+    }
+    
+    /* Progress Bars */
+    .progress {
+      display: flex;
+      height: 1rem;
+      overflow: hidden;
+      font-size: 0.75rem;
+      background-color: #e9ecef;
+      border-radius: 0.25rem;
+      margin-bottom: 1rem;
+    }
+    
+    .progress-bar {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      color: #fff;
+      text-align: center;
+      white-space: nowrap;
+      transition: width 0.6s ease;
     }
     
     /* Theme: Blue Ocean */
     .theme-blue-ocean {
       background-color: #f0f9ff;
       color: #0c4a6e;
+    }
+    
+    .theme-blue-ocean a {
+      color: #0284c7;
     }
     
     .theme-blue-ocean .theme-button.active {
@@ -80,10 +299,132 @@
       background-color: #f59e0b;
     }
     
+    /* Button styles */
+    .theme-blue-ocean .btn-primary {
+      background-color: #0ea5e9;
+      color: white;
+    }
+    
+    .theme-blue-ocean .btn-primary:hover {
+      background-color: #0284c7;
+    }
+    
+    .theme-blue-ocean .btn-secondary {
+      background-color: #8b5cf6;
+      color: white;
+    }
+    
+    .theme-blue-ocean .btn-secondary:hover {
+      background-color: #7c3aed;
+    }
+    
+    .theme-blue-ocean .btn-accent {
+      background-color: #f59e0b;
+      color: white;
+    }
+    
+    .theme-blue-ocean .btn-accent:hover {
+      background-color: #d97706;
+    }
+    
+    .theme-blue-ocean .btn-outline {
+      border: 1px solid #0ea5e9;
+      color: #0ea5e9;
+      background-color: transparent;
+    }
+    
+    .theme-blue-ocean .btn-outline:hover {
+      background-color: rgba(14, 165, 233, 0.1);
+    }
+    
+    /* Form elements */
+    .theme-blue-ocean .form-control:focus {
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 0.2rem rgba(14, 165, 233, 0.25);
+    }
+    
+    /* Card styles */
+    .theme-blue-ocean .card-header {
+      background-color: rgba(14, 165, 233, 0.1);
+    }
+    
+    /* Alert styles */
+    .theme-blue-ocean .alert-primary {
+      background-color: rgba(14, 165, 233, 0.1);
+      border-color: rgba(14, 165, 233, 0.2);
+      color: #0284c7;
+    }
+    
+    .theme-blue-ocean .alert-secondary {
+      background-color: rgba(139, 92, 246, 0.1);
+      border-color: rgba(139, 92, 246, 0.2);
+      color: #6d28d9;
+    }
+    
+    .theme-blue-ocean .alert-success {
+      background-color: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.2);
+      color: #16a34a;
+    }
+    
+    .theme-blue-ocean .alert-danger {
+      background-color: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.2);
+      color: #dc2626;
+    }
+    
+    /* Badge styles */
+    .theme-blue-ocean .badge-primary {
+      background-color: #0ea5e9;
+      color: white;
+    }
+    
+    .theme-blue-ocean .badge-secondary {
+      background-color: #8b5cf6;
+      color: white;
+    }
+    
+    .theme-blue-ocean .badge-accent {
+      background-color: #f59e0b;
+      color: white;
+    }
+    
+    .theme-blue-ocean .badge-success {
+      background-color: #22c55e;
+      color: white;
+    }
+    
+    .theme-blue-ocean .badge-danger {
+      background-color: #ef4444;
+      color: white;
+    }
+    
+    .theme-blue-ocean .badge-light {
+      background-color: #f8fafc;
+      color: #0c4a6e;
+    }
+    
+    /* Progress bar styles */
+    .theme-blue-ocean .progress-primary {
+      background-color: #0ea5e9;
+    }
+    
+    .theme-blue-ocean .progress-secondary {
+      background-color: #8b5cf6;
+    }
+    
+    .theme-blue-ocean .progress-accent {
+      background-color: #f59e0b;
+    }
+    
     /* Theme: Green Nature */
     .theme-green-nature {
       background-color: #f0fdf4;
       color: #14532d;
+    }
+    
+    .theme-green-nature a {
+      color: #16a34a;
     }
     
     .theme-green-nature .theme-button.active {
@@ -103,19 +444,141 @@
       background-color: #eab308;
     }
     
+    /* Button styles */
+    .theme-green-nature .btn-primary {
+      background-color: #22c55e;
+      color: white;
+    }
+    
+    .theme-green-nature .btn-primary:hover {
+      background-color: #16a34a;
+    }
+    
+    .theme-green-nature .btn-secondary {
+      background-color: #b27454;
+      color: white;
+    }
+    
+    .theme-green-nature .btn-secondary:hover {
+      background-color: #a15c3e;
+    }
+    
+    .theme-green-nature .btn-accent {
+      background-color: #eab308;
+      color: white;
+    }
+    
+    .theme-green-nature .btn-accent:hover {
+      background-color: #ca8a04;
+    }
+    
+    .theme-green-nature .btn-outline {
+      border: 1px solid #22c55e;
+      color: #22c55e;
+      background-color: transparent;
+    }
+    
+    .theme-green-nature .btn-outline:hover {
+      background-color: rgba(34, 197, 94, 0.1);
+    }
+    
+    /* Form elements */
+    .theme-green-nature .form-control:focus {
+      border-color: #22c55e;
+      box-shadow: 0 0 0 0.2rem rgba(34, 197, 94, 0.25);
+    }
+    
+    /* Card styles */
+    .theme-green-nature .card-header {
+      background-color: rgba(34, 197, 94, 0.1);
+    }
+    
+    /* Alert styles */
+    .theme-green-nature .alert-primary {
+      background-color: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.2);
+      color: #16a34a;
+    }
+    
+    .theme-green-nature .alert-secondary {
+      background-color: rgba(178, 116, 84, 0.1);
+      border-color: rgba(178, 116, 84, 0.2);
+      color: #a15c3e;
+    }
+    
+    .theme-green-nature .alert-success {
+      background-color: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.2);
+      color: #16a34a;
+    }
+    
+    .theme-green-nature .alert-danger {
+      background-color: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.2);
+      color: #dc2626;
+    }
+    
+    /* Badge styles */
+    .theme-green-nature .badge-primary {
+      background-color: #22c55e;
+      color: white;
+    }
+    
+    .theme-green-nature .badge-secondary {
+      background-color: #b27454;
+      color: white;
+    }
+    
+    .theme-green-nature .badge-accent {
+      background-color: #eab308;
+      color: white;
+    }
+    
+    .theme-green-nature .badge-success {
+      background-color: #22c55e;
+      color: white;
+    }
+    
+    .theme-green-nature .badge-danger {
+      background-color: #ef4444;
+      color: white;
+    }
+    
+    .theme-green-nature .badge-light {
+      background-color: #f8fafc;
+      color: #14532d;
+    }
+    
+    /* Progress bar styles */
+    .theme-green-nature .progress-primary {
+      background-color: #22c55e;
+    }
+    
+    .theme-green-nature .progress-secondary {
+      background-color: #b27454;
+    }
+    
+    .theme-green-nature .progress-accent {
+      background-color: #eab308;
+    }
+    
     /* Theme: Purple Elegance */
     .theme-purple-elegance {
       background-color: #faf5ff;
       color: #581c87;
     }
     
+    .theme-purple-elegance a {
+      color: #7c3aed;
+    }
+    
     .theme-purple-elegance .theme-button.active {
-      background-color: #a855f7;
+      background-color: #8b5cf6;
       color: white;
     }
     
     .theme-purple-elegance .color-primary {
-      background-color: #a855f7;
+      background-color: #8b5cf6;
     }
     
     .theme-purple-elegance .color-secondary {
@@ -126,10 +589,132 @@
       background-color: #f59e0b;
     }
     
+    /* Button styles */
+    .theme-purple-elegance .btn-primary {
+      background-color: #8b5cf6;
+      color: white;
+    }
+    
+    .theme-purple-elegance .btn-primary:hover {
+      background-color: #7c3aed;
+    }
+    
+    .theme-purple-elegance .btn-secondary {
+      background-color: #ec4899;
+      color: white;
+    }
+    
+    .theme-purple-elegance .btn-secondary:hover {
+      background-color: #db2777;
+    }
+    
+    .theme-purple-elegance .btn-accent {
+      background-color: #f59e0b;
+      color: white;
+    }
+    
+    .theme-purple-elegance .btn-accent:hover {
+      background-color: #d97706;
+    }
+    
+    .theme-purple-elegance .btn-outline {
+      border: 1px solid #8b5cf6;
+      color: #8b5cf6;
+      background-color: transparent;
+    }
+    
+    .theme-purple-elegance .btn-outline:hover {
+      background-color: rgba(139, 92, 246, 0.1);
+    }
+    
+    /* Form elements */
+    .theme-purple-elegance .form-control:focus {
+      border-color: #8b5cf6;
+      box-shadow: 0 0 0 0.2rem rgba(139, 92, 246, 0.25);
+    }
+    
+    /* Card styles */
+    .theme-purple-elegance .card-header {
+      background-color: rgba(139, 92, 246, 0.1);
+    }
+    
+    /* Alert styles */
+    .theme-purple-elegance .alert-primary {
+      background-color: rgba(139, 92, 246, 0.1);
+      border-color: rgba(139, 92, 246, 0.2);
+      color: #7c3aed;
+    }
+    
+    .theme-purple-elegance .alert-secondary {
+      background-color: rgba(236, 72, 153, 0.1);
+      border-color: rgba(236, 72, 153, 0.2);
+      color: #db2777;
+    }
+    
+    .theme-purple-elegance .alert-success {
+      background-color: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.2);
+      color: #16a34a;
+    }
+    
+    .theme-purple-elegance .alert-danger {
+      background-color: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.2);
+      color: #dc2626;
+    }
+    
+    /* Badge styles */
+    .theme-purple-elegance .badge-primary {
+      background-color: #8b5cf6;
+      color: white;
+    }
+    
+    .theme-purple-elegance .badge-secondary {
+      background-color: #ec4899;
+      color: white;
+    }
+    
+    .theme-purple-elegance .badge-accent {
+      background-color: #f59e0b;
+      color: white;
+    }
+    
+    .theme-purple-elegance .badge-success {
+      background-color: #22c55e;
+      color: white;
+    }
+    
+    .theme-purple-elegance .badge-danger {
+      background-color: #ef4444;
+      color: white;
+    }
+    
+    .theme-purple-elegance .badge-light {
+      background-color: #f8fafc;
+      color: #581c87;
+    }
+    
+    /* Progress bar styles */
+    .theme-purple-elegance .progress-primary {
+      background-color: #8b5cf6;
+    }
+    
+    .theme-purple-elegance .progress-secondary {
+      background-color: #ec4899;
+    }
+    
+    .theme-purple-elegance .progress-accent {
+      background-color: #f59e0b;
+    }
+    
     /* Theme: Corporate Red */
     .theme-corporate-red {
       background-color: #fef2f2;
       color: #7f1d1d;
+    }
+    
+    .theme-corporate-red a {
+      color: #dc2626;
     }
     
     .theme-corporate-red .theme-button.active {
@@ -142,11 +727,129 @@
     }
     
     .theme-corporate-red .color-secondary {
-      background-color: #6b7280;
+      background-color: #64748b;
     }
     
     .theme-corporate-red .color-accent {
-      background-color: #3b82f6;
+      background-color: #f59e0b;
+    }
+    
+    /* Button styles */
+    .theme-corporate-red .btn-primary {
+      background-color: #ef4444;
+      color: white;
+    }
+    
+    .theme-corporate-red .btn-primary:hover {
+      background-color: #dc2626;
+    }
+    
+    .theme-corporate-red .btn-secondary {
+      background-color: #64748b;
+      color: white;
+    }
+    
+    .theme-corporate-red .btn-secondary:hover {
+      background-color: #475569;
+    }
+    
+    .theme-corporate-red .btn-accent {
+      background-color: #f59e0b;
+      color: white;
+    }
+    
+    .theme-corporate-red .btn-accent:hover {
+      background-color: #d97706;
+    }
+    
+    .theme-corporate-red .btn-outline {
+      border: 1px solid #ef4444;
+      color: #ef4444;
+      background-color: transparent;
+    }
+    
+    .theme-corporate-red .btn-outline:hover {
+      background-color: rgba(239, 68, 68, 0.1);
+    }
+    
+    /* Form elements */
+    .theme-corporate-red .form-control:focus {
+      border-color: #ef4444;
+      box-shadow: 0 0 0 0.2rem rgba(239, 68, 68, 0.25);
+    }
+    
+    /* Card styles */
+    .theme-corporate-red .card-header {
+      background-color: rgba(239, 68, 68, 0.1);
+    }
+    
+    /* Alert styles */
+    .theme-corporate-red .alert-primary {
+      background-color: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.2);
+      color: #dc2626;
+    }
+    
+    .theme-corporate-red .alert-secondary {
+      background-color: rgba(100, 116, 139, 0.1);
+      border-color: rgba(100, 116, 139, 0.2);
+      color: #475569;
+    }
+    
+    .theme-corporate-red .alert-success {
+      background-color: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.2);
+      color: #16a34a;
+    }
+    
+    .theme-corporate-red .alert-danger {
+      background-color: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.2);
+      color: #dc2626;
+    }
+    
+    /* Badge styles */
+    .theme-corporate-red .badge-primary {
+      background-color: #ef4444;
+      color: white;
+    }
+    
+    .theme-corporate-red .badge-secondary {
+      background-color: #64748b;
+      color: white;
+    }
+    
+    .theme-corporate-red .badge-accent {
+      background-color: #f59e0b;
+      color: white;
+    }
+    
+    .theme-corporate-red .badge-success {
+      background-color: #22c55e;
+      color: white;
+    }
+    
+    .theme-corporate-red .badge-danger {
+      background-color: #ef4444;
+      color: white;
+    }
+    
+    .theme-corporate-red .badge-light {
+      background-color: #f8fafc;
+      color: #7f1d1d;
+    }
+    
+    /* Progress bar styles */
+    .theme-corporate-red .progress-primary {
+      background-color: #ef4444;
+    }
+    
+    .theme-corporate-red .progress-secondary {
+      background-color: #64748b;
+    }
+    
+    .theme-corporate-red .progress-accent {
+      background-color: #f59e0b;
     }
   </style>
 </head>
@@ -162,80 +865,270 @@
       <button class="theme-button" data-theme="theme-corporate-red">Corporate Red</button>
     </div>
     
-    <div class="color-samples">
-      <div class="color-sample color-primary">Primary</div>
-      <div class="color-sample color-secondary">Secondary</div>
-      <div class="color-sample color-accent">Accent</div>
-    </div>
-    
     <div class="current-theme">
       <h2>Current Theme: <span id="theme-name">Default</span></h2>
-      <p>This simplified test page demonstrates how themes can be switched instantly without page reload.</p>
-      <p>The theme system in the main application works similarly but uses CSS variables and Tailwind CSS.</p>
+      <p>This page demonstrates how UI components look with different themes. Click a theme button above to see how the styles change.</p>
+    </div>
+    
+    <div class="section">
+      <h2>Color Palette</h2>
+      <div class="color-samples">
+        <div class="color-sample color-primary">Primary</div>
+        <div class="color-sample color-secondary">Secondary</div>
+        <div class="color-sample color-accent">Accent</div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>Typography</h2>
+      <div class="row">
+        <div class="col">
+          <h1>Heading 1</h1>
+          <h2>Heading 2</h2>
+          <h3>Heading 3</h3>
+          <h4>Heading 4</h4>
+          <h5>Heading 5</h5>
+          <h6>Heading 6</h6>
+        </div>
+        <div class="col">
+          <p class="lead">This is a lead paragraph that stands out from regular paragraphs.</p>
+          <p>This is a regular paragraph with some <strong>bold text</strong> and <em>italic text</em> and <a href="#">a link</a>.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis eget urna ultricies fermentum. Donec eget nisi eget tortor iaculis tristique.</p>
+          <blockquote>This is a blockquote that can be used to highlight important information or quotes.</blockquote>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>Buttons</h2>
+      <div class="row">
+        <div class="col">
+          <h3>Primary Buttons</h3>
+          <button class="btn btn-primary">Primary</button>
+          <button class="btn btn-secondary">Secondary</button>
+          <button class="btn btn-accent">Accent</button>
+          <button class="btn btn-outline">Outline</button>
+        </div>
+        <div class="col">
+          <h3>Button Sizes</h3>
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary">Regular</button>
+          <button class="btn btn-primary btn-lg">Large</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>Form Elements</h2>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-label">Text Input</label>
+            <input type="text" class="form-control" placeholder="Enter text">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Select</label>
+            <select class="form-control">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label class="form-label">Textarea</label>
+            <textarea class="form-control" rows="3" placeholder="Enter text"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-check">
+              <input type="checkbox" class="form-check-input">
+              <span class="form-check-label">Checkbox</span>
+            </label>
+            <label class="form-check">
+              <input type="radio" name="radio" class="form-check-input">
+              <span class="form-check-label">Radio 1</span>
+            </label>
+            <label class="form-check">
+              <input type="radio" name="radio" class="form-check-input">
+              <span class="form-check-label">Radio 2</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>Cards</h2>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h3>Card Title</h3>
+            </div>
+            <div class="card-body">
+              <p>This is a basic card with a header and body. Cards can be used to display content in a clear and organized way.</p>
+              <button class="btn btn-primary">Action</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="https://via.placeholder.com/300x150" alt="Card image" style="width: 100%; height: 150px; object-fit: cover;">
+            <div class="card-body">
+              <h3>Card with Image</h3>
+              <p>This card includes an image at the top. Images can help make cards more visually appealing.</p>
+              <div class="card-footer">
+                <small>Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>Alerts</h2>
+      <div class="alert alert-primary">This is a primary alert—check it out!</div>
+      <div class="alert alert-secondary">This is a secondary alert—check it out!</div>
+      <div class="alert alert-success">This is a success alert—check it out!</div>
+      <div class="alert alert-danger">This is a danger alert—check it out!</div>
+    </div>
+    
+    <div class="section">
+      <h2>Badges</h2>
+      <div class="row">
+        <div class="col">
+          <h3>Basic Badges</h3>
+          <span class="badge badge-primary">Primary</span>
+          <span class="badge badge-secondary">Secondary</span>
+          <span class="badge badge-accent">Accent</span>
+          <span class="badge badge-success">Success</span>
+          <span class="badge badge-danger">Danger</span>
+        </div>
+        <div class="col">
+          <h3>Badges in Context</h3>
+          <button class="btn btn-primary">
+            Notifications <span class="badge badge-light">4</span>
+          </button>
+          <h4>Example heading <span class="badge badge-secondary">New</span></h4>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>Progress Bars</h2>
+      <div class="progress">
+        <div class="progress-bar progress-primary" style="width: 25%">25%</div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-secondary" style="width: 50%">50%</div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-accent" style="width: 75%">75%</div>
+      </div>
     </div>
   </div>
   
   <script>
     // Simple theme switcher
     document.addEventListener('DOMContentLoaded', () => {
-      const buttons = document.querySelectorAll('.theme-button');
-      const body = document.body;
+      const themeButtons = document.querySelectorAll('.theme-button');
       const themeNameEl = document.getElementById('theme-name');
       
-      // Set active button based on URL
+      // Get the current theme from URL or default to blue-ocean
       const urlParams = new URLSearchParams(window.location.search);
-      const themeParam = urlParams.get('theme') || '';
+      const currentTheme = urlParams.get('theme') || 'blue-ocean';
       
-      // Apply theme from URL parameter
-      if (themeParam) {
-        body.className = themeParam;
-        themeNameEl.textContent = themeParam.replace('theme-', '').split('-').map(
-          word => word.charAt(0).toUpperCase() + word.slice(1)
-        ).join(' ') || 'Default';
-      }
+      // Apply the current theme - ensure we're using the proper format
+      const themeClass = currentTheme ? currentTheme : '';
+      document.documentElement.className = themeClass;
+      document.body.className = themeClass;
       
       // Update active button
-      buttons.forEach(button => {
-        const buttonTheme = button.dataset.theme;
-        if (buttonTheme === themeParam) {
-          button.classList.add('active');
+      themeButtons.forEach((button: Element) => {
+        // Type assertion for dataset property
+        const buttonEl = button as HTMLElement;
+        if (buttonEl.dataset.theme === currentTheme) {
+          buttonEl.classList.add('active');
         } else {
-          button.classList.remove('active');
+          buttonEl.classList.remove('active');
         }
       });
       
-      // Add click handlers
-      buttons.forEach(button => {
-        button.addEventListener('click', () => {
-          const theme = button.dataset.theme;
+      // Update theme name display with null check
+      if (themeNameEl) {
+        themeNameEl.textContent = currentTheme
+          ? currentTheme.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+          : 'Default';
+      }
+      
+      // Add click event to theme buttons
+      themeButtons.forEach((button: Element) => {
+        const buttonEl = button as HTMLElement;
+        buttonEl.addEventListener('click', () => {
+          const theme = buttonEl.dataset.theme;
           
-          // Update URL without reloading page
-          const url = new URL(window.location);
+          // Apply theme immediately for better UX
+          const themeClass = theme ? theme : '';
+          document.documentElement.className = themeClass;
+          document.body.className = themeClass;
+          
+          // Update URL without full page reload
+          const newUrl = new URL(window.location.href);
           if (theme) {
-            url.searchParams.set('theme', theme);
+            newUrl.searchParams.set('theme', theme);
           } else {
-            url.searchParams.delete('theme');
+            newUrl.searchParams.delete('theme');
           }
-          window.history.pushState({}, '', url);
           
-          // Apply theme
-          body.className = theme;
+          // Use history API to update URL without reload
+          window.history.pushState({}, '', newUrl.toString());
           
-          // Update theme name display
-          themeNameEl.textContent = theme.replace('theme-', '').split('-').map(
-            word => word.charAt(0).toUpperCase() + word.slice(1)
-          ).join(' ') || 'Default';
-          
-          // Update active button
-          buttons.forEach(btn => {
-            if (btn.dataset.theme === theme) {
-              btn.classList.add('active');
+          // Update active button state
+          themeButtons.forEach((btn: Element) => {
+            const btnEl = btn as HTMLElement;
+            if (btnEl.dataset.theme === theme) {
+              btnEl.classList.add('active');
             } else {
-              btn.classList.remove('active');
+              btnEl.classList.remove('active');
             }
           });
+          
+          // Update theme name display
+          if (themeNameEl) {
+            themeNameEl.textContent = theme
+              ? theme.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+              : 'Default';
+          }
         });
       });
+      
+      // Reset button
+      const resetBtn = document.getElementById('reset-theme');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          // Remove theme class
+          document.documentElement.className = '';
+          document.body.className = '';
+          
+          // Update active button state
+          themeButtons.forEach((btn: Element) => {
+            const btnEl = btn as HTMLElement;
+            btnEl.classList.remove('active');
+          });
+          
+          // Update URL without full page reload
+          const newUrl = new URL(window.location.href);
+          newUrl.searchParams.delete('theme');
+          window.history.pushState({}, '', newUrl.toString());
+          
+          // Update theme name display
+          if (themeNameEl) {
+            themeNameEl.textContent = 'Default';
+          }
+        });
+      }
     });
   </script>
 </body>

@@ -4,16 +4,19 @@
 /* Import client-specific themes */
 @import './client-themes.css';
 
-/* Import Tailwind CSS directives */
+/* Tailwind CSS */
+/* stylelint-disable */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* stylelint-enable */
 
 /* 
  * Custom component classes
  * Define reusable component styles here using @apply
  */
 @layer components {
+  /* stylelint-disable */
   /* Button styles */
   .btn {
     @apply inline-flex items-center justify-center px-4 py-2 rounded-md font-medium transition-colors;
