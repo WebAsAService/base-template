@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ThemeDemoComponent from '../components/ThemeDemo.astro';
+
+// Array of available themes for demonstration
+const themes = [
+  { id: '', name: 'Default Theme' },
+  { id: 'theme-blue-ocean', name: 'Blue Ocean' },
+  { id: 'theme-green-nature', name: 'Green Nature' },
+  { id: 'theme-purple-elegance', name: 'Purple Elegance' },
+  { id: 'theme-corporate-red', name: 'Corporate Red' }
+];
+
+// Get the selected theme from the URL query parameter or use default
+const themeParam = Astro.url.searchParams.get('theme') || '';
+const selectedTheme = themes.find(t => t.id === themeParam) || themes[0];
+---
+
+<Layout title="Theme System Demo" clientTheme={selectedTheme.id}>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6 text-primary-700">Theme System Demo</h1>
+    
+    <div class="mb-8 border border-primary-200 p-6 rounded-lg bg-primary-50">
+      <h2 class="text-xl font-semibold mb-3 text-primary-800">Select a Client Theme</h2>
+      <div class="flex flex-wrap gap-2">
+        {themes.map(t => (
+          <a 
+            href={`/theme-demo${t.id ? `?theme=${t.id}` : ''}`}
+            class={`px-4 py-2 rounded-md transition-colors ${
+              t.id === selectedTheme.id 
+                ? 'bg-primary-600 text-white font-bold' 
+                : 'bg-gray-200 hover:bg-gray-300'
+            }`}
+            onclick="document.body.style.opacity='0.5'; document.body.style.transition='opacity 0.3s'"
+          >
+            {t.name}
+          </a>
+        ))}
+      </div>
+      
+      <div class="mt-4 p-4 bg-white border border-primary-300 rounded-md shadow-sm">
+        <p class="font-medium">Currently viewing: <span class="text-primary-600 font-bold">{selectedTheme.name}</span></p>
+        <p class="text-sm text-gray-600 mt-1">
+          This demo shows how the same components can look different based on the selected client theme.
+          Each theme customizes colors, typography, and other design elements through CSS variables.
+        </p>
+        <div class="mt-2 p-2 bg-primary-100 text-primary-800 rounded text-sm">
+          <strong>Note:</strong> When you click a theme button, the page will reload with the new theme applied.
+        </div>
+      </div>
+    </div>
+    
+    <ThemeDemoComponent />
+    
+    <div class="mt-12 border-t pt-8">
+      <h2 class="text-xl font-semibold mb-4">How to Use the Theme System</h2>
+      <div class="prose max-w-none">
+        <p>
+          To apply a client-specific theme to your project, simply pass the theme class name to the 
+          <code>clientTheme</code> prop in the Layout component:
+        </p>
+        
+        <pre class="bg-gray-100 p-4 rounded-md mt-2 overflow-x-auto">
+          <code>{`<Layout clientTheme="theme-blue-ocean">
+  <!-- Your content here -->
+</Layout>`}</code>
+        </pre>
+        
+        <p class="mt-4">
+          To create a new client theme, add a new CSS class in the 
+          <code>src/styles/client-themes.css</code> file with your custom variables:
+        </p>
+        
+        <pre class="bg-gray-100 p-4 rounded-md mt-2 overflow-x-auto">
+          <code>{`.theme-new-client {
+  /* Primary color */
+  --color-primary-500: #3b82f6;
+  
+  /* Secondary color */
+  --color-secondary-500: #8b5cf6;
+  
+  /* Accent color */
+  --color-accent-500: #f43f5e;
+  
+  /* Typography */
+  --font-family-sans: 'Your Font, sans-serif';
+  
+  /* Other customizations */
+  --border-radius-md: 8px;
+}`}</code>
+        </pre>
+        
+        <p class="mt-4">
+          The base theme variables are defined in <code>src/styles/theme.css</code> and can be overridden
+          by client-specific themes. The Tailwind configuration in <code>tailwind.config.js</code> is set up
+          to use these CSS variables, making it easy to create consistent designs across your project.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>

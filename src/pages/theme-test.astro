@@ -1,0 +1,242 @@
+---
+// A simplified theme test page to demonstrate theme switching
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Test</title>
+  <style>
+    /* Base styles */
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      margin-bottom: 1rem;
+    }
+    
+    .theme-buttons {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .theme-button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    
+    .color-samples {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .color-sample {
+      height: 100px;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    /* Theme: Blue Ocean */
+    .theme-blue-ocean {
+      background-color: #f0f9ff;
+      color: #0c4a6e;
+    }
+    
+    .theme-blue-ocean .theme-button.active {
+      background-color: #0ea5e9;
+      color: white;
+    }
+    
+    .theme-blue-ocean .color-primary {
+      background-color: #0ea5e9;
+    }
+    
+    .theme-blue-ocean .color-secondary {
+      background-color: #8b5cf6;
+    }
+    
+    .theme-blue-ocean .color-accent {
+      background-color: #f59e0b;
+    }
+    
+    /* Theme: Green Nature */
+    .theme-green-nature {
+      background-color: #f0fdf4;
+      color: #14532d;
+    }
+    
+    .theme-green-nature .theme-button.active {
+      background-color: #22c55e;
+      color: white;
+    }
+    
+    .theme-green-nature .color-primary {
+      background-color: #22c55e;
+    }
+    
+    .theme-green-nature .color-secondary {
+      background-color: #b27454;
+    }
+    
+    .theme-green-nature .color-accent {
+      background-color: #eab308;
+    }
+    
+    /* Theme: Purple Elegance */
+    .theme-purple-elegance {
+      background-color: #faf5ff;
+      color: #581c87;
+    }
+    
+    .theme-purple-elegance .theme-button.active {
+      background-color: #a855f7;
+      color: white;
+    }
+    
+    .theme-purple-elegance .color-primary {
+      background-color: #a855f7;
+    }
+    
+    .theme-purple-elegance .color-secondary {
+      background-color: #ec4899;
+    }
+    
+    .theme-purple-elegance .color-accent {
+      background-color: #f59e0b;
+    }
+    
+    /* Theme: Corporate Red */
+    .theme-corporate-red {
+      background-color: #fef2f2;
+      color: #7f1d1d;
+    }
+    
+    .theme-corporate-red .theme-button.active {
+      background-color: #ef4444;
+      color: white;
+    }
+    
+    .theme-corporate-red .color-primary {
+      background-color: #ef4444;
+    }
+    
+    .theme-corporate-red .color-secondary {
+      background-color: #6b7280;
+    }
+    
+    .theme-corporate-red .color-accent {
+      background-color: #3b82f6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Theme Test</h1>
+    
+    <div class="theme-buttons">
+      <button class="theme-button" data-theme="">Default</button>
+      <button class="theme-button" data-theme="theme-blue-ocean">Blue Ocean</button>
+      <button class="theme-button" data-theme="theme-green-nature">Green Nature</button>
+      <button class="theme-button" data-theme="theme-purple-elegance">Purple Elegance</button>
+      <button class="theme-button" data-theme="theme-corporate-red">Corporate Red</button>
+    </div>
+    
+    <div class="color-samples">
+      <div class="color-sample color-primary">Primary</div>
+      <div class="color-sample color-secondary">Secondary</div>
+      <div class="color-sample color-accent">Accent</div>
+    </div>
+    
+    <div class="current-theme">
+      <h2>Current Theme: <span id="theme-name">Default</span></h2>
+      <p>This simplified test page demonstrates how themes can be switched instantly without page reload.</p>
+      <p>The theme system in the main application works similarly but uses CSS variables and Tailwind CSS.</p>
+    </div>
+  </div>
+  
+  <script>
+    // Simple theme switcher
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('.theme-button');
+      const body = document.body;
+      const themeNameEl = document.getElementById('theme-name');
+      
+      // Set active button based on URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const themeParam = urlParams.get('theme') || '';
+      
+      // Apply theme from URL parameter
+      if (themeParam) {
+        body.className = themeParam;
+        themeNameEl.textContent = themeParam.replace('theme-', '').split('-').map(
+          word => word.charAt(0).toUpperCase() + word.slice(1)
+        ).join(' ') || 'Default';
+      }
+      
+      // Update active button
+      buttons.forEach(button => {
+        const buttonTheme = button.dataset.theme;
+        if (buttonTheme === themeParam) {
+          button.classList.add('active');
+        } else {
+          button.classList.remove('active');
+        }
+      });
+      
+      // Add click handlers
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          const theme = button.dataset.theme;
+          
+          // Update URL without reloading page
+          const url = new URL(window.location);
+          if (theme) {
+            url.searchParams.set('theme', theme);
+          } else {
+            url.searchParams.delete('theme');
+          }
+          window.history.pushState({}, '', url);
+          
+          // Apply theme
+          body.className = theme;
+          
+          // Update theme name display
+          themeNameEl.textContent = theme.replace('theme-', '').split('-').map(
+            word => word.charAt(0).toUpperCase() + word.slice(1)
+          ).join(' ') || 'Default';
+          
+          // Update active button
+          buttons.forEach(btn => {
+            if (btn.dataset.theme === theme) {
+              btn.classList.add('active');
+            } else {
+              btn.classList.remove('active');
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

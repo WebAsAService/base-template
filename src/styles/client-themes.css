@@ -1,0 +1,222 @@
+/* 
+ * Client-Specific Theme Overrides
+ * This file contains theme overrides for different clients
+ * To use a client theme, apply the class name to the html element
+ * via the clientTheme prop in the Layout component
+ */
+
+/* 
+ * Client Theme: Blue Ocean
+ * A cool, professional theme with blue as the primary color
+ */
+.theme-blue-ocean {
+  /* Add a dramatic background color to make theme changes obvious */
+  background-color: #f0f9ff;
+  /* Primary color - Blue */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --color-primary-950: #172554;
+
+  /* Secondary color - Teal */
+  --color-secondary-50: #f0fdfa;
+  --color-secondary-100: #ccfbf1;
+  --color-secondary-200: #99f6e4;
+  --color-secondary-300: #5eead4;
+  --color-secondary-400: #2dd4bf;
+  --color-secondary-500: #14b8a6;
+  --color-secondary-600: #0d9488;
+  --color-secondary-700: #0f766e;
+  --color-secondary-800: #115e59;
+  --color-secondary-900: #134e4a;
+  --color-secondary-950: #042f2e;
+
+  /* Accent color - Amber */
+  --color-accent-50: #fffbeb;
+  --color-accent-100: #fef3c7;
+  --color-accent-200: #fde68a;
+  --color-accent-300: #fcd34d;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+  --color-accent-700: #b45309;
+  --color-accent-800: #92400e;
+  --color-accent-900: #78350f;
+  --color-accent-950: #451a03;
+
+  /* Typography */
+  --font-family-sans: 'Poppins, Inter, sans-serif';
+  
+  /* Border radius */
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+}
+
+/* 
+ * Client Theme: Green Nature
+ * An earthy, natural theme with green as the primary color
+ */
+.theme-green-nature {
+  /* Add a dramatic background color to make theme changes obvious */
+  background-color: #f0fdf4;
+  /* Primary color - Green */
+  --color-primary-50: #f0fdf4;
+  --color-primary-100: #dcfce7;
+  --color-primary-200: #bbf7d0;
+  --color-primary-300: #86efac;
+  --color-primary-400: #4ade80;
+  --color-primary-500: #22c55e;
+  --color-primary-600: #16a34a;
+  --color-primary-700: #15803d;
+  --color-primary-800: #166534;
+  --color-primary-900: #14532d;
+  --color-primary-950: #052e16;
+
+  /* Secondary color - Brown */
+  --color-secondary-50: #fdf8f6;
+  --color-secondary-100: #f5ebe9;
+  --color-secondary-200: #e7d5cf;
+  --color-secondary-300: #d6b4a5;
+  --color-secondary-400: #c59077;
+  --color-secondary-500: #b27454;
+  --color-secondary-600: #a15c3e;
+  --color-secondary-700: #874a31;
+  --color-secondary-800: #723b29;
+  --color-secondary-900: #5f3224;
+  --color-secondary-950: #3b1f17;
+
+  /* Accent color - Yellow */
+  --color-accent-50: #fefce8;
+  --color-accent-100: #fef9c3;
+  --color-accent-200: #fef08a;
+  --color-accent-300: #fde047;
+  --color-accent-400: #facc15;
+  --color-accent-500: #eab308;
+  --color-accent-600: #ca8a04;
+  --color-accent-700: #a16207;
+  --color-accent-800: #854d0e;
+  --color-accent-900: #713f12;
+  --color-accent-950: #422006;
+
+  /* Typography */
+  --font-family-sans: 'Montserrat, sans-serif';
+  
+  /* Border radius */
+  --border-radius-md: 4px;
+  --border-radius-lg: 8px;
+}
+
+/* 
+ * Client Theme: Purple Elegance
+ * A luxurious, elegant theme with purple as the primary color
+ */
+.theme-purple-elegance {
+  /* Add a dramatic background color to make theme changes obvious */
+  background-color: #faf5ff;
+  /* Primary color - Purple */
+  --color-primary-50: #faf5ff;
+  --color-primary-100: #f3e8ff;
+  --color-primary-200: #e9d5ff;
+  --color-primary-300: #d8b4fe;
+  --color-primary-400: #c084fc;
+  --color-primary-500: #a855f7;
+  --color-primary-600: #9333ea;
+  --color-primary-700: #7e22ce;
+  --color-primary-800: #6b21a8;
+  --color-primary-900: #581c87;
+  --color-primary-950: #3b0764;
+
+  /* Secondary color - Pink */
+  --color-secondary-50: #fdf2f8;
+  --color-secondary-100: #fce7f3;
+  --color-secondary-200: #fbcfe8;
+  --color-secondary-300: #f9a8d4;
+  --color-secondary-400: #f472b6;
+  --color-secondary-500: #ec4899;
+  --color-secondary-600: #db2777;
+  --color-secondary-700: #be185d;
+  --color-secondary-800: #9d174d;
+  --color-secondary-900: #831843;
+  --color-secondary-950: #500724;
+
+  /* Accent color - Gold */
+  --color-accent-50: #fffbeb;
+  --color-accent-100: #fef3c7;
+  --color-accent-200: #fde68a;
+  --color-accent-300: #fcd34d;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+  --color-accent-700: #b45309;
+  --color-accent-800: #92400e;
+  --color-accent-900: #78350f;
+  --color-accent-950: #451a03;
+
+  /* Typography */
+  --font-family-sans: 'Playfair Display, serif';
+  
+  /* Border radius */
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+}
+
+/* 
+ * Client Theme: Corporate Red
+ * A bold, corporate theme with red as the primary color
+ */
+.theme-corporate-red {
+  /* Add a dramatic background color to make theme changes obvious */
+  background-color: #fef2f2;
+  /* Primary color - Red */
+  --color-primary-50: #fef2f2;
+  --color-primary-100: #fee2e2;
+  --color-primary-200: #fecaca;
+  --color-primary-300: #fca5a5;
+  --color-primary-400: #f87171;
+  --color-primary-500: #ef4444;
+  --color-primary-600: #dc2626;
+  --color-primary-700: #b91c1c;
+  --color-primary-800: #991b1b;
+  --color-primary-900: #7f1d1d;
+  --color-primary-950: #450a0a;
+
+  /* Secondary color - Gray */
+  --color-secondary-50: #f9fafb;
+  --color-secondary-100: #f3f4f6;
+  --color-secondary-200: #e5e7eb;
+  --color-secondary-300: #d1d5db;
+  --color-secondary-400: #9ca3af;
+  --color-secondary-500: #6b7280;
+  --color-secondary-600: #4b5563;
+  --color-secondary-700: #374151;
+  --color-secondary-800: #1f2937;
+  --color-secondary-900: #111827;
+  --color-secondary-950: #030712;
+
+  /* Accent color - Blue */
+  --color-accent-50: #eff6ff;
+  --color-accent-100: #dbeafe;
+  --color-accent-200: #bfdbfe;
+  --color-accent-300: #93c5fd;
+  --color-accent-400: #60a5fa;
+  --color-accent-500: #3b82f6;
+  --color-accent-600: #2563eb;
+  --color-accent-700: #1d4ed8;
+  --color-accent-800: #1e40af;
+  --color-accent-900: #1e3a8a;
+  --color-accent-950: #172554;
+
+  /* Typography */
+  --font-family-sans: 'Roboto, Arial, sans-serif';
+  
+  /* Border radius */
+  --border-radius-md: 2px;
+  --border-radius-lg: 4px;
+}
