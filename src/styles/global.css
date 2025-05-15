@@ -6,17 +6,21 @@
 
 /* Tailwind CSS */
 /* stylelint-disable */
+/* eslint-disable */
+/* These directives are processed by the Tailwind CSS compiler */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* eslint-enable */
 /* stylelint-enable */
 
 /* 
  * Custom component classes
  * Define reusable component styles here using @apply
  */
+/* stylelint-disable */
+/* eslint-disable */
 @layer components {
-  /* stylelint-disable */
   /* Button styles */
   .btn {
     @apply inline-flex items-center justify-center px-4 py-2 rounded-md font-medium transition-colors;
@@ -78,10 +82,21 @@
     @apply text-2xl md:text-3xl font-bold text-gray-900;
   }
   
+  /* Typography styles continued */
   .paragraph {
     @apply text-base text-gray-700 leading-relaxed;
   }
+  
+  .paragraph-lg {
+    @apply text-lg text-gray-700 leading-relaxed;
+  }
+  
+  .paragraph-sm {
+    @apply text-sm text-gray-700 leading-relaxed;
+  }
 }
+/* eslint-enable */
+/* stylelint-enable */
 
 /* 
  * Custom utilities

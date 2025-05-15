@@ -1,0 +1,231 @@
+---
+// Pricing section component for the landing page
+---
+
+<section id="pricing" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <!-- Section header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+      <p class="text-xl text-gray-600">
+        Choose the plan that works best for your business needs. All plans include our core theme system features.
+      </p>
+    </div>
+    
+    <!-- Pricing toggle -->
+    <div class="flex justify-center items-center mb-12">
+      <span class="text-gray-600 mr-3">Monthly</span>
+      <label class="relative inline-block w-14 h-7 cursor-pointer">
+        <input type="checkbox" id="pricing-toggle" class="sr-only peer">
+        <div class="w-14 h-7 bg-gray-300 rounded-full peer peer-checked:bg-primary-500 peer-checked:after:translate-x-7 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-6 after:w-6 after:transition-all"></div>
+      </label>
+      <span class="text-gray-600 ml-3">Annual <span class="text-green-500 font-medium">Save 20%</span></span>
+    </div>
+    
+    <!-- Pricing cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Starter Plan -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
+        <div class="p-8 border-b">
+          <h3 class="text-2xl font-bold mb-2">Starter</h3>
+          <p class="text-gray-600 mb-6">Perfect for small businesses and startups</p>
+          <div class="flex items-end">
+            <span class="text-4xl font-bold" id="starter-price">$29</span>
+            <span class="text-gray-600 ml-2 mb-1" id="starter-period">/month</span>
+          </div>
+        </div>
+        <div class="p-8">
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>3 Theme Templates</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Basic Components</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>1 Website</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Email Support</span>
+            </li>
+            <li class="flex items-start text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span>Custom Themes</span>
+            </li>
+            <li class="flex items-start text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span>Priority Support</span>
+            </li>
+          </ul>
+          <a href="#contact" class="btn btn-outline w-full mt-8">Get Started</a>
+        </div>
+      </div>
+      
+      <!-- Professional Plan -->
+      <div class="bg-white rounded-lg shadow-xl overflow-hidden transform scale-105 z-10 border-2 border-primary-500">
+        <div class="bg-primary-500 text-white text-center py-2 text-sm font-medium">MOST POPULAR</div>
+        <div class="p-8 border-b">
+          <h3 class="text-2xl font-bold mb-2">Professional</h3>
+          <p class="text-gray-600 mb-6">Ideal for growing businesses</p>
+          <div class="flex items-end">
+            <span class="text-4xl font-bold" id="pro-price">$79</span>
+            <span class="text-gray-600 ml-2 mb-1" id="pro-period">/month</span>
+          </div>
+        </div>
+        <div class="p-8">
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>10 Theme Templates</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Advanced Components</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>5 Websites</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Priority Support</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>2 Custom Themes</span>
+            </li>
+            <li class="flex items-start text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span>White-label Option</span>
+            </li>
+          </ul>
+          <a href="#contact" class="btn btn-primary w-full mt-8">Get Started</a>
+        </div>
+      </div>
+      
+      <!-- Enterprise Plan -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
+        <div class="p-8 border-b">
+          <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+          <p class="text-gray-600 mb-6">For large organizations and agencies</p>
+          <div class="flex items-end">
+            <span class="text-4xl font-bold" id="enterprise-price">$199</span>
+            <span class="text-gray-600 ml-2 mb-1" id="enterprise-period">/month</span>
+          </div>
+        </div>
+        <div class="p-8">
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Unlimited Theme Templates</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Premium Components</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Unlimited Websites</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>24/7 Dedicated Support</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Unlimited Custom Themes</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>White-label Option</span>
+            </li>
+          </ul>
+          <a href="#contact" class="btn btn-outline w-full mt-8">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const pricingToggle = document.getElementById('pricing-toggle') as HTMLInputElement;
+    
+    const prices = {
+      monthly: {
+        starter: '$29',
+        pro: '$79',
+        enterprise: '$199'
+      },
+      annual: {
+        starter: '$279',
+        pro: '$759',
+        enterprise: '$1,899'
+      }
+    };
+    
+    if (pricingToggle) {
+      pricingToggle.addEventListener('change', () => {
+        const isAnnual = pricingToggle.checked;
+        
+        // Update prices
+        const starterPriceEl = document.getElementById('starter-price');
+        const proPriceEl = document.getElementById('pro-price');
+        const enterprisePriceEl = document.getElementById('enterprise-price');
+        
+        // Update period text
+        const starterPeriodEl = document.getElementById('starter-period');
+        const proPeriodEl = document.getElementById('pro-period');
+        const enterprisePeriodEl = document.getElementById('enterprise-period');
+        
+        if (starterPriceEl) starterPriceEl.textContent = isAnnual ? prices.annual.starter : prices.monthly.starter;
+        if (proPriceEl) proPriceEl.textContent = isAnnual ? prices.annual.pro : prices.monthly.pro;
+        if (enterprisePriceEl) enterprisePriceEl.textContent = isAnnual ? prices.annual.enterprise : prices.monthly.enterprise;
+        
+        if (starterPeriodEl) starterPeriodEl.textContent = isAnnual ? '/year' : '/month';
+        if (proPeriodEl) proPeriodEl.textContent = isAnnual ? '/year' : '/month';
+        if (enterprisePeriodEl) enterprisePeriodEl.textContent = isAnnual ? '/year' : '/month';
+      });
+    }
+  });
+</script>
