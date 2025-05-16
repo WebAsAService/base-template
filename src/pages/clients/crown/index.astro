@@ -1,0 +1,36 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/layout/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+import HeroSection from '@components/clients/crown/HeroSection.astro';
+import FeaturesSection from '@components/clients/crown/FeaturesSection.astro';
+import PricingSection from '@components/sections/PricingSection.astro';
+import TestimonialsSection from '@components/sections/TestimonialsSection.astro';
+import ContactSection from '@components/sections/ContactSection.astro';
+
+// Set Crown client theme - using custom Crown theme
+const clientTheme = 'theme-crown';
+---
+
+<Layout title="Crown - Premium Business Solutions" clientTheme={clientTheme}>
+	<Header 
+		logo="/images/clients/crown/logo-white-h.png"
+		bgColor="bg-primary-950"
+		textColor="text-secondary-300"
+		hoverColor="text-accent-300"
+		showFontsLink={false} />
+	
+	<main>
+		<HeroSection />
+		<FeaturesSection />
+		<PricingSection />
+		<TestimonialsSection />
+		<ContactSection />
+	</main>
+	
+	<Footer />
+</Layout>
+
+<style>
+  /* Any Crown client-specific styles can go here */
+</style>

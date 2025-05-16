@@ -176,6 +176,64 @@
 }
 
 /* 
+ * Client Theme: Crown Acquisition
+ * A sophisticated financial theme with deep purple and mauve colors
+ */
+.theme-crown {
+  /* Add a dramatic background color to make theme changes obvious */
+  background-color: #f9f9f9;
+  /* Primary color - Deep Purple */
+  --color-primary-50: #f5f3f7;
+  --color-primary-100: #ebe7ef;
+  --color-primary-200: #d7d0df;
+  --color-primary-300: #b8a9c7;
+  --color-primary-400: #9a83af;
+  --color-primary-500: #7e5e97;
+  --color-primary-600: #664a7d;
+  --color-primary-700: #513a64;
+  --color-primary-800: #3d2b4b;
+  --color-primary-900: #2a1d33;
+  --color-primary-950: #1b0017;
+
+  /* Secondary color - Mauve */
+  --color-secondary-50: #f8f6f8;
+  --color-secondary-100: #f1eef1;
+  --color-secondary-200: #e3dde3;
+  --color-secondary-300: #cac1ca;
+  --color-secondary-400: #afa2af;
+  --color-secondary-500: #968596;
+  --color-secondary-600: #867385;
+  --color-secondary-700: #766673;
+  --color-secondary-800: #5f5260;
+  --color-secondary-900: #48404a;
+  --color-secondary-950: #2e282f;
+
+  /* Accent color - Light Beige */
+  --color-accent-50: #fdfcfd;
+  --color-accent-100: #fbf9fb;
+  --color-accent-200: #f7f6f7;
+  --color-accent-300: #f3f2f3;
+  --color-accent-400: #e8e6e8;
+  --color-accent-500: #d9d6d9;
+  --color-accent-600: #bbb8bb;
+  --color-accent-700: #9c999c;
+  --color-accent-800: #7e7c7e;
+  --color-accent-900: #656365;
+  --color-accent-950: #343334;
+
+  /* Typography */
+  --font-primary: 'Montserrat Alternates', sans-serif;
+  --font-secondary: 'Montserrat', sans-serif;
+  --font-heading: 'OPTI Tomaso', 'Montserrat Alternates', serif;
+  --font-weight-heading: var(--font-weight-bold);
+  --letter-spacing-heading: var(--letter-spacing-tight);
+  
+  /* Border radius */
+  --border-radius-md: 4px;
+  --border-radius-lg: 8px;
+}
+
+/* 
  * Client Theme: Corporate Red
  * A bold, corporate theme with red as the primary color
  */

@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import path from 'path';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,5 +16,17 @@ export default defineConfig({
   // Configure server options for development
   server: {
     port: 3000,
+  },
+  // Configure path aliases
+  vite: {
+    resolve: {
+      alias: {
+        '@': path.resolve('./src'),
+        '@components': path.resolve('./src/components'),
+        '@layouts': path.resolve('./src/layouts'),
+        '@styles': path.resolve('./src/styles'),
+        '@utils': path.resolve('./src/utils')
+      }
+    }
   }
 });
