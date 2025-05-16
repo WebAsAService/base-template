@@ -52,7 +52,11 @@
   --color-accent-950: #451a03;
 
   /* Typography */
-  --font-family-sans: 'Poppins, Inter, sans-serif';
+  --font-primary: 'Poppins', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+  --font-weight-heading: var(--font-weight-semibold);
+  --letter-spacing-heading: var(--letter-spacing-tight);
   
   /* Border radius */
   --border-radius-md: 8px;
@@ -106,7 +110,11 @@
   --color-accent-950: #422006;
 
   /* Typography */
-  --font-family-sans: 'Montserrat, sans-serif';
+  --font-primary: 'Montserrat', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-weight-heading: var(--font-weight-bold);
+  --letter-spacing-heading: var(--letter-spacing-normal);
   
   /* Border radius */
   --border-radius-md: 4px;
@@ -214,7 +222,14 @@
   --color-accent-950: #172554;
 
   /* Typography */
-  --font-family-sans: 'Roboto, Arial, sans-serif';
+  --font-primary: 'Roboto', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+  --font-weight-heading: var(--font-weight-medium);
+  --letter-spacing-heading: var(--letter-spacing-wide);
+  --font-weight-body: var(--font-weight-regular);
+  --line-height-body: var(--line-height-relaxed);
+  --font-size-body: var(--font-size-md);
   
   /* Border radius */
   --border-radius-md: 2px;

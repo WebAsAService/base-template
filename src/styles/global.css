@@ -1,8 +1,14 @@
 /* Import our theme configuration first */
 @import './theme.css';
 
+/* Import font system */
+@import './fonts.css';
+
 /* Import client-specific themes */
 @import './client-themes.css';
+
+/* Import typography styles */
+@import './typography.css';
 
 /* Tailwind CSS */
 /* stylelint-disable */

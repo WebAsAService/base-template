@@ -1,0 +1,203 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import FontDemoSection from '../components/sections/FontDemoSection.astro';
+
+// Get the theme from URL parameters or default to 'blue-ocean'
+const themeParam = Astro.url.searchParams.get('theme') || 'blue-ocean';
+// Make sure we're using the proper theme format (theme-{name})
+const clientTheme = themeParam.startsWith('theme-') ? themeParam : `theme-${themeParam}`;
+
+// List of available themes for the theme switcher
+const themes = [
+  { id: 'blue-ocean', name: 'Blue Ocean' },
+  { id: 'green-nature', name: 'Green Nature' },
+  { id: 'purple-elegance', name: 'Purple Elegance' },
+  { id: 'corporate-red', name: 'Corporate Red' }
+];
+---
+
+<Layout title="Font System Demo - Theme Typography" clientTheme={clientTheme}>
+  <Header />
+  
+  <main>
+    <section class="py-12 bg-gradient-to-b from-primary-50 to-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Theme Typography System</h1>
+          <p class="text-xl mb-8">Explore how fonts change across different themes</p>
+          
+          <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Switch Themes</h2>
+            <div class="flex flex-wrap justify-center gap-3">
+              {themes.map(theme => (
+                <a 
+                  href={`/font-demo?theme=${theme.id}`} 
+                  class={`px-4 py-2 rounded-md transition-colors ${themeParam === theme.id ? 'bg-primary-600 text-white' : 'bg-white border border-gray-300 hover:bg-gray-50'}`}
+                  data-theme-id={theme.id}
+                >
+                  {theme.name}
+                </a>
+              ))}
+            </div>
+          </div>
+          
+          <div class="p-4 bg-white/80 rounded-lg shadow-sm border border-gray-200 mb-8">
+            <p class="text-sm text-gray-600">
+              Current Theme: <span class="font-semibold current-theme-display">{themes.find(t => t.id === themeParam)?.name || themeParam}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <FontDemoSection />
+    
+    <section class="py-12 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold mb-6">How to Use the Font System</h2>
+          
+          <div class="prose max-w-none">
+            <p>Our theme system allows for easy customization of typography across different themes. Each theme can have its own unique font settings while maintaining a consistent structure.</p>
+            
+            <h3>Font Variables</h3>
+            <p>The following CSS variables are available for use in your components:</p>
+            
+            <ul>
+              <li><code>--font-primary</code>: The main font used for body text</li>
+              <li><code>--font-secondary</code>: An alternative font for supporting text</li>
+              <li><code>--font-heading</code>: The font used for headings</li>
+              <li><code>--font-mono</code>: Monospace font for code blocks</li>
+            </ul>
+            
+            <h3>Font Weight Variables</h3>
+            <p>Standardized font weights are available:</p>
+            
+            <ul>
+              <li><code>--font-weight-light</code>: Light weight (300)</li>
+              <li><code>--font-weight-normal</code>: Normal weight (400)</li>
+              <li><code>--font-weight-medium</code>: Medium weight (500)</li>
+              <li><code>--font-weight-semibold</code>: Semi-bold weight (600)</li>
+              <li><code>--font-weight-bold</code>: Bold weight (700)</li>
+            </ul>
+            
+            <h3>Usage Example</h3>
+            <pre><code>{`/* CSS */
+.my-heading {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+/* HTML */
+&lt;h2 class="my-heading"&gt;This will use the theme's heading font&lt;/h2&gt;`}</code></pre>
+            
+            <h3>Adding Custom Fonts to a Theme</h3>
+            <p>To add custom fonts to a theme:</p>
+            
+            <ol>
+              <li>Import the font in <code>src/styles/fonts.css</code></li>
+              <li>Override the font variables in your theme CSS in <code>src/styles/client-themes.css</code></li>
+            </ol>
+            
+            <pre><code>{`/* In fonts.css */
+@import url('https://fonts.googleapis.com/css2?family=CustomFont:wght@400;700&display=swap');
+
+/* In client-themes.css */
+.theme-custom {
+  --font-primary: 'CustomFont', sans-serif;
+  --font-heading: 'CustomFont', sans-serif;
+  /* Other theme settings... */
+}`}</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<script>
+  // Enhanced theme switching functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeButtons = document.querySelectorAll('a[data-theme-id]');
+    
+    themeButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        const themeId = button.getAttribute('data-theme-id');
+        const themeClass = `theme-${themeId}`;
+        
+        // Update URL without page reload
+        const url = new URL(window.location);
+        url.searchParams.set('theme', themeId);
+        window.history.pushState({}, '', url);
+        
+        // Apply theme class to HTML element
+        document.documentElement.className = themeClass;
+        document.body.className = themeClass;
+        
+        // Update active button styles
+        themeButtons.forEach(btn => {
+          if (btn.getAttribute('data-theme-id') === themeId) {
+            btn.classList.add('bg-primary-600', 'text-white');
+            btn.classList.remove('bg-white', 'border', 'border-gray-300', 'hover:bg-gray-50');
+          } else {
+            btn.classList.remove('bg-primary-600', 'text-white');
+            btn.classList.add('bg-white', 'border', 'border-gray-300', 'hover:bg-gray-50');
+          }
+        });
+        
+        // Update current theme display
+        const currentThemeDisplay = document.querySelector('.current-theme-display');
+        if (currentThemeDisplay) {
+          const themeName = button.textContent.trim();
+          currentThemeDisplay.textContent = themeName;
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .prose {
+    max-width: 65ch;
+    color: var(--color-gray-800, #333);
+  }
+  
+  .prose h3 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  .prose ul, .prose ol {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+  }
+  
+  .prose pre {
+    background-color: #f7f7f7;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    margin: 1em 0;
+  }
+  
+  .prose code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 0.25rem;
+    padding: 0.2em 0.4em;
+  }
+  
+  .prose pre code {
+    background-color: transparent;
+    padding: 0;
+  }
+</style>
