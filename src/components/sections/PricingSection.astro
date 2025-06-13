@@ -6,181 +6,213 @@
   <div class="container mx-auto px-4">
     <!-- Section header -->
     <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Startup Finance Solutions</h2>
       <p class="text-xl text-gray-600">
-        Choose the plan that works best for your business needs. All plans include our core theme system features.
+        Flexible financial services designed for growing companies at every stage. Choose the package that fits your current needs.
       </p>
     </div>
     
     <!-- Pricing toggle -->
-    <div class="flex justify-center items-center mb-12">
-      <span class="text-gray-600 mr-3">Monthly</span>
-      <label class="relative inline-block w-14 h-7 cursor-pointer">
-        <input type="checkbox" id="pricing-toggle" class="sr-only peer">
-        <div class="w-14 h-7 bg-gray-300 rounded-full peer peer-checked:bg-primary-500 peer-checked:after:translate-x-7 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-6 after:w-6 after:transition-all"></div>
-      </label>
-      <span class="text-gray-600 ml-3">Annual <span class="text-green-500 font-medium">Save 20%</span></span>
+    <div class="flex justify-center items-center space-x-4 mb-16">
+      <span class="text-lg font-medium" :class="{'text-primary-500': !isAnnual, 'text-gray-500': isAnnual}">Monthly</span>
+      <button 
+        class="relative inline-flex h-6 w-12 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-gray-200 transition-colors duration-200 ease-in-out focus:outline-none"
+        :class="{'bg-primary-500': isAnnual}"
+        @click="isAnnual = !isAnnual"
+        role="switch"
+        aria-checked="false"
+      >
+        <span 
+          class="pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+          :class="{'translate-x-6': isAnnual, 'translate-x-0': !isAnnual}"
+        ></span>
+      </button>
+      <span class="text-lg font-medium" :class="{'text-gray-500': !isAnnual, 'text-primary-500': isAnnual}">Annual <span class="text-green-500 text-sm">(Save 15%)</span></span>
     </div>
     
     <!-- Pricing cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Starter Plan -->
+      <!-- Startup plan -->
       <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
-        <div class="p-8 border-b">
-          <h3 class="text-2xl font-bold mb-2">Starter</h3>
-          <p class="text-gray-600 mb-6">Perfect for small businesses and startups</p>
-          <div class="flex items-end">
-            <span class="text-4xl font-bold" id="starter-price">$29</span>
-            <span class="text-gray-600 ml-2 mb-1" id="starter-period">/month</span>
+        <div class="px-6 py-8 border-b border-gray-200 bg-gray-50">
+          <h3 class="text-2xl font-bold text-center mb-2">Startup</h3>
+          <div class="text-center">
+            <span class="text-4xl font-bold" x-text="isAnnual ? '$2,975' : '$3,500'">$3,500</span>
+            <span class="text-gray-600 font-medium">/month</span>
           </div>
+          <p class="text-center text-gray-600 mt-2">For early-stage startups with basic finance needs</p>
         </div>
-        <div class="p-8">
+        <div class="p-6">
           <ul class="space-y-4">
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>3 Theme Templates</span>
+              <span>Monthly Financial Reporting</span>
             </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Basic Components</span>
+              <span>Bookkeeping & Accounting</span>
             </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>1 Website</span>
+              <span>Basic Tax Compliance</span>
             </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Email Support</span>
+              <span>Payroll Processing</span>
             </li>
-            <li class="flex items-start text-gray-400">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Custom Themes</span>
+              <span>Monthly Financial Review</span>
             </li>
-            <li class="flex items-start text-gray-400">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            <li class="flex items-center text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
               </svg>
-              <span>Priority Support</span>
+              <span>Fundraising Preparation</span>
+            </li>
+            <li class="flex items-center text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+              </svg>
+              <span>CFO Advisory Services</span>
             </li>
           </ul>
-          <a href="#contact" class="btn btn-outline w-full mt-8">Get Started</a>
+          <a href="#contact" class="block text-center bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-4 rounded-lg mt-8 transition-colors">
+            Get Started
+          </a>
         </div>
       </div>
       
-      <!-- Professional Plan -->
-      <div class="bg-white rounded-lg shadow-xl overflow-hidden transform scale-105 z-10 border-2 border-primary-500">
-        <div class="bg-primary-500 text-white text-center py-2 text-sm font-medium">MOST POPULAR</div>
-        <div class="p-8 border-b">
-          <h3 class="text-2xl font-bold mb-2">Professional</h3>
-          <p class="text-gray-600 mb-6">Ideal for growing businesses</p>
-          <div class="flex items-end">
-            <span class="text-4xl font-bold" id="pro-price">$79</span>
-            <span class="text-gray-600 ml-2 mb-1" id="pro-period">/month</span>
+      <!-- Growth Plan -->
+      <div class="bg-white rounded-lg shadow-xl overflow-hidden transition-transform hover:scale-105 border-2 border-primary-500 relative">
+        <div class="absolute top-0 right-0 bg-primary-500 text-white px-3 py-1 text-sm font-medium">Most Popular</div>
+        <div class="px-6 py-8 border-b border-gray-200 bg-gray-50">
+          <h3 class="text-2xl font-bold text-center mb-2">Growth</h3>
+          <div class="text-center">
+            <span class="text-4xl font-bold" x-text="isAnnual ? '$5,950' : '$7,000'">$7,000</span>
+            <span class="text-gray-600 font-medium">/month</span>
           </div>
+          <p class="text-center text-gray-600 mt-2">For Series A+ startups with growing financial complexity</p>
         </div>
-        <div class="p-8">
+        <div class="p-6">
           <ul class="space-y-4">
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>10 Theme Templates</span>
+              <span>Everything in Startup plan</span>
             </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Advanced Components</span>
+              <span>Advanced Financial Modeling</span>
             </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>5 Websites</span>
+              <span>Fundraising Preparation & Support</span>
             </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Priority Support</span>
+              <span>Investor-Ready Financial Reports</span>
             </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>2 Custom Themes</span>
+              <span>Weekly Financial Strategy Sessions</span>
             </li>
-            <li class="flex items-start text-gray-400">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>White-label Option</span>
+              <span>Part-time CFO Services (10hrs/week)</span>
+            </li>
+            <li class="flex items-center text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+              </svg>
+              <span>Full-time Finance Department</span>
             </li>
           </ul>
-          <a href="#contact" class="btn btn-primary w-full mt-8">Get Started</a>
+          <a href="#contact" class="block text-center bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-4 rounded-lg mt-8 transition-colors">
+            Get Started
+          </a>
         </div>
       </div>
       
       <!-- Enterprise Plan -->
       <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
-        <div class="p-8 border-b">
-          <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
-          <p class="text-gray-600 mb-6">For large organizations and agencies</p>
-          <div class="flex items-end">
-            <span class="text-4xl font-bold" id="enterprise-price">$199</span>
-            <span class="text-gray-600 ml-2 mb-1" id="enterprise-period">/month</span>
+        <div class="px-6 py-8 border-b border-gray-200 bg-gray-50">
+          <h3 class="text-2xl font-bold text-center mb-2">Enterprise</h3>
+          <div class="text-center">
+            <span class="text-4xl font-bold" x-text="isAnnual ? '$11,900+' : '$14,000+'">$14,000+</span>
+            <span class="text-gray-600 font-medium">/month</span>
           </div>
+          <p class="text-center text-gray-600 mt-2">For high-growth companies and pre-IPO startups</p>
         </div>
-        <div class="p-8">
+        <div class="p-6">
           <ul class="space-y-4">
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Unlimited Theme Templates</span>
+              <span>Everything in Growth plan</span>
             </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Premium Components</span>
+              <span>Full-time Finance Department</span>
             </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Unlimited Websites</span>
+              <span>Full-time Dedicated CFO</span>
             </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>24/7 Dedicated Support</span>
+              <span>Board & Investor Meeting Support</span>
             </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Unlimited Custom Themes</span>
+              <span>Strategic Growth Planning</span>
             </li>
-            <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>White-label Option</span>
+              <span>M&A Due Diligence & Integration</span>
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>IPO Preparation & Compliance</span>
             </li>
           </ul>
-          <a href="#contact" class="btn btn-outline w-full mt-8">Get Started</a>
+          <a href="#contact" class="block text-center bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-4 rounded-lg mt-8 transition-colors">
+            Schedule a Consultation
+          </a>
         </div>
       </div>
     </div>
@@ -193,14 +225,14 @@
     
     const prices = {
       monthly: {
-        starter: '$29',
-        pro: '$79',
-        enterprise: '$199'
+        starter: '$3,500',
+        pro: '$7,000',
+        enterprise: '$14,000+'
       },
       annual: {
-        starter: '$279',
-        pro: '$759',
-        enterprise: '$1,899'
+        starter: '$2,975',
+        pro: '$5,950',
+        enterprise: '$11,900+'
       }
     };
     
