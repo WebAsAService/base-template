@@ -6,41 +6,25 @@
   <div class="container mx-auto px-4">
     <!-- Section header -->
     <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Startup Finance Solutions</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Which Crown Plan Fits Your Stage?</h2>
       <p class="text-xl text-gray-600">
-        Flexible financial services designed for growing companies at every stage. Choose the package that fits your current needs.
+        From early scale to full finance ops, we've got the right mix of strategy and systems.
       </p>
     </div>
     
-    <!-- Pricing toggle -->
-    <div class="flex justify-center items-center space-x-4 mb-16">
-      <span class="text-lg font-medium" :class="{'text-primary-500': !isAnnual, 'text-gray-500': isAnnual}">Monthly</span>
-      <button 
-        class="relative inline-flex h-6 w-12 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-gray-200 transition-colors duration-200 ease-in-out focus:outline-none"
-        :class="{'bg-primary-500': isAnnual}"
-        @click="isAnnual = !isAnnual"
-        role="switch"
-        aria-checked="false"
-      >
-        <span 
-          class="pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
-          :class="{'translate-x-6': isAnnual, 'translate-x-0': !isAnnual}"
-        ></span>
-      </button>
-      <span class="text-lg font-medium" :class="{'text-gray-500': !isAnnual, 'text-primary-500': isAnnual}">Annual <span class="text-green-500 text-sm">(Save 15%)</span></span>
-    </div>
+    <!-- Pricing toggle removed as requested -->
     
     <!-- Pricing cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Startup plan -->
+      <!-- Get Clean plan -->
       <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
         <div class="px-6 py-8 border-b border-gray-200 bg-gray-50">
-          <h3 class="text-2xl font-bold text-center mb-2">Startup</h3>
+          <h3 class="text-2xl font-bold text-center mb-2">Get Clean</h3>
           <div class="text-center">
-            <span class="text-4xl font-bold" x-text="isAnnual ? '$2,975' : '$3,500'">$3,500</span>
+            <span class="text-4xl font-bold">$5,000+</span>
             <span class="text-gray-600 font-medium">/month</span>
           </div>
-          <p class="text-center text-gray-600 mt-2">For early-stage startups with basic finance needs</p>
+          <p class="text-center text-gray-600 mt-2">Best for startups post-raise with messy ops</p>
         </div>
         <div class="p-6">
           <ul class="space-y-4">
@@ -48,61 +32,61 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Monthly Financial Reporting</span>
+              <span>Bookkeeping for startups</span>
             </li>
             <li class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Bookkeeping & Accounting</span>
+              <span>Monthly close and reconciliations</span>
             </li>
             <li class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Basic Tax Compliance</span>
+              <span>Accounting system implementation</span>
             </li>
             <li class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Payroll Processing</span>
+              <span>Balance sheet supporting schedules</span>
             </li>
             <li class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Monthly Financial Review</span>
+              <span>Onboarding in &lt;30 days</span>
             </li>
             <li class="flex items-center text-gray-400">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
               </svg>
-              <span>Fundraising Preparation</span>
+              <span>Fractional CFO strategy</span>
             </li>
             <li class="flex items-center text-gray-400">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
               </svg>
-              <span>CFO Advisory Services</span>
+              <span>Modeling or audit prep</span>
             </li>
           </ul>
           <a href="#contact" class="block text-center bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-4 rounded-lg mt-8 transition-colors">
-            Get Started
+            Let's talk
           </a>
         </div>
       </div>
       
-      <!-- Growth Plan -->
+      <!-- Get Clarity Plan -->
       <div class="bg-white rounded-lg shadow-xl overflow-hidden transition-transform hover:scale-105 border-2 border-primary-500 relative">
         <div class="absolute top-0 right-0 bg-primary-500 text-white px-3 py-1 text-sm font-medium">Most Popular</div>
         <div class="px-6 py-8 border-b border-gray-200 bg-gray-50">
-          <h3 class="text-2xl font-bold text-center mb-2">Growth</h3>
+          <h3 class="text-2xl font-bold text-center mb-2">Get Clarity</h3>
           <div class="text-center">
-            <span class="text-4xl font-bold" x-text="isAnnual ? '$5,950' : '$7,000'">$7,000</span>
+            <span class="text-4xl font-bold">$12,000+</span>
             <span class="text-gray-600 font-medium">/month</span>
           </div>
-          <p class="text-center text-gray-600 mt-2">For Series A+ startups with growing financial complexity</p>
+          <p class="text-center text-gray-600 mt-2">For teams prepping Series A/B or scaling fast</p>
         </div>
         <div class="p-6">
           <ul class="space-y-4">
@@ -110,60 +94,54 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Everything in Startup plan</span>
+              <span>Everything in Get Clean</span>
             </li>
             <li class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Advanced Financial Modeling</span>
+              <span>Scenario planning & forecasting</span>
             </li>
             <li class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Fundraising Preparation & Support</span>
+              <span>Cost optimization & vendor strategy</span>
             </li>
             <li class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Investor-Ready Financial Reports</span>
+              <span>HR/payroll coordination</span>
             </li>
             <li class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Weekly Financial Strategy Sessions</span>
-            </li>
-            <li class="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-              </svg>
-              <span>Part-time CFO Services (10hrs/week)</span>
+              <span>Systems & workflow automation</span>
             </li>
             <li class="flex items-center text-gray-400">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
               </svg>
-              <span>Full-time Finance Department</span>
+              <span>Dedicated CFO</span>
             </li>
           </ul>
           <a href="#contact" class="block text-center bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-4 rounded-lg mt-8 transition-colors">
-            Get Started
+            Let's talk
           </a>
         </div>
       </div>
       
-      <!-- Enterprise Plan -->
+      <!-- Get Strategic Plan -->
       <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
         <div class="px-6 py-8 border-b border-gray-200 bg-gray-50">
-          <h3 class="text-2xl font-bold text-center mb-2">Enterprise</h3>
+          <h3 class="text-2xl font-bold text-center mb-2">Get Strategic</h3>
           <div class="text-center">
-            <span class="text-4xl font-bold" x-text="isAnnual ? '$11,900+' : '$14,000+'">$14,000+</span>
+            <span class="text-4xl font-bold">$25,000+</span>
             <span class="text-gray-600 font-medium">/month</span>
           </div>
-          <p class="text-center text-gray-600 mt-2">For high-growth companies and pre-IPO startups</p>
+          <p class="text-center text-gray-600 mt-2">For companies replacing in-house teams or prepping for raise/exit</p>
         </div>
         <div class="p-6">
           <ul class="space-y-4">
@@ -171,49 +149,55 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Everything in Growth plan</span>
+              <span>Everything in Get Clarity</span>
             </li>
             <li class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Full-time Finance Department</span>
+              <span>Full finance, HR, and ops execution</span>
             </li>
             <li class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Full-time Dedicated CFO</span>
+              <span>Dedicated CFO-level partner</span>
             </li>
             <li class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Board & Investor Meeting Support</span>
+              <span>Fundraising & investor narrative support</span>
             </li>
             <li class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>Strategic Growth Planning</span>
+              <span>Audit & compliance prep</span>
             </li>
             <li class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <span>M&A Due Diligence & Integration</span>
-            </li>
-            <li class="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-              </svg>
-              <span>IPO Preparation & Compliance</span>
+              <span>Hiring & team planning support</span>
             </li>
           </ul>
           <a href="#contact" class="block text-center bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-4 rounded-lg mt-8 transition-colors">
-            Schedule a Consultation
+            Let's talk
           </a>
         </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-12">
+      <p class="text-xl text-gray-600 mb-6">Not sure which plan is right for you?</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://calendly.com/crown-finance/discovery" target="_blank" class="inline-block bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-6 rounded-lg transition-colors">
+          Get a Scope
+        </a>
+        <a href="https://calendly.com/crown-finance/discovery" target="_blank" class="inline-block bg-white hover:bg-gray-100 text-primary-500 border border-primary-500 font-medium py-3 px-6 rounded-lg transition-colors">
+          Get a FREE Financial Assessment
+        </a>
       </div>
     </div>
   </div>
