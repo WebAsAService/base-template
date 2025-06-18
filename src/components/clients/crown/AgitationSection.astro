@@ -1,0 +1,109 @@
+---
+---
+
+<section id="agitation" class="py-20 bg-gradient-to-b from-primary-800 to-primary-900">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Text Content -->
+        <div class="order-2 lg:order-1 animation-element fade-in-left">
+          <h2 class="text-3xl md:text-4xl font-heading mb-6 text-white">Most Founders Learn This the Hard Way</h2>
+          
+          <div class="space-y-4 text-lg">
+            <p class="text-secondary-200 font-semibold">Most early-stage teams ignore finance.</p>
+            
+            <p class="text-secondary-200">No one's tracking burn, margins or runway. No one's closing the books.</p>
+            
+            <p class="text-secondary-200">It's all product, growth, and raise… until it isn't.</p>
+            
+            <p class="text-secondary-200">Then the round lands… and the cracks show. Suddenly you're behind. Your systems are scattered, reporting is manual, and your investors expect clarity.</p>
+            
+            <p class="text-secondary-200">We've seen it too many times.</p>
+            
+            <p class="text-secondary-200">Even fractional CFO for startups often comes in late, after the cracks show.</p>
+            
+            <p class="text-secondary-200 font-semibold">The mess is fixable, but only if you catch it before it spreads.</p>
+          </div>
+        </div>
+        
+        <!-- Image/Video Placeholder -->
+        <div class="order-1 lg:order-2 animation-element fade-in-right">
+          <div class="bg-primary-700/50 backdrop-blur-sm rounded-lg overflow-hidden border border-primary-600 aspect-video flex items-center justify-center">
+            <!-- Placeholder for video or image -->
+            <div class="text-center p-8">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-secondary-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              <p class="text-secondary-300">Video placeholder - Replace with actual video or image</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .animation-element {
+    opacity: 0;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .animation-element.animated.fade-in-left {
+    animation: fadeInLeft 0.8s ease-out forwards;
+  }
+  
+  .animation-element.animated.fade-in-right {
+    animation: fadeInRight 0.8s ease-out forwards;
+  }
+</style>
+
+<script>
+  // Initialize Intersection Observer when the DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    const animationElements = document.querySelectorAll('.animation-element');
+    
+    // Create observer with options
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // Add animation class when element is in view
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+          // Unobserve after animation is triggered
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null, // viewport
+      threshold: 0.2, // trigger when 20% of the element is visible
+      rootMargin: '-50px' // slight offset to trigger before fully in view
+    });
+    
+    // Observe all animation elements
+    animationElements.forEach(element => {
+      observer.observe(element);
+    });
+  });
+</script>
