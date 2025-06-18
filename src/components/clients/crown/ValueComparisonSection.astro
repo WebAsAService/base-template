@@ -1,0 +1,143 @@
+---
+---
+
+<section id="value-comparison" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Left Column - Copy -->
+      <div class="fade-in-left">
+        <h2 class="text-4xl md:text-5xl font-heading mb-4 text-primary-900">Why Founders Choose Crown Over Building In-House</h2>
+        <p class="text-xl text-secondary-700 mb-8">Get more flexibility, better expertise, and lower cost — all in one team.</p>
+        
+        <div class="prose prose-lg text-secondary-800 mb-8">
+          <p>Building an in-house finance team is expensive, slow, and hard to scale.</p>
+          <p>Most teams spend $40K to $80K per month to hire 3 to 5 generalists.</p>
+          <p>Crown gives you a full-stack finance department.</p>
+          <p>CFOs, controllers, systems specialists, HR and payroll pros.</p>
+          <p>Ready to go. Easy to flex. No hiring cycles.</p>
+          <p>You get real expertise, clean execution, and the ability to grow or pause based on what your business needs.</p>
+          
+          <p class="font-bold mt-6">More firepower. More flexibility. More results.</p>
+          <p>No recruiting. No overhead. No delays. No stress.</p>
+        </div>
+        
+        <div class="text-right">
+          <a href="#contact" class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-8 rounded-md transition-colors duration-300">
+            Let's Compare
+          </a>
+        </div>
+      </div>
+      
+      <!-- Right Column - Comparison Table -->
+      <div class="fade-in-right">
+        <div class="bg-white rounded-lg shadow-xl border border-accent-200 overflow-hidden">
+          <!-- Table Header -->
+          <div class="grid grid-cols-3 bg-primary-100 font-bold text-center py-4">
+            <div class="text-primary-900"></div>
+            <div class="text-primary-900 text-xl">Your Team</div>
+            <div class="text-primary-900 text-xl">CROWN</div>
+          </div>
+          
+          <!-- Cost Row -->
+          <div class="grid grid-cols-3 border-b border-accent-200">
+            <div class="p-4 font-semibold text-primary-900 bg-accent-50">Cost</div>
+            <div class="p-4 text-center">$40K–$80K/mo</div>
+            <div class="p-4 text-center font-medium text-primary-700">$5K–$25K/mo</div>
+          </div>
+          
+          <!-- Team Size Row -->
+          <div class="grid grid-cols-3 border-b border-accent-200">
+            <div class="p-4 font-semibold text-primary-900 bg-accent-50">Team Size</div>
+            <div class="p-4 text-center">3–5 employees</div>
+            <div class="p-4 text-center font-medium text-primary-700">4–10 specialists</div>
+          </div>
+          
+          <!-- Expertise Row -->
+          <div class="grid grid-cols-3 border-b border-accent-200">
+            <div class="p-4 font-semibold text-primary-900 bg-accent-50">Expertise</div>
+            <div class="p-4 text-center">Mixed, often junior</div>
+            <div class="p-4 text-center font-medium text-primary-700">Subject-matter experts</div>
+          </div>
+          
+          <!-- Flexibility Row -->
+          <div class="grid grid-cols-3 border-b border-accent-200">
+            <div class="p-4 font-semibold text-primary-900 bg-accent-50">Flexibility</div>
+            <div class="p-4 text-center">Fixed staff</div>
+            <div class="p-4 text-center font-medium text-primary-700">Scalable + plug-in resources</div>
+          </div>
+          
+          <!-- Onboarding Row -->
+          <div class="grid grid-cols-3">
+            <div class="p-4 font-semibold text-primary-900 bg-accent-50">Onboarding</div>
+            <div class="p-4 text-center">1–3 months</div>
+            <div class="p-4 text-center font-medium text-primary-700">Go live in under 30 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* CSS-only animations */
+  .fade-in-left {
+    animation: fadeInLeft 1s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .fade-in-right {
+    animation: fadeInRight 1s ease-out forwards;
+    opacity: 0;
+  }
+  
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Add scroll-triggered animation with CSS only */
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-in-left, .fade-in-right {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .fade-in-left.is-visible, .fade-in-right.is-visible {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+</style>
+
+<script>
+  // Simple intersection observer to trigger animations when elements are in viewport
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    const fadeElements = document.querySelectorAll('.fade-in-left, .fade-in-right');
+    fadeElements.forEach(el => observer.observe(el));
+  });
+</script>
