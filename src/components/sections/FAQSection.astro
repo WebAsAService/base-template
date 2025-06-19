@@ -45,7 +45,7 @@ const faqItems = [
       <div class="space-y-6">
         {faqItems.map((item, index) => (
           <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <details class="group" open={index === 0}>
+            <details class="group" {...index === 0 ? {open: true} : {}}>
               <summary class="flex items-center justify-between p-6 cursor-pointer">
                 <h3 class="text-lg font-semibold">{item.question}</h3>
                 <span class="ml-6 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">
@@ -61,11 +61,9 @@ const faqItems = [
       </div>
 
       <div class="text-center mt-12">
-        <p class="text-gray-600 mb-6">
-          Don't see your question here? Contact us for personalized answers to your specific financial questions.
-        </p>
-        <a href="#contact" class="inline-block bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-6 rounded-lg transition-colors">
-          Ask Your Question
+        <p class="text-lg text-gray-600 mb-6">Still have questions? We're here to help.</p>
+        <a href="#contact" class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
+          Contact Us
         </a>
       </div>
     </div>
