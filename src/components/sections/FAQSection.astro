@@ -1,5 +1,35 @@
 ---
 // FAQ Section Component
+const faqItems = [
+  {
+    question: "What is a fractional CFO and do I need one after raising?",
+    answer: "A fractional CFO is a part-time finance lead who brings structure, reporting, and strategy. For startups that just raised, it's the fastest way to get board-ready without hiring full-time."
+  },
+  {
+    question: "What does a CFO do for a startup?",
+    answer: "A CFO turns numbers into decisions. That includes understanding margins, managing cash runway, planning hires, and building investor-ready reports. At Crown, we bring this into your day-to-day."
+  },
+  {
+    question: "How much does a fractional CFO cost for a Series A–B startup?",
+    answer: "If you're wondering about the CFO cost for startups, full-time hires typically run $250K–$400K per year plus equity. Our fractional CFO pricing starts around $5,000/month. Every plan includes reporting, monthly close, strategy calls, and scales up to support fundraising, systems, and HR oversight."
+  },
+  {
+    question: "What's the difference between bookkeeping and a CFO?",
+    answer: "Bookkeeping tells you what happened. A CFO helps you plan what's next. Crown handles both, but we go further by supporting hiring, pricing, cash flow planning, and investor strategy."
+  },
+  {
+    question: "Is outsourced accounting enough for a startup?",
+    answer: "If it's disconnected from strategy, no. Most fast-growing teams outgrow basic accounting and need a full-picture view of finance, HR, and operations. That's where Crown fits."
+  },
+  {
+    question: "What services are included in Crown's offer?",
+    answer: "We support your entire finance function:<ul class='list-disc pl-5 mt-2 space-y-1'><li>Monthly close and reporting</li><li>Board updates and cash flow plans</li><li>Payroll and HR coordination</li><li>Audit and fundraising support</li><li>Systems integration and automation</li></ul>You get a team that fits your stage and evolves with your company."
+  },
+  {
+    question: "How fast can we get started?",
+    answer: "Most startups are fully onboarded in under 30 days. That includes stabilizing your numbers, updating reports, and getting core systems in place."
+  }
+];
 ---
 
 <section id="faq" class="py-16 bg-gray-50">
@@ -13,107 +43,21 @@
 
     <div class="max-w-4xl mx-auto">
       <div class="space-y-6">
-        <!-- FAQ Item 1 -->
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-          <details class="group">
-            <summary class="flex items-center justify-between p-6 cursor-pointer">
-              <h3 class="text-lg font-semibold">How does Crown's pricing model work?</h3>
-              <span class="ml-6 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </span>
-            </summary>
-            <div class="p-6 pt-0 text-gray-600">
-              <p>Crown Acquisition Group offers transparent subscription-based pricing with three tiers: Startup, Growth, and Enterprise. Each tier includes a comprehensive set of services tailored to your business stage. We charge a fixed monthly fee with no hidden costs or hourly billing surprises. Annual plans offer a 15% discount compared to monthly billing. All plans include unlimited support via email and our client portal.</p>
-            </div>
-          </details>
-        </div>
-
-        <!-- FAQ Item 2 -->
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-          <details class="group">
-            <summary class="flex items-center justify-between p-6 cursor-pointer">
-              <h3 class="text-lg font-semibold">What makes Crown different from traditional accounting firms?</h3>
-              <span class="ml-6 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </span>
-            </summary>
-            <div class="p-6 pt-0 text-gray-600">
-              <p>Unlike traditional firms that focus primarily on tax compliance and basic bookkeeping, Crown provides comprehensive financial strategy services specifically designed for high-growth companies. We combine modern cloud-based technology with startup expertise to deliver proactive financial guidance. Our team includes former startup founders, investment bankers, and experienced CFOs who understand the unique challenges of scaling businesses. We also offer fixed pricing rather than unpredictable hourly billing.</p>
-            </div>
-          </details>
-        </div>
-
-        <!-- FAQ Item 3 -->
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-          <details class="group">
-            <summary class="flex items-center justify-between p-6 cursor-pointer">
-              <h3 class="text-lg font-semibold">How long does it take to onboard with Crown?</h3>
-              <span class="ml-6 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </span>
-            </summary>
-            <div class="p-6 pt-0 text-gray-600">
-              <p>Our streamlined onboarding process typically takes 1-2 weeks. After signing up, we'll schedule a kickoff meeting to understand your business needs, set up access to your financial accounts, and establish your financial dashboard. For companies with existing financial systems, we'll perform a comprehensive review and migration. For startups without established systems, we'll build your financial infrastructure from the ground up. Our goal is to minimize disruption while quickly delivering value.</p>
-            </div>
-          </details>
-        </div>
-
-        <!-- FAQ Item 4 -->
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-          <details class="group">
-            <summary class="flex items-center justify-between p-6 cursor-pointer">
-              <h3 class="text-lg font-semibold">Can Crown help with fundraising?</h3>
-              <span class="ml-6 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </span>
-            </summary>
-            <div class="p-6 pt-0 text-gray-600">
-              <p>Yes, fundraising support is a core part of our service offering. We help prepare investor-ready financial models, create compelling data rooms, develop financial sections of pitch decks, and establish realistic financial projections. Our team can also assist with due diligence preparation, valuation analysis, and cap table management. While we don't directly introduce clients to investors, we ensure you're fully prepared for investor meetings with professional financial materials that inspire confidence.</p>
-            </div>
-          </details>
-        </div>
-
-        <!-- FAQ Item 5 -->
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-          <details class="group">
-            <summary class="flex items-center justify-between p-6 cursor-pointer">
-              <h3 class="text-lg font-semibold">What financial software does Crown use?</h3>
-              <span class="ml-6 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </span>
-            </summary>
-            <div class="p-6 pt-0 text-gray-600">
-              <p>We leverage industry-leading financial software including QuickBooks Online, Xero, Tableau, Bill.com, Gusto, and Fathom. Our technology stack is cloud-based and integrates seamlessly with popular business tools like Stripe, Shopify, Square, and Salesforce. We're software-agnostic and can adapt to your existing systems or recommend the best solutions based on your specific needs. All our clients receive access to a customized financial dashboard for real-time visibility into their business performance.</p>
-            </div>
-          </details>
-        </div>
-
-        <!-- FAQ Item 6 -->
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-          <details class="group">
-            <summary class="flex items-center justify-between p-6 cursor-pointer">
-              <h3 class="text-lg font-semibold">Do you work with international clients?</h3>
-              <span class="ml-6 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </span>
-            </summary>
-            <div class="p-6 pt-0 text-gray-600">
-              <p>Yes, Crown Acquisition Group works with clients globally. Our cloud-based systems and virtual meeting capabilities allow us to serve businesses regardless of location. We have experience with international accounting standards, multi-currency operations, and cross-border tax implications. For international clients looking to enter the US market, we offer specialized services to help navigate US financial regulations, tax requirements, and banking systems. All client meetings are scheduled in your local time zone for convenience.</p>
-            </div>
-          </details>
-        </div>
+        {faqItems.map((item, index) => (
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <details class="group" open={index === 0}>
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <h3 class="text-lg font-semibold">{item.question}</h3>
+                <span class="ml-6 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </summary>
+              <div class="p-6 pt-0 text-gray-600" set:html={item.answer}></div>
+            </details>
+          </div>
+        ))}
       </div>
 
       <div class="text-center mt-12">
