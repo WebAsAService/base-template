@@ -1,4 +1,17 @@
 ---
+// Partners data with logo paths
+const partners = [
+  { name: "TEN Capital Network", logo: "/images/logos/partners/ten_capital_logo.png" },
+  { name: "WeHo Chamber", logo: "/images/logos/partners/Gold_Chamber_Logo_2024.png" },
+  { name: "Coffin Capital", logo: "/images/logos/partners/sequoia-logo@2x.png" }, // Using sequoia as placeholder for Coffin Capital
+  { name: "Bienville Business Credit", logo: "/images/logos/partners/BienvilleBC-Logo.png" },
+  { name: "Stifel Bank", logo: "/images/logos/partners/stifel.png" },
+  { name: "FFB Bank", logo: "/images/logos/partners/ffb_bank.png" },
+  { name: "SG Credit Partners", logo: "/images/logos/partners/sg_credit_partners_logo.jpg" },
+  { name: "Green Hasson Janks", logo: "/images/logos/partners/Green Hasson Janks.png" },
+  { name: "Sequoia Consulting", logo: "/images/logos/partners/sequoia-logo@2x.png" },
+  { name: "EOS", logo: "/images/logos/partners/EOS_logo_horizontal.png" }
+];
 ---
 
 <section id="partners" class="py-20 bg-white">
@@ -22,75 +35,16 @@
         <!-- Right column: Logo grid -->
         <div class="lg:w-1/2">
           <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <!-- TEN Capital Network -->
-            <div class="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24 hover:shadow-md transition-all">
-              <div class="text-center">
-                <span class="font-bold text-primary-900">TEN Capital Network</span>
+            {partners.map((partner) => (
+              <div class="bg-white rounded-lg p-4 flex items-center justify-center h-24 hover:shadow-md transition-all">
+                <img 
+                  src={partner.logo} 
+                  alt={partner.name} 
+                  class="max-h-16 max-w-full object-contain" 
+                  title={partner.name}
+                />
               </div>
-            </div>
-            
-            <!-- WeHo Chamber of Commerce -->
-            <div class="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24 hover:shadow-md transition-all">
-              <div class="text-center">
-                <span class="font-bold text-primary-900">WeHo Chamber</span>
-              </div>
-            </div>
-            
-            <!-- Coffin Capital -->
-            <div class="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24 hover:shadow-md transition-all">
-              <div class="text-center">
-                <span class="font-bold text-primary-900">Coffin Capital</span>
-              </div>
-            </div>
-            
-            <!-- Bienville Business Credit -->
-            <div class="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24 hover:shadow-md transition-all">
-              <div class="text-center">
-                <span class="font-bold text-primary-900">Bienville Business Credit</span>
-              </div>
-            </div>
-            
-            <!-- Stifel Bank -->
-            <div class="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24 hover:shadow-md transition-all">
-              <div class="text-center">
-                <span class="font-bold text-primary-900">Stifel Bank</span>
-              </div>
-            </div>
-            
-            <!-- FFB Bank -->
-            <div class="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24 hover:shadow-md transition-all">
-              <div class="text-center">
-                <span class="font-bold text-primary-900">FFB Bank</span>
-              </div>
-            </div>
-            
-            <!-- SG Credit Partners -->
-            <div class="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24 hover:shadow-md transition-all">
-              <div class="text-center">
-                <span class="font-bold text-primary-900">SG Credit Partners</span>
-              </div>
-            </div>
-            
-            <!-- Green Hasson Janks -->
-            <div class="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24 hover:shadow-md transition-all">
-              <div class="text-center">
-                <span class="font-bold text-primary-900">Green Hasson Janks</span>
-              </div>
-            </div>
-            
-            <!-- Sequoia Consulting -->
-            <div class="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24 hover:shadow-md transition-all">
-              <div class="text-center">
-                <span class="font-bold text-primary-900">Sequoia Consulting</span>
-              </div>
-            </div>
-            
-            <!-- EOS -->
-            <div class="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24 hover:shadow-md transition-all">
-              <div class="text-center">
-                <span class="font-bold text-primary-900">EOS</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
