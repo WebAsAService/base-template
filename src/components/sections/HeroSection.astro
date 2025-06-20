@@ -1,65 +1,38 @@
 ---
-// Hero section component for the landing page
+import MicroProofElement from "./MicroProofElement.astro";
+import HeroFeaturesBlock from "./HeroFeaturesBlock.astro";
 ---
 
-<section class="py-20 bg-gradient-to-r from-primary-50 to-secondary-50">
-  <div class="container mx-auto px-4">
-    <div class="flex flex-col md:flex-row items-center">
-      <!-- Left content - Text -->
-      <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-          Startup Finance <span class="text-primary-500">Without the Chaos</span>
+<section class="relative bg-gradient-to-b from-primary-800 to-primary-900 text-white py-20 md:py-32">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0 bg-[url('/images/clients/crown/grid-pattern.svg')] bg-repeat opacity-20"></div>
+  </div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-8">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-heading mb-6">
+          <span class="text-secondary-400">You raised. Great.</span><br/>
+          <span>Now fix the financial mess.</span>
         </h1>
-        <p class="text-xl text-gray-600 mb-8">
-          Crown brings finance, HR, and operations together under one roof. From monthly close to fundraising support, we're the team that scales with you.
+        
+        <p class="text-xl md:text-2xl mb-8 text-secondary-300 opacity-90">
+          We help Series A–B startups with CFO-level guidance, better systems, and longer runway.
         </p>
-        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-          <a href="#features" class="btn btn-primary">See What We Fix</a>
-          <a href="#contact" class="btn btn-outline">Get a Scope</a>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#features" class="btn bg-primary-700 hover:bg-primary-600 text-white px-8 py-3 rounded-md transition-all shadow-lg">
+            See What We Fix
+          </a>
+          <a href="#contact" class="btn border border-secondary-400 hover:bg-secondary-500 hover:text-primary-900 text-secondary-300 px-8 py-3 rounded-md transition-all">
+            Schedule Consultation
+          </a>
         </div>
+        
+        <MicroProofElement />
       </div>
       
-      <!-- Right content - Image -->
-      <div class="md:w-1/2">
-        <div class="relative">
-          <!-- Main image -->
-          <div class="rounded-lg shadow-xl overflow-hidden">
-            <img 
-              src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-              alt="Theme System Dashboard" 
-              class="w-full h-auto"
-            />
-          </div>
-          
-          <!-- Decorative elements -->
-          <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-500 rounded-lg opacity-20"></div>
-          <div class="absolute -top-6 -right-6 w-32 h-32 bg-secondary-500 rounded-full opacity-20"></div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Trusted by section -->
-    <div class="mt-20 text-center">
-      <p class="text-gray-500 mb-8">Trusted by startups and growth-stage companies</p>
-      <div class="flex flex-wrap justify-center items-center gap-8 opacity-70">
-        <!-- Replace with actual client/partner logos when available -->
-        <div class="flex flex-col items-center">
-          <span class="text-2xl font-bold text-primary-500">$150M+</span>
-          <span class="text-sm text-gray-600">Capital Raised</span>
-        </div>
-        <div class="flex flex-col items-center">
-          <span class="text-2xl font-bold text-primary-500">20+</span>
-          <span class="text-sm text-gray-600">Years Experience</span>
-        </div>
-        <div class="flex flex-col items-center">
-          <span class="text-2xl font-bold text-primary-500">100+</span>
-          <span class="text-sm text-gray-600">Startups Served</span>
-        </div>
-        <div class="flex flex-col items-center">
-          <span class="text-2xl font-bold text-primary-500">3-8x</span>
-          <span class="text-sm text-gray-600">More Operational Hours</span>
-        </div>
-      </div>
+      <HeroFeaturesBlock />
     </div>
   </div>
 </section>

@@ -1,109 +1,72 @@
 ---
-// Partners Section Component
+// Partners data with logo paths
+const partners = [
+  { name: "TEN Capital Network", logo: "/images/logos/partners/ten_capital_logo.png" },
+  { name: "WeHo Chamber", logo: "/images/logos/partners/Gold_Chamber_Logo_2024.png" },
+  { name: "Coffin Capital", logo: "/images/logos/partners/sequoia-logo@2x.png" }, // Using sequoia as placeholder for Coffin Capital
+  { name: "Bienville Business Credit", logo: "/images/logos/partners/BienvilleBC-Logo.png" },
+  { name: "Stifel Bank", logo: "/images/logos/partners/stifel.png" },
+  { name: "FFB Bank", logo: "/images/logos/partners/ffb_bank.png" },
+  { name: "SG Credit Partners", logo: "/images/logos/partners/sg_credit_partners_logo.jpg" },
+  { name: "Green Hasson Janks", logo: "/images/logos/partners/Green Hasson Janks.png" },
+  { name: "Sequoia Consulting", logo: "/images/logos/partners/sequoia-logo@2x.png" },
+  { name: "EOS", logo: "/images/logos/partners/EOS_logo_horizontal.png" }
+];
 ---
 
-<section id="partners" class="py-16 bg-white">
+<section id="partners" class="py-20 bg-white">
   <div class="container mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Strategic Partners</h2>
-      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        We collaborate with industry-leading organizations to provide comprehensive financial solutions for your business.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-      <!-- Partner 1 -->
-      <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg transition-transform hover:scale-110">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/QuickBooks_Logo.svg" 
-             alt="QuickBooks" 
-             class="max-h-12 grayscale hover:grayscale-0 transition-all">
+    <div class="max-w-6xl mx-auto">
+      <!-- Two-column layout: Text on left, Logo grid on right -->
+      <div class="flex flex-col lg:flex-row gap-12">
+        <!-- Left column: Headline and copy -->
+        <div class="lg:w-1/2">
+          <h2 class="text-3xl md:text-4xl font-heading mb-6 text-primary-900">Trusted by Organizations That Move Startups Forward</h2>
+          <div class="space-y-4 text-lg text-secondary-700">
+            <p>
+              We collaborate with banks, investors, and founder-facing organizations to bring finance, compliance, and capital access under one roof.
+            </p>
+            <p>
+              Whether it's streamlining back-office systems or prepping for a raise, our partners trust us to help their networks scale with structure, not stress.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Right column: Logo grid -->
+        <div class="lg:w-1/2">
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {partners.map((partner) => (
+              <div class="bg-white rounded-lg p-4 flex items-center justify-center h-24 hover:shadow-md transition-all">
+                <img 
+                  src={partner.logo} 
+                  alt={partner.name} 
+                  class="max-h-16 max-w-full object-contain" 
+                  title={partner.name}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-
-      <!-- Partner 2 -->
-      <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg transition-transform hover:scale-110">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Xero_software_logo.svg" 
-             alt="Xero" 
-             class="max-h-12 grayscale hover:grayscale-0 transition-all">
+      
+      <!-- Partner CTA -->
+      <div class="text-center mt-16 animation-element fade-in-up">
+        <div class="max-w-3xl mx-auto bg-primary-50 p-8 rounded-lg border border-primary-200">
+          <h3 class="text-2xl font-heading mb-4 text-primary-900">Become a Partner</h3>
+          <p class="text-secondary-700 mb-6">Interested in partnering with Crown to deliver exceptional financial services to startups? Let's discuss how we can work together.</p>
+          <a href="#contact" class="btn bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-md transition-all">Contact Us</a>
+        </div>
       </div>
-
-      <!-- Partner 3 -->
-      <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg transition-transform hover:scale-110">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Tableau_Software_logo.svg" 
-             alt="Tableau" 
-             class="max-h-12 grayscale hover:grayscale-0 transition-all">
+      
+      <!-- CTA Buttons -->
+      <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#" class="px-8 py-3 bg-primary-600 text-white font-medium rounded-md hover:bg-primary-700 transition-colors text-center">
+          Refer a Client
+        </a>
+        <a href="#" class="px-8 py-3 border border-primary-600 text-primary-600 font-medium rounded-md hover:bg-primary-50 transition-colors text-center">
+          Become a Partner
+        </a>
       </div>
-
-      <!-- Partner 4 -->
-      <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg transition-transform hover:scale-110">
-        <img src="https://www.svgrepo.com/show/354012/stripe.svg" 
-             alt="Stripe" 
-             class="max-h-12 grayscale hover:grayscale-0 transition-all">
-      </div>
-
-      <!-- Partner 5 -->
-      <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg transition-transform hover:scale-110">
-        <img src="https://www.svgrepo.com/show/354245/shopify.svg" 
-             alt="Shopify" 
-             class="max-h-12 grayscale hover:grayscale-0 transition-all">
-      </div>
-
-      <!-- Partner 6 -->
-      <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg transition-transform hover:scale-110">
-        <img src="https://www.svgrepo.com/show/448221/aws.svg" 
-             alt="AWS" 
-             class="max-h-12 grayscale hover:grayscale-0 transition-all">
-      </div>
-
-      <!-- Partner 7 -->
-      <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg transition-transform hover:scale-110">
-        <img src="https://www.svgrepo.com/show/353735/gusto.svg" 
-             alt="Gusto" 
-             class="max-h-12 grayscale hover:grayscale-0 transition-all">
-      </div>
-
-      <!-- Partner 8 -->
-      <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg transition-transform hover:scale-110">
-        <img src="https://www.svgrepo.com/show/330398/square.svg" 
-             alt="Square" 
-             class="max-h-12 grayscale hover:grayscale-0 transition-all">
-      </div>
-
-      <!-- Partner 9 -->
-      <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg transition-transform hover:scale-110">
-        <img src="https://www.svgrepo.com/show/353655/discord-icon.svg" 
-             alt="Discord" 
-             class="max-h-12 grayscale hover:grayscale-0 transition-all">
-      </div>
-
-      <!-- Partner 10 -->
-      <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg transition-transform hover:scale-110">
-        <img src="https://www.svgrepo.com/show/452091/notion.svg" 
-             alt="Notion" 
-             class="max-h-12 grayscale hover:grayscale-0 transition-all">
-      </div>
-
-      <!-- Partner 11 -->
-      <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg transition-transform hover:scale-110">
-        <img src="https://www.svgrepo.com/show/354000/slack-icon.svg" 
-             alt="Slack" 
-             class="max-h-12 grayscale hover:grayscale-0 transition-all">
-      </div>
-
-      <!-- Partner 12 -->
-      <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg transition-transform hover:scale-110">
-        <img src="https://www.svgrepo.com/show/448226/salesforce.svg" 
-             alt="Salesforce" 
-             class="max-h-12 grayscale hover:grayscale-0 transition-all">
-      </div>
-    </div>
-
-    <div class="text-center mt-12">
-      <p class="text-gray-600 max-w-3xl mx-auto mb-6">
-        Our partnerships enable us to provide seamless integrations and specialized expertise across a wide range of financial and business platforms.
-      </p>
-      <a href="#contact" class="inline-block bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-6 rounded-lg transition-colors">
-        Discuss Your Integration Needs
-      </a>
     </div>
   </div>
 </section>
