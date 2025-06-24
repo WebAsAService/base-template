@@ -26,8 +26,19 @@
 /* OPTI Tomaso Font - Premium Font */
 @font-face {
   font-family: 'OPTI Tomaso';
-  src: url('/fonts/OPTI-Tomaso.woff2') format('woff2'),
-       url('/fonts/OPTI-Tomaso.woff') format('woff');
+  src: url('/fonts/OPTITomaso-Extended.otf') format('opentype'),
+       url('/fonts/OPTITomasoBold-Extended.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Crown New Theme Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@font-face {
+  font-family: 'Einer Grotesk';
+  src: url('/fonts/EinerGrotesk-Regular.woff2') format('woff2'),
+       url('/fonts/EinerGrotesk-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
