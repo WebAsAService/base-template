@@ -1,33 +1,55 @@
 ---
 import MicroProofElement from "./MicroProofElement.astro";
+import PulseBeams from "../ui/PulseBeams.astro";
 ---
 
 <section class="relative bg-gradient-to-b from-primary-800 to-primary-900 text-white pt-20 pb-10">
   <div class="absolute inset-0 opacity-10">
-    <div class="absolute inset-0 bg-[url('/images/clients/crown/grid-pattern.svg')] bg-repeat opacity-20"></div>
+    <div
+      class="absolute inset-0 bg-[url('/images/clients/crown/grid-pattern.svg')] bg-repeat opacity-20"
+    >
+    </div>
   </div>
-  
+
   <div class="container mx-auto px-4 relative z-10">
     <div class="max-w-6xl mx-auto">
       <div class="text-left">
         <h1 class="text-4xl md:text-4xl lg:text-5xl font-heading mb-6">
           <span class="text-secondary-400 font-bold">You raised. Great.</span>
         </h1>
-        <h2 class="text-4xl md:text-4xl lg:text-5xl font-heading mb-8 font-bold">Now fix the financial mess.</h2>
-        
+        <h2
+          class="text-4xl md:text-4xl lg:text-5xl font-heading mb-8 font-bold"
+        >
+          Now fix the financial mess.
+        </h2>
+
         <p class="text-xl md:text-2xl mb-8">
-          We help series A-B startups with CFO-level guidance,<br/> better systems and longer runway.
+          We help series A-B startups with CFO-level guidance,<br /> better systems
+          and longer runway.
         </p>
-        
-        <div class="flex flex-col sm:flex-row gap-4 justify-start">
-          <a href="#features" class="btn bg-primary-700 hover:bg-primary-600 text-white px-8 py-3 rounded-md transition-all">
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <!-- <a
+            href="#features"
+            class="btn bg-primary-700 hover:bg-primary-600 text-white px-8 py-3 rounded-md transition-all"
+          >
             See what we fix
           </a>
-          <a href="#contact" class="btn border border-secondary-400 hover:bg-secondary-500 hover:text-primary-900 text-secondary-300 px-8 py-3 rounded-md transition-all">
+          <a
+            href="#contact"
+            class="btn border border-secondary-400 hover:bg-secondary-500 hover:text-primary-900 text-secondary-300 px-8 py-3 rounded-md transition-all"
+          >
             Schedule a consultation
-          </a>
+          </a> -->
+          <!-- Pulse Beams Background Animation -->
+          <PulseBeams
+            showButton={true}
+            buttonLink="#contact"
+            buttonText="Schedule a consultation"
+            buttonClass="btn border border-secondary-400 hover:bg-secondary-500 hover:text-primary-900 text-secondary-300 px-8 py-3 rounded-md transition-all"
+          />
         </div>
-        
+
         <MicroProofElement />
       </div>
     </div>
