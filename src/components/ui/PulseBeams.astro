@@ -29,56 +29,57 @@ const {
 
   @keyframes gradient-flow-1 {
     0% {
-      stroke-dashoffset: -500;
+      stroke-dashoffset: -1000;
     }
     100% {
-      stroke-dashoffset: 500;
+      stroke-dashoffset: 1000;
     }
   }
 
   @keyframes gradient-flow-2 {
     0% {
-      stroke-dashoffset: -500;
+      stroke-dashoffset: -1000;
     }
     100% {
-      stroke-dashoffset: 500;
+      stroke-dashoffset: 1000;
     }
   }
 
   @keyframes gradient-flow-3 {
     0% {
-      stroke-dashoffset: -500;
+      stroke-dashoffset: -2000;
     }
     100% {
-      stroke-dashoffset: 500;
+      stroke-dashoffset: 2000;
     }
   }
 
   @keyframes gradient-flow-4 {
     0% {
-      stroke-dashoffset: -500;
+      stroke-dashoffset: -1000;
     }
     100% {
-      stroke-dashoffset: 500;
+      stroke-dashoffset: 1000;
     }
   }
 
   @keyframes gradient-flow-5 {
     0% {
-      stroke-dashoffset: -500;
+      stroke-dashoffset: -1000;
     }
     100% {
-      stroke-dashoffset: 500;
+      stroke-dashoffset: 1000;
     }
   }
 
   .pulse-beam {
-    opacity: 0.7;
-    stroke-width: 1.5px;
+    opacity: 0.4;
+    stroke-width: 1px;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke-dasharray: 500;
-    stroke-dashoffset: 500;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    filter: drop-shadow(0 0 2px var(--color-secondary-400, #18CCFC));
   }
 
   .pulse-beam-1 {
@@ -94,6 +95,8 @@ const {
   .pulse-beam-3 {
     animation: gradient-flow-3 4s ease-in-out infinite;
     animation-delay: -1.5s;
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
   }
 
   .pulse-beam-4 {
@@ -107,7 +110,8 @@ const {
   }
 
   .pulse-dot {
-    animation: pulse 4s ease-in-out infinite;
+    animation: pulse 3s ease-in-out infinite;
+    filter: blur(1.5px) drop-shadow(0 0 5px var(--color-secondary-400, #18CCFC));
   }
 
   .pulse-dot-1 {
@@ -167,6 +171,9 @@ const {
 <div
   class="flex h-full relative items-center justify-center antialiased"
 >
+  <!-- Network Background Layer -->
+  <div class="absolute inset-0 bg-primary-900 opacity-70"></div>
+  
   <!-- Optional Button in Center -->
   {
     showButton && (
@@ -338,42 +345,53 @@ const {
         </linearGradient>
       </defs>
 
-      <!-- Connection Points - Exact positions from Aceternity -->
+      <!-- Connection Points - Main dots from Aceternity plus additional network dots -->
       <circle
         class="pulse-dot pulse-dot-1"
         cx="851"
         cy="34"
         r="6.5"
-        fill="var(--color-secondary-400, #18CCFC)"
-        stroke="var(--color-secondary-300)"></circle>
+        fill="var(--color-secondary-400, #18CCFC)"></circle>
       <circle
         class="pulse-dot pulse-dot-2"
         cx="770"
         cy="427"
         r="6.5"
-        fill="var(--color-secondary-400, #18CCFC)"
-        stroke="var(--color-secondary-300)"></circle>
+        fill="var(--color-secondary-400, #18CCFC)"></circle>
       <circle
         class="pulse-dot pulse-dot-3"
         cx="142"
         cy="427"
         r="6.5"
-        fill="var(--color-secondary-400, #18CCFC)"
-        stroke="var(--color-secondary-300)"></circle>
+        fill="var(--color-secondary-400, #18CCFC)"></circle>
       <circle
         class="pulse-dot pulse-dot-4"
         cx="6.5"
         cy="398.5"
         r="6"
-        fill="var(--color-secondary-400, #18CCFC)"
-        stroke="var(--color-secondary-300)"></circle>
+        fill="var(--color-secondary-400, #18CCFC)"></circle>
       <circle
         class="pulse-dot pulse-dot-5"
         cx="420.5"
         cy="6.5"
         r="6"
-        fill="var(--color-secondary-400, #18CCFC)"
-        stroke="var(--color-secondary-300)"></circle>
+        fill="var(--color-secondary-400, #18CCFC)"></circle>
+      
+      <!-- Additional network dots -->
+      <circle class="pulse-dot pulse-dot-6" cx="200" cy="150" r="3" fill="var(--color-secondary-400, #18CCFC)" opacity="0.7"></circle>
+      <circle class="pulse-dot pulse-dot-7" cx="650" cy="100" r="2" fill="var(--color-secondary-400, #18CCFC)" opacity="0.5"></circle>
+      <circle class="pulse-dot pulse-dot-8" cx="400" cy="300" r="2.5" fill="var(--color-secondary-400, #18CCFC)" opacity="0.6"></circle>
+      <circle class="pulse-dot pulse-dot-9" cx="300" cy="80" r="2" fill="var(--color-secondary-400, #18CCFC)" opacity="0.5"></circle>
+      <circle class="pulse-dot pulse-dot-10" cx="700" cy="300" r="3" fill="var(--color-secondary-400, #18CCFC)" opacity="0.7"></circle>
+      <circle class="pulse-dot pulse-dot-11" cx="100" cy="200" r="2" fill="var(--color-secondary-400, #18CCFC)" opacity="0.5"></circle>
+      <circle class="pulse-dot pulse-dot-12" cx="500" cy="150" r="2.5" fill="var(--color-secondary-400, #18CCFC)" opacity="0.6"></circle>
+      
+      <!-- Additional connecting lines -->
+      <path class="pulse-beam pulse-beam-6" d="M200 150L400 300" stroke="url(#grad1)" opacity="0.3"></path>
+      <path class="pulse-beam pulse-beam-7" d="M650 100L500 150" stroke="url(#grad2)" opacity="0.3"></path>
+      <path class="pulse-beam pulse-beam-8" d="M300 80L500 150" stroke="url(#grad3)" opacity="0.3"></path>
+      <path class="pulse-beam pulse-beam-9" d="M700 300L500 150" stroke="url(#grad4)" opacity="0.3"></path>
+      <path class="pulse-beam pulse-beam-10" d="M100 200L200 150" stroke="url(#grad5)" opacity="0.3"></path>
     </svg>
   </div>
 </div>
