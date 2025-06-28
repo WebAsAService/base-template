@@ -278,6 +278,9 @@
   --color-accent-800: #075985;
   --color-accent-900: #0c4a6e;
   --color-accent-950: #082f49;
+  --color-accent-960: #3D5074;
+  --color-accent-970: #1A2B4A;
+  --color-accent-980: #172444;
 
   /* Typography */
   --font-primary: 'Einer Grotesk', sans-serif;
