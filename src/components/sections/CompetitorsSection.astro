@@ -1,235 +1,230 @@
 ---
 // Competitors vs Crown Section Component
+import { Image } from "astro:assets";
+import bulletList from "../../assets/bullet-list.svg";
+import divisor from "../../assets/divisor.svg";
 ---
 
-<section id="competitors" class="py-16 bg-white">
+<section id="competitors" class="py-16 bg-primary-900 text-white">
   <div class="container mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">We Connect the Dots in Ways Others Can’t</h2>
-      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        We’ve done the math so you don’t have to.<br>
-        You won’t see any names here, but if you’ve talked to other firms, you’ll recognize the pattern.        
+    <div class="mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-secondary-500">
+        We Connect the Dots <br> in Ways Others Can’t
+      </h2>
+      <p class="text-xl text-white max-w-3xl mx-auto">
+        We’ve done the math so you don’t have to.<br />
+        You won’t see any names here, but if you’ve talked to other firms, you’ll
+        recognize the pattern.
       </p>
     </div>
-    
+
     <div class="flex flex-col md:flex-row items-center mb-16 gap-8">
       <div class="w-full md:w-1/2">
-        <div class="bg-gray-200 rounded-lg shadow-lg w-full aspect-video flex items-center justify-center">
-          <div class="text-center p-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <p class="text-gray-500">Image Placeholder</p>
-          </div>
-        </div>
+        <img
+          src="/images/clients/crown/alaska-s-beautiful-landscape.png"
+          alt="Alaska's Beautiful Landscape"
+          class="w-full rounded-lg shadow-lg"
+        />
       </div>
       <div class="w-full md:w-1/2">
-        <h3 class="text-2xl font-bold mb-4">Here's what most teams miss — and how Crown stacks up.</h3>
-        <h4 class="text-xl font-semibold text-primary-600 mb-3">Key Competitive Advantages</h4>
-        <ul class="space-y-2">
+        <h3 class="text-xl font-bold mb-4 text-secondary-500">
+          Here's what most teams miss — and how Crown stacks up.
+        </h3>
+        <h4 class="text-lg font-semibold text-white mb-3">
+          Key Competitive Advantages
+        </h4>
+        <ul class="space-y-3">
           <li class="flex items-start">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <span>3–8x more operational hours than lean back-office firms</span>
+            <div class="mr-3 mt-0.5">
+              <Image
+                src={bulletList}
+                alt="Bullet point"
+                width={20}
+                height={20}
+              />
+            </div>
+            <span class="text-white"
+              >3–8x more operational hours than lean back-office firms</span
+            >
           </li>
           <li class="flex items-start">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <span>Deep execution: not just dashboards, but decisions</span>
+            <div class="mr-3 mt-0.5">
+              <Image
+                src={bulletList}
+                alt="Bullet point"
+                width={20}
+                height={20}
+              />
+            </div>
+            <span class="text-white"
+              >Deep execution: not just dashboards, but decisions</span
+            >
           </li>
           <li class="flex items-start">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <span>Built-in support across Finance, HR, and Systems</span>
+            <div class="mr-3 mt-0.5">
+              <Image
+                src={bulletList}
+                alt="Bullet point"
+                width={20}
+                height={20}
+              />
+            </div>
+            <span class="text-white"
+              >Built-in support across Finance, HR, and Systems</span
+            >
           </li>
           <li class="flex items-start">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <span>Costs less than building an internal team</span>
+            <div class="mr-3 mt-0.5">
+              <Image
+                src={bulletList}
+                alt="Bullet point"
+                width={20}
+                height={20}
+              />
+            </div>
+            <span class="text-white"
+              >Costs less than building an internal team</span
+            >
           </li>
           <li class="flex items-start">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <span>Fully scalable, no need to hire full-time</span>
+            <div class="mr-3 mt-0.5">
+              <Image
+                src={bulletList}
+                alt="Bullet point"
+                width={20}
+                height={20}
+              />
+            </div>
+            <span class="text-white"
+              >Fully scalable, no need to hire full-time</span
+            >
           </li>
           <li class="flex items-start">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <span>No gaps, no outsourcing chaos</span>
+            <div class="mr-3 mt-0.5">
+              <Image
+                src={bulletList}
+                alt="Bullet point"
+                width={20}
+                height={20}
+              />
+            </div>
+            <span class="text-white">No gaps, no outsourcing chaos</span>
           </li>
         </ul>
       </div>
     </div>
 
-    <div class="overflow-x-auto">
-      <table class="w-full border-collapse">
-        <thead>
-          <tr class="bg-gray-100">
-            <th class="p-4 text-left font-bold">Service Areas</th>
-            <th class="p-4 text-center font-bold">Most Providers</th>
-            <th class="p-4 text-center font-bold">
-              <span class="text-primary-600">Crown Acquisition Group</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Row 1 -->
-          <tr class="border-b border-gray-200">
-            <td class="p-4 font-medium">Strategic CFO / Board Reporting</td>
-            <td class="p-4 text-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-sm text-gray-600 block mt-1">Yes</span>
-            </td>
-            <td class="p-4 text-center bg-primary-50">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-sm text-gray-600 block mt-1">(Hands-on, not just advisory)</span>
-            </td>
-          </tr>
-          
-          <!-- Row 2 -->
-          <tr class="border-b border-gray-200">
-            <td class="p-4 font-medium">Monthly Close, AP/AR, Books</td>
-            <td class="p-4 text-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-sm text-gray-600 block mt-1">Light</span>
-            </td>
-            <td class="p-4 text-center bg-primary-50">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-sm text-gray-600 block mt-1">Heavy-duty, full-service</span>
-            </td>
-          </tr>
-          
-          <!-- Row 3 -->
-          <tr class="border-b border-gray-200">
-            <td class="p-4 font-medium">Payroll Management</td>
-            <td class="p-4 text-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-              </svg>
-              <span class="text-sm text-gray-600 block mt-1">Basic / External</span>
-            </td>
-            <td class="p-4 text-center bg-primary-50">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-sm text-gray-600 block mt-1">Dedicated team</span>
-            </td>
-          </tr>
-          
-          <!-- Row 4 -->
-          <tr class="border-b border-gray-200">
-            <td class="p-4 font-medium">HR Compliance + Hiring</td>
-            <td class="p-4 text-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-sm text-gray-600 block mt-1">Light</span>
-            </td>
-            <td class="p-4 text-center bg-primary-50">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-sm text-gray-600 block mt-1">Full HR dept management</span>
-            </td>
-          </tr>
-          
-          <!-- Row 5 -->
-          <tr class="border-b border-gray-200">
-            <td class="p-4 font-medium">Financial Reporting, KPIs</td>
-            <td class="p-4 text-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-sm text-gray-600 block mt-1">Yes</span>
-            </td>
-            <td class="p-4 text-center bg-primary-50">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-sm text-gray-600 block mt-1">Broader, customized</span>
-            </td>
-          </tr>
-          
-          <!-- Row 6 -->
-          <tr class="border-b border-gray-200">
-            <td class="p-4 font-medium">Data Ops / System Integration</td>
-            <td class="p-4 text-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-              <span class="text-sm text-gray-600 block mt-1">NO</span>
-            </td>
-            <td class="p-4 text-center bg-primary-50">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-sm text-gray-600 block mt-1">Built-in tools + support</span>
-            </td>
-          </tr>
-          
-          <!-- Row 7 -->
-          <tr class="border-b border-gray-200">
-            <td class="p-4 font-medium">Audit Prep + Compliance</td>
-            <td class="p-4 text-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-              <span class="text-sm text-gray-600 block mt-1">NO</span>
-            </td>
-            <td class="p-4 text-center bg-primary-50">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-sm text-gray-600 block mt-1">Included in key tiers</span>
-            </td>
-          </tr>
-          
-          <!-- Row 8 -->
-          <tr>
-            <td class="p-4 font-medium">Fundraising, 409A Support</td>
-            <td class="p-4 text-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-              <span class="text-sm text-gray-600 block mt-1">NO</span>
-            </td>
-            <td class="p-4 text-center bg-primary-50">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-sm text-gray-600 block mt-1">Strategic + deck ready</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="mt-16 mb-8">
+      <div class="grid grid-cols-4 gap-4 text-secondary-500 text-xl">
+        <div class="col-span-2 text-left font-bold">Services</div>
+        <div class="font-bold">Most Providers</div>
+        <div class="font-bold">Us</div>
+      </div>
+
+      <!-- Cost Row -->
+      <div class="mt-4">
+        <div class="grid grid-cols-4 gap-4 text-white items-center">
+          <div class="col-span-2 text-left">Cost</div>
+          <div class="">$40k - $80k /mo</div>
+          <div class="">$5k - $20k /mo</div>
+        </div>
+        <Image src={divisor} alt="Divider" class="w-full my-4" />
+      </div>
+
+      <!-- Number of Resources Row -->
+      <div class="mt-6">
+        <div class="grid grid-cols-4 gap-4 text-white items-center">
+          <div class="col-span-2 text-left">Number of Resources</div>
+          <div class="">3 - 5</div>
+          <div class="">4 - 10</div>
+        </div>
+        <Image src={divisor} alt="Divider" class="w-full my-4" />
+      </div>
+
+      <!-- Expertise Row -->
+      <div class="mt-6">
+        <div class="grid grid-cols-4 gap-4 text-white items-center">
+          <div class="col-span-2 text-left">Expertise</div>
+          <div class="">Mixed, often junior</div>
+          <div class="">Subject Matter Experts</div>
+        </div>
+        <Image src={divisor} alt="Divider" class="w-full my-4" />
+      </div>
+
+      <!-- Flexibility Row -->
+      <div class="mt-6">
+        <div class="grid grid-cols-4 gap-4 text-white items-center">
+          <div class="col-span-2 text-left">Flexibility</div>
+          <div class="">Fixed staff</div>
+          <div class="">Scalable, plug-in resources</div>
+        </div>
+        <Image src={divisor} alt="Divider" class="w-full my-4" />
+      </div>
+
+      <!-- Onboarding Rows -->
+      <div class="mt-6">
+        <div class="grid grid-cols-4 gap-4 text-white items-center">
+          <div class="col-span-2 text-left">Onboarding</div>
+          <div class="">1-3 months</div>
+          <div class="">Go live in under 30 days</div>
+        </div>
+        <Image src={divisor} alt="Divider" class="w-full my-4" />
+      </div>
+
+      <!-- Additional Onboarding Rows (repeated in screenshot) -->
+      <div class="mt-6">
+        <div class="grid grid-cols-4 gap-4 text-white items-center">
+          <div class="col-span-2 text-left">Onboarding</div>
+          <div class="">1-3 months</div>
+          <div class="">Go live in under 30 days</div>
+        </div>
+        <Image src={divisor} alt="Divider" class="w-full my-4" />
+      </div>
+
+      <!-- Additional Onboarding Rows (repeated in screenshot) -->
+      <div class="mt-6">
+        <div class="grid grid-cols-4 gap-4 text-white items-center">
+          <div class="col-span-2 text-left">Onboarding</div>
+          <div class="">1-3 months</div>
+          <div class="">Go live in under 30 days</div>
+        </div>
+        <Image src={divisor} alt="Divider" class="w-full my-4" />
+      </div>
+
+      <!-- Additional Onboarding Rows (repeated in screenshot) -->
+      <div class="mt-6">
+        <div class="grid grid-cols-4 gap-4 text-white items-center">
+          <div class="col-span-2 text-left">Onboarding</div>
+          <div class="">1-3 months</div>
+          <div class="">Go live in under 30 days</div>
+        </div>
+        <Image src={divisor} alt="Divider" class="w-full my-4" />
+      </div>
     </div>
 
-    <div class="text-center mt-16 max-w-3xl mx-auto">
-      <h3 class="text-2xl font-bold mb-4">Want the full breakdown?</h3>
-      <p class="text-lg text-gray-600 mb-6">
-        We've benchmarked every major competitor and built a detailed comparison.
-        <br>
+    <div
+      class="text-center mt-16 mx-auto bg-primary-800 rounded-lg p-8 shadow-lg"
+    >
+      <h3 class="text-2xl font-bold mb-4 text-secondary-500">
+        Want the full breakdown?
+      </h3>
+      <p class="text-lg text-white mb-6">
+        We've benchmarked every major competitor and built a detailed
+        comparison.
+        <br />
         👉 <em>We'll show it on the call — names included.</em>
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <div class="relative">
-          <input type="email" placeholder="Your email" class="w-full sm:w-64 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" />
+          <input
+            type="email"
+            placeholder="Your email"
+            class="w-full text-black sm:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
+          />
         </div>
-        <button class="bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-6 rounded-lg transition-colors">
+        <button
+          class="bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-6 rounded-lg transition-colors"
+        >
           Request the Comparison
         </button>
       </div>
