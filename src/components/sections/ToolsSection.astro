@@ -55,6 +55,9 @@ const allTools = toolCategories.flatMap(category =>
     color: category.color
   }))
 );
+
+// Duplicate tools for infinite scroll effect
+const duplicatedTools = [...allTools, ...allTools];
 ---
 
 <section id="tools" class="py-16 bg-gray-50">
@@ -67,24 +70,22 @@ const allTools = toolCategories.flatMap(category =>
       </p>
     </div>
 
-    <!-- Horizontal scrolling tools container -->
-    <div class="tools-scroll-container relative mb-8">
-      <div class="tools-scroll-wrapper flex overflow-x-auto py-4 hide-scrollbar">
-        <div class="tools-scroll-inner flex space-x-6 px-4">
-          {allTools.map((tool) => {
-            return (
-              <div class={`tool-card flex-shrink-0 bg-white p-5 rounded-lg shadow-md border-t-4 border-${tool.color}-500 w-48 h-32 flex flex-col items-center justify-center transition-transform hover:scale-105`}>
-                <img src={tool.logo} alt={tool.name} class="h-12 mb-2 object-contain" />
-                <div class="text-sm text-gray-500">{tool.category}</div>
-              </div>
-            );
-          })}
-        </div>
+    <!-- Infinite scrolling tools carousel -->
+    <div class="tools-carousel-container relative mb-8 overflow-hidden">
+      <div class="tools-carousel-track flex space-x-6 py-4" id="tools-carousel">
+        {duplicatedTools.map((tool, index) => {
+          return (
+            <div class={`tool-card flex-shrink-0 bg-white p-5 rounded-lg shadow-md border-t-4 border-${tool.color}-500 w-48 h-32 flex flex-col items-center justify-center transition-transform hover:scale-105`}>
+              <img src={tool.logo} alt={tool.name} class="h-12 mb-2 object-contain" />
+              <div class="text-sm text-gray-500">{tool.category}</div>
+            </div>
+          );
+        })}
       </div>
       
-      <!-- Gradient fade effects for scroll indication -->
-      <div class="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-gray-50 to-transparent pointer-events-none"></div>
-      <div class="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-gray-50 to-transparent pointer-events-none"></div>
+      <!-- Gradient fade effects -->
+      <div class="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-gray-50 to-transparent pointer-events-none z-10"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-gray-50 to-transparent pointer-events-none z-10"></div>
     </div>
 
     <!-- Category legend -->
@@ -105,13 +106,24 @@ const allTools = toolCategories.flatMap(category =>
 </section>
 
 <style>
-  /* Hide scrollbar but keep functionality */
-  .hide-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+  /* Infinite carousel animation */
+  .tools-carousel-track {
+    animation: scroll-left 40s linear infinite;
+    width: max-content;
   }
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
+  
+  /* Pause animation on hover */
+  .tools-carousel-container:hover .tools-carousel-track {
+    animation-play-state: paused;
+  }
+  
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
   
   /* Custom colors for tool cards */
@@ -156,9 +168,19 @@ const allTools = toolCategories.flatMap(category =>
     color: #4338ca;
   }
   
-  /* Smooth scrolling */
-  .tools-scroll-wrapper {
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+  /* Accessibility and performance optimizations */
+  @media (prefers-reduced-motion: reduce) {
+    .tools-carousel-track {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      opacity: 1;
+    }
+  }
+  
+  /* Improve performance by promoting to GPU layer */
+  .tools-carousel-track {
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
 </style>
