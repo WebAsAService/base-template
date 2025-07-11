@@ -56,7 +56,7 @@
   --font-secondary: 'Inter', sans-serif;
   --font-heading: 'Poppins', sans-serif;
   --font-weight-heading: var(--font-weight-semibold);
-  --letter-spacing-heading: var(--letter-spacing-tight);
+  --letter-spacing-heading: var(--letter-spacing-wide);
   
   /* Border radius */
   --border-radius-md: 8px;
@@ -114,7 +114,7 @@
   --font-secondary: 'Inter', sans-serif;
   --font-heading: 'Montserrat', sans-serif;
   --font-weight-heading: var(--font-weight-bold);
-  --letter-spacing-heading: var(--letter-spacing-normal);
+  --letter-spacing-heading: var(--letter-spacing-wide);
   
   /* Border radius */
   --border-radius-md: 4px;
@@ -226,7 +226,7 @@
   --font-secondary: 'Montserrat', sans-serif;
   --font-heading: 'OPTI Tomaso', 'Montserrat Alternates', serif;
   --font-weight-heading: var(--font-weight-bold);
-  --letter-spacing-heading: var(--letter-spacing-tight);
+  --letter-spacing-heading: var(--letter-spacing-wide);
   
   /* Border radius */
   --border-radius-md: 4px;
@@ -287,7 +287,7 @@
   --font-secondary: 'Montserrat', sans-serif;
   --font-heading: 'OPTI Tomaso', serif;
   --font-weight-heading: var(--font-weight-bold);
-  --letter-spacing-heading: var(--letter-spacing-tight);
+  --letter-spacing-heading: var(--letter-spacing-wide);
   
   /* Border radius */
   --border-radius-md: 4px;
