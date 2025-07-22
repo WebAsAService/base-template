@@ -2,6 +2,9 @@
 // Competitors vs Crown Section Component
 import { Image } from "astro:assets";
 import checkGold from "../../assets/check-gold.svg";
+import checkSuccess from "../../assets/check-success.svg";
+import warning from "../../assets/warning.svg";
+import closeError from "../../assets/close-error.svg";
 import divisor from "../../assets/divisor.svg";
 ---
 
@@ -126,8 +129,8 @@ import divisor from "../../assets/divisor.svg";
         <div class="mt-6">
           <div class="grid grid-cols-4 gap-4 text-white items-center text-lg">
             <div class="col-span-2 text-left">Strategic CFO / Board Reporting</div>
-            <div class="">✅Yes</div>
-            <div class="">✅ (Hands-on, not just advisory)</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Yes" width={20} height={20} class="mr-2" />Yes</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Yes" width={20} height={20} class="mr-2" />(Hands-on, not just advisory)</div>
           </div>
           <Image src={divisor} alt="Divider" class="w-full my-4" />
         </div>
@@ -136,8 +139,8 @@ import divisor from "../../assets/divisor.svg";
         <div class="mt-6">
           <div class="grid grid-cols-4 gap-4 text-white items-center text-lg">
             <div class="col-span-2 text-left">Monthly Close, AP/AR, Books</div>
-            <div class="">✅ Light</div>
-            <div class="">✅ Heavy-duty, full-service</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Light" width={20} height={20} class="mr-2" />Light</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Heavy-duty" width={20} height={20} class="mr-2" />Heavy-duty, full-service</div>
           </div>
           <Image src={divisor} alt="Divider" class="w-full my-4" />
         </div>
@@ -146,8 +149,8 @@ import divisor from "../../assets/divisor.svg";
         <div class="mt-6">
           <div class="grid grid-cols-4 gap-4 text-white items-center text-lg">
             <div class="col-span-2 text-left">Payroll Management</div>
-            <div class="">⚠️ Basic / External</div>
-            <div class="">✅ Dedicated team</div>
+            <div class="flex items-center"><Image src={warning} alt="Basic" width={20} height={20} class="mr-2" />Basic / External</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Dedicated team" width={20} height={20} class="mr-2" />Dedicated team</div>
           </div>
           <Image src={divisor} alt="Divider" class="w-full my-4" />
         </div>
@@ -156,8 +159,8 @@ import divisor from "../../assets/divisor.svg";
         <div class="mt-6">
           <div class="grid grid-cols-4 gap-4 text-white items-center text-lg">
             <div class="col-span-2 text-left">HR Compliance + Hiring</div>
-            <div class="">✅ Light</div>
-            <div class="">✅ Full HR dept management</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Light" width={20} height={20} class="mr-2" />Light</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Full HR" width={20} height={20} class="mr-2" />Full HR dept management</div>
           </div>
           <Image src={divisor} alt="Divider" class="w-full my-4" />
         </div>
@@ -166,8 +169,8 @@ import divisor from "../../assets/divisor.svg";
         <div class="mt-6">
           <div class="grid grid-cols-4 gap-4 text-white items-center text-lg">
             <div class="col-span-2 text-left">Financial Reporting, KPIs</div>
-            <div class="">✅ Yes</div>
-            <div class="">✅ Broader, customized</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Yes" width={20} height={20} class="mr-2" />Yes</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Broader" width={20} height={20} class="mr-2" />Broader, customized</div>
           </div>
           <Image src={divisor} alt="Divider" class="w-full my-4" />
         </div>
@@ -176,8 +179,8 @@ import divisor from "../../assets/divisor.svg";
         <div class="mt-6">
           <div class="grid grid-cols-4 gap-4 text-white items-center text-lg">
             <div class="col-span-2 text-left">Data Ops / System Integration</div>
-            <div class="">❌ NO</div>
-            <div class="">✅ Built-in tools + support</div>
+            <div class="flex items-center"><Image src={closeError} alt="No" width={20} height={20} class="mr-2" />NO</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Built-in tools" width={20} height={20} class="mr-2" />Built-in tools + support</div>
           </div>
           <Image src={divisor} alt="Divider" class="w-full my-4" />
         </div>
@@ -186,8 +189,8 @@ import divisor from "../../assets/divisor.svg";
         <div class="mt-6">
           <div class="grid grid-cols-4 gap-4 text-white items-center text-lg">
             <div class="col-span-2 text-left">Audit Prep + Compliance</div>
-            <div class="">❌ NO</div>
-            <div class="">✅ Included in key tiers</div>
+            <div class="flex items-center"><Image src={closeError} alt="No" width={20} height={20} class="mr-2" />NO</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Included" width={20} height={20} class="mr-2" />Included in key tiers</div>
           </div>
           <Image src={divisor} alt="Divider" class="w-full my-4" />
         </div>
@@ -196,8 +199,8 @@ import divisor from "../../assets/divisor.svg";
         <div class="mt-6">
           <div class="grid grid-cols-4 gap-4 text-white items-center text-lg">
             <div class="col-span-2 text-left">Fundraising, 409A Support</div>
-            <div class="">❌ NO</div>
-            <div class="">✅ Strategic + deck ready</div>
+            <div class="flex items-center"><Image src={closeError} alt="No" width={20} height={20} class="mr-2" />NO</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Strategic" width={20} height={20} class="mr-2" />Strategic + deck ready</div>
           </div>
           <Image src={divisor} alt="Divider" class="w-full my-4" />
         </div>
