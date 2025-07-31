@@ -1,0 +1,379 @@
+---
+// Competitors vs Crown Section Component
+import { Image } from "astro:assets";
+import checkGold from "../../assets/check-gold.svg";
+import checkSuccess from "../../assets/check-success.svg";
+import warning from "../../assets/warning.svg";
+import closeError from "../../assets/close-error.svg";
+import divisor from "../../assets/divisor.svg";
+---
+
+<section id="competitors" class="py-16 bg-primary-900 text-white">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-secondary-500">
+          More Horsepower to Support Your Growth
+        </h2>
+        <p class="text-xl text-white mx-auto">
+          We've benchmarked the space. Most providers offer surface-level support.<br />
+          You won’t see any names here, but if you’ve talked to other firms, you’ll
+          recognize the pattern.
+        </p>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center mb-16 gap-8">
+        <div class="w-full md:w-1/2">
+          <img
+            src="/images/clients/crown/meeting.png"
+            alt="Dots connected"
+            class="w-full rounded-lg shadow-lg"
+          />
+        </div>
+        <div class="w-full md:w-1/2">
+          <h3 class="text-xl font-bold mb-4 text-secondary-500">
+            Here's what most teams miss — and how Crown stacks up.
+          </h3>
+          <h4 class="text-lg font-semibold text-white mb-3">
+            Key Competitive Advantages
+          </h4>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <div class="mr-3 mt-0.5">
+                <Image
+                  src={checkGold}
+                  alt="Bullet point"
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <span class="text-white"
+                >3–8x more operational hours than lean back-office firms</span
+              >
+            </li>
+            <li class="flex items-start">
+              <div class="mr-3 mt-0.5">
+                <Image
+                  src={checkGold}
+                  alt="Bullet point"
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <span class="text-white"
+                >Deep execution: not just dashboards, but decisions</span
+              >
+            </li>
+            <li class="flex items-start">
+              <div class="mr-3 mt-0.5">
+                <Image
+                  src={checkGold}
+                  alt="Bullet point"
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <span class="text-white"
+                >Built-in support across Finance, HR, and Systems</span
+              >
+            </li>
+            <li class="flex items-start">
+              <div class="mr-3 mt-0.5">
+                <Image
+                  src={checkGold}
+                  alt="Bullet point"
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <span class="text-white"
+                >Costs less than building an internal team</span
+              >
+            </li>
+            <li class="flex items-start">
+              <div class="mr-3 mt-0.5">
+                <Image
+                  src={checkGold}
+                  alt="Bullet point"
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <span class="text-white"
+                >Fully scalable, no need to hire full-time</span
+              >
+            </li>
+            <li class="flex items-start">
+              <div class="mr-3 mt-0.5">
+                <Image
+                  src={checkGold}
+                  alt="Bullet point"
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <span class="text-white">No gaps, no outsourcing chaos</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-16 mb-8">
+        <!-- Desktop Table Header -->
+        <div class="hidden md:grid grid-cols-4 gap-4 text-secondary-500 text-2xl">
+          <div class="col-span-2 text-left font-bold">Service Areas</div>
+          <div class="font-bold">Most Providers</div>
+          <div class="font-bold">Crown Acquisition Group</div>
+        </div>
+        
+        <!-- Mobile Table Header -->
+        <div class="md:hidden mb-6">
+          <h3 class="text-secondary-500 text-xl font-bold mb-4">Service Comparison</h3>
+        </div>
+
+        <!-- Strategic CFO / Board Reporting Row -->
+        <div class="mt-6">
+          <!-- Desktop Layout -->
+          <div class="hidden md:grid grid-cols-4 gap-4 text-white items-center text-lg">
+            <div class="col-span-2 text-left">Strategic CFO / Board Reporting</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Yes" width={20} height={20} class="mr-2" />Yes</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Yes" width={20} height={20} class="mr-2" />(Hands-on, not just advisory)</div>
+          </div>
+          
+          <!-- Mobile Layout -->
+          <div class="md:hidden bg-primary-800 rounded-lg p-4 mb-4">
+            <h4 class="text-white font-semibold mb-3">Strategic CFO / Board Reporting</h4>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-secondary-400 text-sm">Most Providers:</span>
+                <div class="flex items-center"><Image src={checkSuccess} alt="Yes" width={16} height={16} class="mr-2" />Yes</div>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-secondary-400 text-sm">Crown:</span>
+                <div class="flex items-center"><Image src={checkSuccess} alt="Yes" width={16} height={16} class="mr-2" />Hands-on, not just advisory</div>
+              </div>
+            </div>
+          </div>
+          
+          <Image src={divisor} alt="Divider" class="hidden md:block w-full my-4" />
+        </div>
+
+        <!-- Monthly Close, AP/AR, Books Row -->
+        <div class="mt-6">
+          <!-- Desktop Layout -->
+          <div class="hidden md:grid grid-cols-4 gap-4 text-white items-center text-lg">
+            <div class="col-span-2 text-left">Monthly Close, AP/AR, Books</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Light" width={20} height={20} class="mr-2" />Light</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Heavy-duty" width={20} height={20} class="mr-2" />Heavy-duty, full-service</div>
+          </div>
+          
+          <!-- Mobile Layout -->
+          <div class="md:hidden bg-primary-800 rounded-lg p-4 mb-4">
+            <h4 class="text-white font-semibold mb-3">Monthly Close, AP/AR, Books</h4>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-secondary-400 text-sm">Most Providers:</span>
+                <div class="flex items-center"><Image src={checkSuccess} alt="Light" width={16} height={16} class="mr-2" />Light</div>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-secondary-400 text-sm">Crown:</span>
+                <div class="flex items-center"><Image src={checkSuccess} alt="Heavy-duty" width={16} height={16} class="mr-2" />Heavy-duty, full-service</div>
+              </div>
+            </div>
+          </div>
+          
+          <Image src={divisor} alt="Divider" class="hidden md:block w-full my-4" />
+        </div>
+
+        <!-- Payroll Management Row -->
+        <div class="mt-6">
+          <!-- Desktop Layout -->
+          <div class="hidden md:grid grid-cols-4 gap-4 text-white items-center text-lg">
+            <div class="col-span-2 text-left">Payroll Management</div>
+            <div class="flex items-center"><Image src={warning} alt="Basic" width={20} height={20} class="mr-2" />Basic / External</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Dedicated team" width={20} height={20} class="mr-2" />Dedicated team</div>
+          </div>
+          
+          <!-- Mobile Layout -->
+          <div class="md:hidden bg-primary-800 rounded-lg p-4 mb-4">
+            <h4 class="text-white font-semibold mb-3">Payroll Management</h4>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-secondary-400 text-sm">Most Providers:</span>
+                <div class="flex items-center"><Image src={warning} alt="Basic" width={16} height={16} class="mr-2" />Basic / External</div>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-secondary-400 text-sm">Crown:</span>
+                <div class="flex items-center"><Image src={checkSuccess} alt="Dedicated team" width={16} height={16} class="mr-2" />Dedicated team</div>
+              </div>
+            </div>
+          </div>
+          
+          <Image src={divisor} alt="Divider" class="hidden md:block w-full my-4" />
+        </div>
+
+        <!-- HR Compliance + Hiring Row -->
+        <div class="mt-6">
+          <!-- Desktop Layout -->
+          <div class="hidden md:grid grid-cols-4 gap-4 text-white items-center text-lg">
+            <div class="col-span-2 text-left">HR Compliance + Hiring</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Light" width={20} height={20} class="mr-2" />Light</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Full HR" width={20} height={20} class="mr-2" />Full HR dept management</div>
+          </div>
+          
+          <!-- Mobile Layout -->
+          <div class="md:hidden bg-primary-800 rounded-lg p-4 mb-4">
+            <h4 class="text-white font-semibold mb-3">HR Compliance + Hiring</h4>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-secondary-400 text-sm">Most Providers:</span>
+                <div class="flex items-center"><Image src={checkSuccess} alt="Light" width={16} height={16} class="mr-2" />Light</div>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-secondary-400 text-sm">Crown:</span>
+                <div class="flex items-center"><Image src={checkSuccess} alt="Full HR" width={16} height={16} class="mr-2" />Full HR dept management</div>
+              </div>
+            </div>
+          </div>
+          
+          <Image src={divisor} alt="Divider" class="hidden md:block w-full my-4" />
+        </div>
+
+        <!-- Financial Reporting, KPIs Row -->
+        <div class="mt-6">
+          <!-- Desktop Layout -->
+          <div class="hidden md:grid grid-cols-4 gap-4 text-white items-center text-lg">
+            <div class="col-span-2 text-left">Financial Reporting, KPIs</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Yes" width={20} height={20} class="mr-2" />Yes</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Broader" width={20} height={20} class="mr-2" />Broader, customized</div>
+          </div>
+          
+          <!-- Mobile Layout -->
+          <div class="md:hidden bg-primary-800 rounded-lg p-4 mb-4">
+            <h4 class="text-white font-semibold mb-3">Financial Reporting, KPIs</h4>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-secondary-400 text-sm">Most Providers:</span>
+                <div class="flex items-center"><Image src={checkSuccess} alt="Yes" width={16} height={16} class="mr-2" />Yes</div>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-secondary-400 text-sm">Crown:</span>
+                <div class="flex items-center"><Image src={checkSuccess} alt="Broader" width={16} height={16} class="mr-2" />Broader, customized</div>
+              </div>
+            </div>
+          </div>
+          
+          <Image src={divisor} alt="Divider" class="hidden md:block w-full my-4" />
+        </div>
+
+        <!-- Data Ops / System Integration Row -->
+        <div class="mt-6">
+          <!-- Desktop Layout -->
+          <div class="hidden md:grid grid-cols-4 gap-4 text-white items-center text-lg">
+            <div class="col-span-2 text-left">Data Ops / System Integration</div>
+            <div class="flex items-center"><Image src={closeError} alt="No" width={20} height={20} class="mr-2" />NO</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Built-in tools" width={20} height={20} class="mr-2" />Built-in tools + support</div>
+          </div>
+          
+          <!-- Mobile Layout -->
+          <div class="md:hidden bg-primary-800 rounded-lg p-4 mb-4">
+            <h4 class="text-white font-semibold mb-3">Data Ops / System Integration</h4>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-secondary-400 text-sm">Most Providers:</span>
+                <div class="flex items-center"><Image src={closeError} alt="No" width={16} height={16} class="mr-2" />NO</div>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-secondary-400 text-sm">Crown:</span>
+                <div class="flex items-center"><Image src={checkSuccess} alt="Built-in tools" width={16} height={16} class="mr-2" />Built-in tools + support</div>
+              </div>
+            </div>
+          </div>
+          
+          <Image src={divisor} alt="Divider" class="hidden md:block w-full my-4" />
+        </div>
+
+        <!-- Audit Prep + Compliance Row -->
+        <div class="mt-6">
+          <!-- Desktop Layout -->
+          <div class="hidden md:grid grid-cols-4 gap-4 text-white items-center text-lg">
+            <div class="col-span-2 text-left">Audit Prep + Compliance</div>
+            <div class="flex items-center"><Image src={closeError} alt="No" width={20} height={20} class="mr-2" />NO</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Included" width={20} height={20} class="mr-2" />Included in key tiers</div>
+          </div>
+          
+          <!-- Mobile Layout -->
+          <div class="md:hidden bg-primary-800 rounded-lg p-4 mb-4">
+            <h4 class="text-white font-semibold mb-3">Audit Prep + Compliance</h4>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-secondary-400 text-sm">Most Providers:</span>
+                <div class="flex items-center"><Image src={closeError} alt="No" width={16} height={16} class="mr-2" />NO</div>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-secondary-400 text-sm">Crown:</span>
+                <div class="flex items-center"><Image src={checkSuccess} alt="Included" width={16} height={16} class="mr-2" />Included in key tiers</div>
+              </div>
+            </div>
+          </div>
+          
+          <Image src={divisor} alt="Divider" class="hidden md:block w-full my-4" />
+        </div>
+
+        <!-- Fundraising, 409A Support Row -->
+        <div class="mt-6">
+          <!-- Desktop Layout -->
+          <div class="hidden md:grid grid-cols-4 gap-4 text-white items-center text-lg">
+            <div class="col-span-2 text-left">Fundraising, 409A Support</div>
+            <div class="flex items-center"><Image src={closeError} alt="No" width={20} height={20} class="mr-2" />NO</div>
+            <div class="flex items-center"><Image src={checkSuccess} alt="Strategic" width={20} height={20} class="mr-2" />Strategic + deck ready</div>
+          </div>
+          
+          <!-- Mobile Layout -->
+          <div class="md:hidden bg-primary-800 rounded-lg p-4 mb-4">
+            <h4 class="text-white font-semibold mb-3">Fundraising, 409A Support</h4>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-secondary-400 text-sm">Most Providers:</span>
+                <div class="flex items-center"><Image src={closeError} alt="No" width={16} height={16} class="mr-2" />NO</div>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-secondary-400 text-sm">Crown:</span>
+                <div class="flex items-center"><Image src={checkSuccess} alt="Strategic" width={16} height={16} class="mr-2" />Strategic + deck ready</div>
+              </div>
+            </div>
+          </div>
+          
+          <Image src={divisor} alt="Divider" class="hidden md:block w-full my-4" />
+        </div>
+      </div>
+
+      <div
+        class="text-center mt-16 mx-auto bg-primary-800 rounded-lg p-8 shadow-lg"
+      >
+        <h3 class="text-2xl font-bold mb-4 text-secondary-500">
+          Want the full breakdown?
+        </h3>
+        <p class="text-lg text-white mb-6">
+          We've benchmarked every major competitor and built a detailed
+          comparison.
+          <br />
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <div class="relative">
+            <input
+              type="email"
+              placeholder="Your email"
+              class="w-full text-black sm:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
+            />
+          </div>
+          <button
+            class="bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-6 rounded-lg transition-colors"
+          >
+            Request the Comparison
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

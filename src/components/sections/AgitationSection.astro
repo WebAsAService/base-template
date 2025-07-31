@@ -1,0 +1,119 @@
+---
+
+---
+
+<section id="agitation" class="">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Text Content -->
+        <div class="order-2 lg:order-1 animation-element fade-in-left">
+          <h2
+            class="text-secondary-400 text-3xl md:text-4xl font-heading mb-6 font-bold"
+          >
+            Most Founders Delay Finance Until It's Too Late
+          </h2>
+
+          <div class="space-y-2 text-md">
+            <p class="text-white">
+              Early-stage startups usually skip finance. Nobody's tracking burn, margins, or runway. Closing the books? A myth. It's all product, growth, raise… until reality hits.
+            </p>
+
+            <p class="text-white">
+              Then, the round closes, and the cracks start to burst. Reporting is manual, systems are fragmented, and investors expect instant clarity.
+            </p>
+
+            <p class="text-white">
+              We've seen this movie too often. CFOs jump in… but usually after the cracks have already spread. The good news? It's fixable if you plug the holes before the dam bursts.
+            </p>
+
+            <p class="text-white">
+              That's where we come in, setting up finance systems before the raise, not scrambling after. We help you be ready before investors ask.
+            </p>
+          </div>
+        </div>
+
+        <!-- Globe Network Image -->
+        <div class="order-1 lg:order-2 animation-element fade-in-right">
+          <div class="rounded-lg overflow-hidden">
+            <img
+              src="/images/globe-dots.png"
+              alt="Connected network visualization representing financial systems integration"
+              class="w-full h-auto rounded-lg shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animation-element {
+    opacity: 0;
+    transition:
+      opacity 0.8s ease-out,
+      transform 0.8s ease-out;
+  }
+
+  .animation-element.animated.fade-in-left {
+    animation: fadeInLeft 0.8s ease-out forwards;
+  }
+
+  .animation-element.animated.fade-in-right {
+    animation: fadeInRight 0.8s ease-out forwards;
+  }
+</style>
+
+<script>
+  // Initialize Intersection Observer when the DOM is loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    const animationElements = document.querySelectorAll(".animation-element");
+
+    // Create observer with options
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Add animation class when element is in view
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animated");
+            // Unobserve after animation is triggered
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        root: null, // viewport
+        threshold: 0.2, // trigger when 20% of the element is visible
+        rootMargin: "-50px", // slight offset to trigger before fully in view
+      },
+    );
+
+    // Observe all animation elements
+    animationElements.forEach((element) => {
+      observer.observe(element);
+    });
+  });
+</script>

@@ -1,0 +1,123 @@
+---
+// Partners data with logo paths
+const partners = [
+  {
+    name: "TEN Capital Network",
+    logo: "/images/logos/partners/ten_capital_logo.png",
+  },
+  {
+    name: "WeHo Chamber",
+    logo: "/images/logos/partners/Gold_Chamber_Logo_2024.png",
+  },
+  // {
+  //   name: "Coffin Capital",
+  //   logo: "/images/logos/partners/sequoia-logo@2x.png",
+  // }, // Using sequoia as placeholder for Coffin Capital
+  {
+    name: "Bienville Business Credit",
+    logo: "/images/logos/partners/BienvilleBC-Logo.png",
+  },
+  { name: "Stifel Bank", logo: "/images/logos/partners/stifel.png" },
+  { name: "FFB Bank", logo: "/images/logos/partners/ffb_bank.png" },
+  {
+    name: "SG Credit Partners",
+    logo: "/images/logos/partners/sg_credit_partners_logo.jpg",
+  },
+  {
+    name: "Green Hasson Janks",
+    logo: "/images/logos/partners/Green Hasson Janks.png",
+  },
+  {
+    name: "Sequoia Consulting",
+    logo: "/images/logos/partners/sequoia-logo@2x.png",
+  },
+  { name: "EOS", logo: "/images/logos/partners/EOS_logo_square.jpg" },
+];
+---
+
+<section id="partners" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <!-- Two-column layout: Text on left, Logo grid on right -->
+      <div class="flex flex-col lg:flex-row gap-12">
+        <!-- Left column: Headline and copy -->
+        <div class="lg:w-1/2">
+          <h2 class="text-3xl md:text-4xl font-heading mb-6 text-secondary-500">
+            Strategic Partners You Can Leverage
+          </h2>
+          <div class="space-y-4 text-lg text-primary-900">
+            <p>
+              Startup finance goes beyond numbers. Success often depends on the relationships you build and the support you have around you.
+            </p>
+            <p>
+              When you work with Crown, you get both, our team and direct access to trusted partners across banking, credit, investor relations, legal, and go-to-market strategy.
+            </p>
+            <p>
+              We've already built the network, now it works for you.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right column: Logo grid -->
+        <div class="lg:w-1/2">
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {
+              partners.map((partner) => (
+                <div class="bg-white rounded-lg p-4 flex items-center justify-center h-24 hover:shadow-md transition-all">
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    class="max-h-16 max-w-full object-contain"
+                    title={partner.name}
+                  />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Partner CTA -->
+      <!-- <div class="text-center mt-16 animation-element fade-in-up">
+        <div
+          class="max-w-3xl mx-auto bg-primary-50 p-8 rounded-lg border border-primary-200"
+        >
+          <h3 class="text-2xl font-heading mb-4 text-primary-900">
+            Become a Partner
+          </h3>
+          <p class="text-secondary-700 mb-6">
+            Interested in partnering with Crown to deliver exceptional financial
+            services to startups? Let's discuss how we can work together.
+          </p>
+          <a
+            href="#contact"
+            class="btn bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-md transition-all"
+            >Contact Us</a
+          >
+        </div>
+      </div> -->
+
+      <!-- CTA Buttons -->
+      <!-- <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4">
+        <a
+          href="#"
+          class="px-8 py-3 bg-primary-600 text-white font-medium rounded-md hover:bg-primary-700 transition-colors text-center"
+        >
+          Refer a Client
+        </a>
+        <a
+          href="#"
+          class="px-8 py-3 border border-primary-600 text-primary-600 font-medium rounded-md hover:bg-primary-50 transition-colors text-center"
+        >
+          Become a Partner
+        </a>
+      </div> -->
+    </div>
+  </div>
+  
+</section>
+<!-- Gradient transition at the end -->
+<div
+class="h-60 bg-gradient-to-b from-secondary-50 via-primary-800 to-primary-900"
+>
+</div>

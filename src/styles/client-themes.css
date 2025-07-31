@@ -56,7 +56,7 @@
   --font-secondary: 'Inter', sans-serif;
   --font-heading: 'Poppins', sans-serif;
   --font-weight-heading: var(--font-weight-semibold);
-  --letter-spacing-heading: var(--letter-spacing-tight);
+  --letter-spacing-heading: var(--letter-spacing-wide);
   
   /* Border radius */
   --border-radius-md: 8px;
@@ -114,7 +114,7 @@
   --font-secondary: 'Inter', sans-serif;
   --font-heading: 'Montserrat', sans-serif;
   --font-weight-heading: var(--font-weight-bold);
-  --letter-spacing-heading: var(--letter-spacing-normal);
+  --letter-spacing-heading: var(--letter-spacing-wide);
   
   /* Border radius */
   --border-radius-md: 4px;
@@ -226,7 +226,68 @@
   --font-secondary: 'Montserrat', sans-serif;
   --font-heading: 'OPTI Tomaso', 'Montserrat Alternates', serif;
   --font-weight-heading: var(--font-weight-bold);
-  --letter-spacing-heading: var(--letter-spacing-tight);
+  --letter-spacing-heading: var(--letter-spacing-wide);
+  
+  /* Border radius */
+  --border-radius-md: 4px;
+  --border-radius-lg: 8px;
+}
+
+/* 
+ * Client Theme: Crown New
+ * A sophisticated theme with navy and gold colors based on Crown's brand
+ */
+.theme-crown-new {
+  /* Add a dramatic background color to make theme changes obvious */
+  background-color: #030924;
+  /* Primary color - Navy Blue */
+  --color-primary-50: #f8fafc;
+  --color-primary-100: #f1f5f9;
+  --color-primary-200: #e2e8f0;
+  --color-primary-300: #cbd5e1;
+  --color-primary-400: #94a3b8;
+  --color-primary-500: #64748b;
+  --color-primary-600: #475569;
+  --color-primary-700: #192F66; /* From image: #192F66 */
+  --color-primary-800: #050F37; /* From image: #050F37 */
+  --color-primary-900: #030924; /* From image: #030924 */
+  --color-primary-950: #030924;
+
+  /* Secondary color - Gold/Yellow */
+  --color-secondary-50: #F3F2F3;
+  --color-secondary-100: #fef3c7;
+  --color-secondary-200: #fde68a;
+  --color-secondary-300: #E8D183;
+  --color-secondary-400: #D0B065;
+  --color-secondary-500: #C49848;
+  --color-secondary-600: #b45309;
+  --color-secondary-700: #92400e;
+  --color-secondary-800: #78350f;
+  --color-secondary-900: #451a03;
+  --color-secondary-950: #422006;
+
+  /* Accent color - Light Blue */
+  --color-accent-50: #f0f9ff;
+  --color-accent-100: #e0f2fe;
+  --color-accent-200: #bae6fd;
+  --color-accent-300: #7dd3fc;
+  --color-accent-400: #38bdf8;
+  --color-accent-500: #0ea5e9;
+  --color-accent-600: #0284c7;
+  --color-accent-700: #0369a1;
+  --color-accent-800: #075985;
+  --color-accent-900: #0c4a6e;
+  --color-accent-950: #082f49;
+  --color-accent-960: #3D5074;
+  --color-accent-970: #1A2B4A;
+  --color-accent-980: #172444;
+
+  /* Typography */
+  --font-primary: 'Einer Grotesk', sans-serif;
+  --font-secondary: 'Montserrat', sans-serif;
+  --font-heading: 'OPTI Tomaso', serif;
+  --font-weight-heading: var(--font-weight-bold);
+  --letter-spacing-heading: var(--letter-spacing-wide);
   
   /* Border radius */
   --border-radius-md: 4px;

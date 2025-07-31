@@ -1,188 +1,187 @@
 ---
 // Pricing section component for the landing page
+import { Image } from 'astro:assets';
+import checkGoldSvg from '../../assets/check-gold.svg';
+import checkBlueSvg from '../../assets/check-blue.svg';
 ---
 
-<section id="pricing" class="py-20 bg-gray-50">
+<section id="pricing" class="py-20 bg-primary-900">
   <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
     <!-- Section header -->
     <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
-      <p class="text-xl text-gray-600">
-        Choose the plan that works best for your business needs. All plans include our core theme system features.
+      <h2 class="text-3xl md:text-5xl font-bold mb-4 text-secondary-500 font-heading">Which plan fits your chaos?</h2>
+      <p class="text-xl text-white">
+        From Seed to Series B we have got the right mix of resources to clean the mess, give you clarity or strategically support your growth.
       </p>
     </div>
     
-    <!-- Pricing toggle -->
-    <div class="flex justify-center items-center mb-12">
-      <span class="text-gray-600 mr-3">Monthly</span>
-      <label class="relative inline-block w-14 h-7 cursor-pointer">
-        <input type="checkbox" id="pricing-toggle" class="sr-only peer">
-        <div class="w-14 h-7 bg-gray-300 rounded-full peer peer-checked:bg-primary-500 peer-checked:after:translate-x-7 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-6 after:w-6 after:transition-all"></div>
-      </label>
-      <span class="text-gray-600 ml-3">Annual <span class="text-green-500 font-medium">Save 20%</span></span>
-    </div>
+    <!-- Pricing toggle removed as requested -->
     
     <!-- Pricing cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Starter Plan -->
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
-        <div class="p-8 border-b">
-          <h3 class="text-2xl font-bold mb-2">Starter</h3>
-          <p class="text-gray-600 mb-6">Perfect for small businesses and startups</p>
-          <div class="flex items-end">
-            <span class="text-4xl font-bold" id="starter-price">$29</span>
-            <span class="text-gray-600 ml-2 mb-1" id="starter-period">/month</span>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Get Clean plan -->
+      <div class="bg-primary-700 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105 h-full flex flex-col">
+        <div class="px-6 py-8 border-b border-accent-960/30">
+          <h3 class="text-2xl font-bold  mb-2 text-white">Get Clean</h3>
+          <div class="">
+            <span class="text-4xl font-bold text-secondary-500">$5,000</span>
+            <span class="text-white font-medium">/month</span>
           </div>
+          <p class=" text-white/80 mt-2">For Seed & early stage startups ($1M - $5M)</p>
         </div>
-        <div class="p-8">
-          <ul class="space-y-4">
+        <div class="p-6 flex-grow flex flex-col">
+          <ul class="space-y-4 flex-grow">
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>3 Theme Templates</span>
+              <Image src={checkGoldSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0" />
+              <span class="text-white">Bookkeeping for startups</span>
             </li>
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Basic Components</span>
+              <Image src={checkGoldSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0" />
+              <span class="text-white">Monthly close and reconciliations</span>
             </li>
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>1 Website</span>
+              <Image src={checkGoldSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0" />
+              <span class="text-white">Accounting system implementation</span>
             </li>
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Email Support</span>
+              <Image src={checkGoldSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0" />
+              <span class="text-white">Balance sheet supporting schedules</span>
             </li>
-            <li class="flex items-start text-gray-400">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-              <span>Custom Themes</span>
+            <li class="flex items-start">
+              <Image src={checkGoldSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0" />
+              <span class="text-white">Onboarding in &lt;30 days</span>
             </li>
-            <li class="flex items-start text-gray-400">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-              <span>Priority Support</span>
+            <li class="flex items-start text-white/80">
+              <Image src={checkBlueSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0 opacity-50" />
+              <span>Fractional CFO strategy</span>
+            </li>
+            <li class="flex items-start text-white/80">
+              <Image src={checkBlueSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0 opacity-50" />
+              <span>Modeling or audit prep</span>
             </li>
           </ul>
-          <a href="#contact" class="btn btn-outline w-full mt-8">Get Started</a>
+          <!-- <div class="mt-8">
+            <a href="#contact" class="block text-center bg-secondary-500 hover:bg-secondary-600 text-primary-900 font-medium py-3 px-4 rounded-lg transition-colors">
+              Get started
+            </a>
+          </div> -->
         </div>
       </div>
       
-      <!-- Professional Plan -->
-      <div class="bg-white rounded-lg shadow-xl overflow-hidden transform scale-105 z-10 border-2 border-primary-500">
-        <div class="bg-primary-500 text-white text-center py-2 text-sm font-medium">MOST POPULAR</div>
-        <div class="p-8 border-b">
-          <h3 class="text-2xl font-bold mb-2">Professional</h3>
-          <p class="text-gray-600 mb-6">Ideal for growing businesses</p>
-          <div class="flex items-end">
-            <span class="text-4xl font-bold" id="pro-price">$79</span>
-            <span class="text-gray-600 ml-2 mb-1" id="pro-period">/month</span>
+      <!-- Get Clarity Plan -->
+      <div class="bg-primary-700 rounded-lg shadow-xl overflow-hidden transition-transform hover:scale-105 border-2 border-secondary-500 relative h-full flex flex-col">
+        <div class="absolute top-0 right-0 bg-secondary-500 text-primary-900 px-3 py-1 text-sm font-medium">Most Popular</div>
+        <div class="px-6 py-8 border-b border-accent-960/30">
+          <h3 class="text-2xl font-bold  mb-2 text-white">Get Clarity</h3>
+          <div class="">
+            <span class="text-4xl font-bold text-secondary-500">$12,000</span>
+            <span class="text-white font-medium">/month</span>
           </div>
+          <p class=" text-white/80 mt-2">For Seed/Series A & growing startups ($5M - $10M)</p>
         </div>
-        <div class="p-8">
-          <ul class="space-y-4">
+        <div class="p-6 flex-grow flex flex-col">
+          <ul class="space-y-4 flex-grow">
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>10 Theme Templates</span>
+              <Image src={checkGoldSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0" />
+              <span class="text-white">Everything in Get Clean</span>
             </li>
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Advanced Components</span>
+              <Image src={checkGoldSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0" />
+              <span class="text-white">Scenario planning & forecasting</span>
             </li>
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>5 Websites</span>
+              <Image src={checkGoldSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0" />
+              <span class="text-white">Cost optimization & vendor strategy</span>
             </li>
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Priority Support</span>
+              <Image src={checkGoldSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0" />
+              <span class="text-white">HR/payroll coordination</span>
             </li>
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>2 Custom Themes</span>
+              <Image src={checkGoldSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0" />
+              <span class="text-white">Systems & workflow automation</span>
             </li>
-            <li class="flex items-start text-gray-400">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-              <span>White-label Option</span>
+            <li class="flex items-start text-white/80">
+              <Image src={checkBlueSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0 opacity-50" />
+              <span>Dedicated CFO</span>
             </li>
           </ul>
-          <a href="#contact" class="btn btn-primary w-full mt-8">Get Started</a>
+          <!-- <div class="mt-8">
+            <a href="#contact" class="block text-center bg-secondary-500 hover:bg-secondary-600 text-primary-900 font-medium py-3 px-4 rounded-lg transition-colors">
+              Get started
+            </a>
+          </div> -->
         </div>
       </div>
       
-      <!-- Enterprise Plan -->
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
-        <div class="p-8 border-b">
-          <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
-          <p class="text-gray-600 mb-6">For large organizations and agencies</p>
-          <div class="flex items-end">
-            <span class="text-4xl font-bold" id="enterprise-price">$199</span>
-            <span class="text-gray-600 ml-2 mb-1" id="enterprise-period">/month</span>
+      <!-- Get Strategic Plan -->
+      <div class="bg-primary-700 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105 h-full flex flex-col">
+        <div class="px-6 py-8 border-b border-accent-960/30">
+          <h3 class="text-2xl font-bold  mb-2 text-white">Get Strategic</h3>
+          <div class="">
+            <span class="text-4xl font-bold text-secondary-500">$25,000</span>
+            <span class="text-white font-medium">/month</span>
           </div>
+          <p class=" text-white/80 mt-2">For Series A/B scaling fast and or fundraising ($10M+)</p>
         </div>
-        <div class="p-8">
-          <ul class="space-y-4">
+        <div class="p-6 bg-accent-970 flex-grow flex flex-col">
+          <ul class="space-y-4 flex-grow">
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Unlimited Theme Templates</span>
+              <Image src={checkGoldSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0" />
+              <span class="text-white">Everything in Get Clarity</span>
             </li>
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Premium Components</span>
+              <Image src={checkGoldSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0" />
+              <span class="text-white">Full finance, HR, and ops execution</span>
             </li>
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Unlimited Websites</span>
+              <Image src={checkGoldSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0" />
+              <span class="text-white">Dedicated CFO-level partner</span>
             </li>
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>24/7 Dedicated Support</span>
+              <Image src={checkGoldSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0" />
+              <span class="text-white">Fundraising & investor narrative support</span>
             </li>
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Unlimited Custom Themes</span>
+              <Image src={checkGoldSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0" />
+              <span class="text-white">Audit & compliance prep</span>
             </li>
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>White-label Option</span>
+              <Image src={checkGoldSvg} alt="Bullet" width={24} height={24} class="h-6 w-6 mr-2 flex-shrink-0" />
+              <span class="text-white">Hiring & team planning support</span>
             </li>
           </ul>
-          <a href="#contact" class="btn btn-outline w-full mt-8">Get Started</a>
+          <!-- <div class="mt-8">
+            <a href="#contact" class="block text-center bg-secondary-500 hover:bg-secondary-600 text-primary-900 font-medium py-3 px-4 rounded-lg transition-colors">
+              Get started
+            </a>
+          </div> -->
         </div>
       </div>
+    </div>
+    
+    <div class="bg-primary-700 rounded-lg shadow-lg p-6 mt-12">
+      <p class="text-center text-4xl text-secondary-500 mb-6 font-heading font-bold">Not sure which plan is right for you?</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://calendly.com/mhachicha-crownacquisitiongroup" target="_blank" class="inline-block bg-secondary-500 hover:bg-secondary-600 text-primary-900 font-medium py-3 px-6 rounded-lg transition-colors shadow-md">
+          <div class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <span>Get a Scope</span>
+          </div>
+        </a>
+        <a href="https://tally.so/r/3EGbZA" target="_blank" class="group inline-block bg-primary-800 hover:bg-secondary-500 text-white hover:text-primary-900 border-2 border-secondary-500 font-medium py-3 px-6 rounded-lg transition-colors shadow-md">
+          <div class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-secondary-500 group-hover:text-primary-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Get a <span class="text-secondary-500 group-hover:text-primary-900 font-bold">FREE</span> Financial Assessment</span>
+          </div>
+        </a>
+      </div>
+    </div>
     </div>
   </div>
 </section>
@@ -193,14 +192,14 @@
     
     const prices = {
       monthly: {
-        starter: '$29',
-        pro: '$79',
-        enterprise: '$199'
+        starter: '$3,500',
+        pro: '$7,000',
+        enterprise: '$14,000+'
       },
       annual: {
-        starter: '$279',
-        pro: '$759',
-        enterprise: '$1,899'
+        starter: '$2,975',
+        pro: '$5,950',
+        enterprise: '$11,900+'
       }
     };
     
