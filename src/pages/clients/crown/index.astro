@@ -2,29 +2,19 @@
 import Layout from '@layouts/Layout.astro';
 import Header from '@components/layout/Header.astro';
 import Footer from '@components/layout/Footer.astro';
-import HeroSection from '@components/sections/HeroSection.astro';
-import WhatWeFixSection from '@components/sections/WhatWeFixSection.astro';
-import AgitationSection from '@components/sections/AgitationSection.astro';
-import SocialProofSection from '@components/sections/SocialProofSection.astro';
-import HighlightedQuoteSection from '@components/sections/HighlightedQuoteSection.astro';
+import HeroSection from '@components/clients/crown/HeroSection.astro';
+import FeaturesSection from '@components/clients/crown/FeaturesSection.astro';
 import PricingSection from '@components/sections/PricingSection.astro';
 import TestimonialsSection from '@components/sections/TestimonialsSection.astro';
 import ContactSection from '@components/sections/ContactSection.astro';
-import ToolsSection from '@components/sections/ToolsSection.astro';
-import TeamSection from '@components/sections/TeamSection.astro';
-import CompetitorsSection from '@components/sections/CompetitorsSection.astro';
-import PartnersSection from '@components/sections/PartnersSection.astro';
-import FAQSection from '@components/sections/FAQSection.astro';
-import ServicesSection from '@components/sections/ServicesSection.astro';
-import ValueComparisonSection from '@components/sections/ValueComparisonSection.astro';
 
 // Set Crown client theme - using custom Crown theme
 const clientTheme = 'theme-crown';
 ---
 
-<Layout title="Crown Acquisition Group - Financial Excellence for Growing Businesses" clientTheme={clientTheme}>
+<Layout title="Crown - Premium Business Solutions" clientTheme={clientTheme}>
 	<Header 
-		logo="/images/clients/crown/logo-gold-new.png"
+		logo="/images/clients/crown/logo-white-h.png"
 		bgColor="bg-primary-950"
 		textColor="text-secondary-300"
 		hoverColor="text-accent-300"
@@ -32,19 +22,9 @@ const clientTheme = 'theme-crown';
 	
 	<main>
 		<HeroSection />
-		<WhatWeFixSection />
-		<AgitationSection />
-		<SocialProofSection />
-		<HighlightedQuoteSection />
-		<ServicesSection />
-		<ValueComparisonSection />
+		<FeaturesSection />
 		<PricingSection />
-		<ToolsSection />
-		<CompetitorsSection />
-		<TeamSection />
-		<!-- <TestimonialsSection /> -->
-		<PartnersSection />
-		<FAQSection />
+		<TestimonialsSection />
 		<ContactSection />
 	</main>
 	

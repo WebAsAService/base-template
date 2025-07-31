@@ -1,60 +1,28 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Header from "@components/layout/Header.astro";
-import Footer from "@components/layout/Footer.astro";
-import HeroSection from "@components/sections/HeroSection.astro";
-import WhatWeFixSection from "@components/sections/WhatWeFixSection.astro";
-import AgitationSection from "@components/sections/AgitationSection.astro";
-import SocialProofSection from "@components/sections/SocialProofSection.astro";
-import HighlightedQuoteSection from "@components/sections/HighlightedQuoteSection.astro";
-import PricingSection from "@components/sections/PricingSection.astro";
-import TestimonialsSection from "@components/sections/TestimonialsSection.astro";
-import ContactSection from "@components/sections/ContactSection.astro";
-import ToolsSection from "@components/sections/ToolsSection.astro";
-import TeamSection from "@components/sections/TeamSection.astro";
-import CompetitorsSection from "@components/sections/CompetitorsSection.astro";
-import PartnersSection from "@components/sections/PartnersSection.astro";
-import FAQSection from "@components/sections/FAQSection.astro";
-import ServicesSection from "@components/sections/ServicesSection.astro";
-import ValueComparisonSection from "@components/sections/ValueComparisonSection.astro";
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
+import FeaturesSection from '../components/sections/FeaturesSection.astro';
+import PricingSection from '../components/sections/PricingSection.astro';
+import TestimonialsSection from '../components/sections/TestimonialsSection.astro';
+import ContactSection from '../components/sections/ContactSection.astro';
 
-// Set Crown client theme - using custom Crown theme
-const clientTheme = "theme-crown-new";
+// Get the theme from URL parameters or default to 'blue-ocean'
+const themeParam = Astro.url.searchParams.get('theme') || 'blue-ocean';
+const clientTheme = `theme-${themeParam}`;
 ---
 
-<Layout
-  title="Crown Acquisition Group - Financial Excellence for Growing Businesses"
-  clientTheme={clientTheme}
->
-  <Header
-    logo="/images/clients/crown/crown.png"
-    bgColor="bg-primary-800"
-    textColor="text-secondary-400"
-    hoverColor="text-secondary-700"
-    showFontsLink={false}
-  />
-
-  <main>
-    <HeroSection />
-    <WhatWeFixSection />
-    <AgitationSection />
-    <HighlightedQuoteSection />
-    <SocialProofSection />
-    <ServicesSection />
-    <ValueComparisonSection />
-    <PricingSection />
-    <CompetitorsSection />
-    <ToolsSection />
-    <!-- <TeamSection /> -->
-    <!-- <TestimonialsSection /> -->
-    <PartnersSection />
-    <FAQSection />
-    <ContactSection />
-  </main>
-
-  <Footer />
+<Layout title="Theme System - Beautiful Websites with Dynamic Themes" clientTheme={clientTheme}>
+	<Header />
+	
+	<main>
+		<HeroSection />
+		<FeaturesSection />
+		<PricingSection />
+		<TestimonialsSection />
+		<ContactSection />
+	</main>
+	
+	<Footer />
 </Layout>
-
-<style>
-  /* Any Crown client-specific styles can go here */
-</style>
