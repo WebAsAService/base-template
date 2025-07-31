@@ -1,50 +1,52 @@
 ---
-import MicroProofElement from "./MicroProofElement.astro";
-import PulseBeams from "../ui/PulseBeams.astro";
+// Hero section component for the landing page
 ---
 
-<section class="relative bg-gradient-to-b from-primary-800 to-primary-900 text-white pt-20 pb-10">
-  <div class="absolute inset-0 opacity-10">
-    <div
-      class="absolute inset-0 bg-[url('/images/clients/crown/grid-pattern.svg')] bg-repeat opacity-20"
-    >
-    </div>
-  </div>
-
-  <div class="container mx-auto px-4 relative z-10">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center">
-        <h1 class="text-4xl text-secondary-400 md:text-4xl lg:text-5xl font-heading mb-8 font-bold">
-          Financial Clarity for Growing Startups
+<section class="py-20 bg-gradient-to-r from-primary-50 to-secondary-50">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center">
+      <!-- Left content - Text -->
+      <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          Build Beautiful Websites with Our <span class="text-primary-500">Theme System</span>
         </h1>
-
-        <p class="text-xl md:text-2xl mb-8">
-          We help early-stage startups optimize their financial ops with C level support.
+        <p class="text-xl text-gray-600 mb-8">
+          Create stunning, responsive websites with our customizable theme system. Switch between themes instantly and deliver tailored experiences for every client.
         </p>
-
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <!-- <a
-            href="#features"
-            class="btn bg-primary-700 hover:bg-primary-600 text-white px-8 py-3 rounded-md transition-all"
-          >
-            See what we fix
-          </a>
-          <a
-            href="#contact"
-            class="btn border border-secondary-400 hover:bg-secondary-500 hover:text-primary-900 text-secondary-300 px-8 py-3 rounded-md transition-all"
-          >
-            Schedule a consultation
-          </a> -->
-          <!-- Pulse Beams Background Animation -->
-          <PulseBeams
-            showButton={true}
-            buttonLink="https://calendly.com/mhachicha-crownacquisitiongroup"
-            buttonText="Connect the dots"
-            buttonClass="btn border border-secondary-400 hover:bg-secondary-500 hover:text-primary-900 text-secondary-300 px-8 py-3 rounded-md transition-all"
-          />
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+          <a href="#features" class="btn btn-primary">Explore Features</a>
+          <a href="#contact" class="btn btn-outline">Contact Us</a>
         </div>
-
-        <MicroProofElement />
+      </div>
+      
+      <!-- Right content - Image -->
+      <div class="md:w-1/2">
+        <div class="relative">
+          <!-- Main image -->
+          <div class="rounded-lg shadow-xl overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+              alt="Theme System Dashboard" 
+              class="w-full h-auto"
+            />
+          </div>
+          
+          <!-- Decorative elements -->
+          <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-500 rounded-lg opacity-20"></div>
+          <div class="absolute -top-6 -right-6 w-32 h-32 bg-secondary-500 rounded-full opacity-20"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Trusted by section -->
+    <div class="mt-20 text-center">
+      <p class="text-gray-500 mb-8">Trusted by innovative companies worldwide</p>
+      <div class="flex flex-wrap justify-center items-center gap-8 opacity-70">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png" alt="Google" class="h-8 grayscale" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Slack_Technologies_Logo.svg/2560px-Slack_Technologies_Logo.svg.png" alt="Slack" class="h-8 grayscale" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/2560px-Microsoft_logo_%282012%29.svg.png" alt="Microsoft" class="h-8 grayscale" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tinder_logo_with_flame.svg/2560px-Tinder_logo_with_flame.svg.png" alt="Tinder" class="h-8 grayscale" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Twitch_logo_2019.svg/2560px-Twitch_logo_2019.svg.png" alt="Twitch" class="h-8 grayscale" />
       </div>
     </div>
   </div>
