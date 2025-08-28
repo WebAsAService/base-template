@@ -1,0 +1,95 @@
+name: Claude Issue Handler
+
+on:
+  issue_comment:
+    types: [created]
+  issues:
+    types: [opened, edited]
+
+jobs:
+  handle-claude-mention:
+    if: contains(github.event.comment.body, '@claude') || contains(github.event.issue.body, '@claude')
+    runs-on: ubuntu-latest
+    
+    permissions:
+      issues: write
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'yarn'
+          
+      - name: Install dependencies
+        run: yarn install
+        
+      - name: Extract Claude instructions
+        id: extract
+        run: |
+          # Extract the comment/issue body that contains @claude
+          if [ "${{ github.event_name }}" = "issue_comment" ]; then
+            BODY="${{ github.event.comment.body }}"
+            ISSUE_NUMBER="${{ github.event.issue.number }}"
+          else
+            BODY="${{ github.event.issue.body }}"
+            ISSUE_NUMBER="${{ github.event.issue.number }}"
+          fi
+          
+          # Extract instructions after @claude
+          INSTRUCTIONS=$(echo "$BODY" | sed -n 's/.*@claude[[:space:]]*\(.*\)/\1/p')
+          
+          echo "instructions=$INSTRUCTIONS" >> $GITHUB_OUTPUT
+          echo "issue_number=$ISSUE_NUMBER" >> $GITHUB_OUTPUT
+          
+      - name: Add Claude Code comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueNumber = ${{ steps.extract.outputs.issue_number }};
+            const instructions = `${{ steps.extract.outputs.instructions }}`;
+            
+            // Get issue details
+            const issue = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber
+            });
+            
+            // Create a comment with Claude's response
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: `🤖 **Claude Code Activated**
+              
+I'll help you work on this issue: "${issue.data.title}"
+
+**Instructions received:** ${instructions || 'Work on this issue'}
+
+**Current Status:** Analyzing issue requirements...
+
+---
+*This is an automated response. I'll start working on this issue and provide updates as I make progress.*`
+            });
+            
+      - name: Trigger Claude Code work
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          # This is where you would integrate with Claude Code
+          # For now, we'll create a placeholder that shows the concept
+          echo "🤖 Claude Code would start working on issue #${{ steps.extract.outputs.issue_number }}"
+          echo "Instructions: ${{ steps.extract.outputs.instructions }}"
+          
+          # In a full implementation, you might:
+          # 1. Clone the repo to a workspace
+          # 2. Use Claude Code CLI to work on the issue
+          # 3. Create a pull request with the changes
+          # 4. Update the issue with progress

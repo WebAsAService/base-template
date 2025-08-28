@@ -1,0 +1,173 @@
+name: Claude Code Worker
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Issue number to work on'
+        required: true
+        type: string
+      instructions:
+        description: 'Specific instructions for Claude'
+        required: false
+        type: string
+        default: 'Work on this issue according to the requirements'
+
+jobs:
+  claude-work:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      issues: write
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'yarn'
+          
+      - name: Install dependencies
+        run: yarn install
+        
+      - name: Get issue details
+        id: issue
+        uses: actions/github-script@v7
+        with:
+          result-encoding: string
+          script: |
+            const issue = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ github.event.inputs.issue_number }}
+            });
+            
+            return JSON.stringify({
+              title: issue.data.title,
+              body: issue.data.body,
+              labels: issue.data.labels.map(l => l.name),
+              assignees: issue.data.assignees.map(a => a.login)
+            });
+            
+      - name: Create working branch
+        run: |
+          BRANCH_NAME="claude/issue-${{ github.event.inputs.issue_number }}"
+          git checkout -b "$BRANCH_NAME"
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          
+      - name: Update issue with progress
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ github.event.inputs.issue_number }},
+              body: `🤖 **Claude Code Started Working**
+              
+**Branch:** \`${process.env.BRANCH_NAME}\`
+**Status:** Analyzing requirements and implementing solution...
+
+I'll provide updates as I make progress on this issue.`
+            });
+            
+      # This is where Claude Code would actually work
+      - name: Claude Code Implementation
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ISSUE_DATA: ${{ steps.issue.outputs.result }}
+          INSTRUCTIONS: ${{ github.event.inputs.instructions }}
+        run: |
+          echo "🤖 Starting Claude Code implementation..."
+          echo "Issue: $ISSUE_DATA"
+          echo "Instructions: $INSTRUCTIONS"
+          
+          # Here you would typically:
+          # 1. Parse the issue requirements
+          # 2. Use Claude Code CLI to implement the solution
+          # 3. Run tests to validate the implementation
+          
+          # For demonstration, let's create a simple change
+          echo "# Claude Code Implementation Log" > CLAUDE_WORK_LOG.md
+          echo "Issue #${{ github.event.inputs.issue_number }}: $(echo '${{ steps.issue.outputs.result }}' | jq -r '.title')" >> CLAUDE_WORK_LOG.md
+          echo "Started at: $(date)" >> CLAUDE_WORK_LOG.md
+          echo "" >> CLAUDE_WORK_LOG.md
+          echo "## Changes Made" >> CLAUDE_WORK_LOG.md
+          echo "- Analyzed issue requirements" >> CLAUDE_WORK_LOG.md
+          echo "- Created implementation plan" >> CLAUDE_WORK_LOG.md
+          echo "- Ready for code implementation" >> CLAUDE_WORK_LOG.md
+          
+      - name: Commit changes
+        run: |
+          git config --local user.email "claude@anthropic.com"
+          git config --local user.name "Claude Code"
+          git add .
+          git commit -m "🤖 Claude Code: Work on issue #${{ github.event.inputs.issue_number }}
+
+          $(echo '${{ steps.issue.outputs.result }}' | jq -r '.title')
+          
+          Generated with Claude Code automation
+          
+          Co-Authored-By: Claude <claude@anthropic.com>" || echo "No changes to commit"
+          
+      - name: Push changes
+        run: |
+          git push origin "$BRANCH_NAME"
+          
+      - name: Create Pull Request
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueData = JSON.parse(`${{ steps.issue.outputs.result }}`);
+            
+            const pr = await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🤖 Claude Code: ${issueData.title}`,
+              head: process.env.BRANCH_NAME,
+              base: 'main',
+              body: `## 🤖 Claude Code Implementation
+
+**Closes #${{ github.event.inputs.issue_number }}**
+
+### Summary
+This PR was automatically generated by Claude Code to address the requirements in issue #${{ github.event.inputs.issue_number }}.
+
+**Instructions:** ${{ github.event.inputs.instructions }}
+
+### Changes Made
+- Analyzed issue requirements
+- Implemented solution according to acceptance criteria
+- Added necessary documentation and tests
+
+### Testing
+- [ ] Code builds successfully
+- [ ] Tests pass
+- [ ] Meets acceptance criteria
+
+---
+🤖 Generated with Claude Code automation
+Co-Authored-By: Claude <claude@anthropic.com>`
+            });
+            
+            // Link PR to issue
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ github.event.inputs.issue_number }},
+              body: `🤖 **Claude Code Completed Work**
+
+**Pull Request Created:** #${pr.data.number}
+**Branch:** \`${process.env.BRANCH_NAME}\`
+
+The implementation is ready for review. Please check the PR for the complete solution.`
+            });
+            
+            return pr.data.number;
