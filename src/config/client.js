@@ -371,6 +371,13 @@ export const clientConfig = {
         text: "Their data analytics solutions gave us insights we never had before. We're now making decisions based on solid data rather than gut feelings.",
         rating: 5,
         image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+      },
+      {
+        name: "John Smith",
+        company: "StartupXYZ",
+        position: "Founder",
+        text: "Outstanding service and results. The team delivered exactly what we needed on time and within budget.",
+        rating: 4
       }
     ],
 
