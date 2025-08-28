@@ -1,10 +1,13 @@
 ---
 // Header component for the landing page
+import { clientConfig } from '@/config/client.js';
 
 // Props for customization
 interface Props {
-  // Logo image path (optional)
+  // Logo image path (optional - falls back to clientConfig.logo.main)
   logo?: string;
+  // Business name (optional - falls back to clientConfig.businessName)  
+  businessName?: string;
   // Background color for the header (optional)
   bgColor?: string;
   // Text color for the links (optional)
@@ -15,9 +18,10 @@ interface Props {
   showFontsLink?: boolean;
 }
 
-// Default values for props
+// Default values for props with clientConfig fallbacks
 const {
-  logo = '',
+  logo = clientConfig.logo.main,
+  businessName = clientConfig.businessName,
   bgColor = 'bg-white/90',
   textColor = 'text-gray-700',
   hoverColor = 'text-primary-500',
@@ -29,11 +33,17 @@ const {
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
     <!-- Logo -->
     <div class="flex items-center">
-      <a href="#top" class="flex items-center">
-        {logo ? 
-          <img src={logo} alt="Logo" class="h-10" /> : 
-          <span class="text-2xl font-bold">Brand</span>
-        }
+      <a href="#top" class="flex items-center space-x-3">
+        {logo ? (
+          <img 
+            src={logo} 
+            alt={clientConfig.logo.altText} 
+            class="h-8 w-auto" 
+          />
+        ) : null}
+        <span class="text-xl font-bold text-gray-900">
+          {businessName}
+        </span>
       </a>
     </div>
 
