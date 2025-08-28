@@ -61,11 +61,43 @@
   --font-family-serif: 'Georgia, Cambria, "Times New Roman", Times, serif';
   --font-family-mono: 'ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace';
 
+  /* Enhanced Typography System */
+  --font-family-primary: var(--font-family-sans);
+  --font-family-heading: var(--font-family-sans);
+  --font-scale-ratio: 1.25; /* Major third scale */
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.025em;
+
   /* 
    * SPACING
    * Base spacing unit that can be used to derive consistent spacing
    */
   --spacing-unit: 4px;
+  
+  /* Enhanced Spacing System */
+  --space-xs: 0.5rem;   /* 8px */
+  --space-sm: 1rem;     /* 16px */
+  --space-md: 1.5rem;   /* 24px */
+  --space-lg: 2rem;     /* 32px */
+  --space-xl: 3rem;     /* 48px */
+  --space-2xl: 4rem;    /* 64px */
+  --space-3xl: 6rem;    /* 96px */
   
   /* 
    * BORDER RADIUS
@@ -94,6 +126,49 @@
   --transition-fast: 150ms;
   --transition-normal: 300ms;
   --transition-slow: 500ms;
+
+  /* 
+   * COMPONENT THEMING
+   * Specific styling for UI components
+   */
+  --button-radius: var(--border-radius-md);
+  --card-radius: var(--border-radius-lg);
+  --input-radius: var(--border-radius-sm);
+  --card-shadow: var(--shadow-md);
+  --button-shadow: var(--shadow-sm);
+
+  /* 
+   * BRAND SPECIFIC
+   * Brand-specific customizations
+   */
+  --logo-filter: none; /* CSS filters for logo color adjustments */
+  --brand-pattern: none; /* Optional background patterns */
+
+  /* 
+   * ACCESSIBILITY
+   * Accessibility-focused design tokens
+   */
+  --focus-ring: 2px solid var(--color-primary-500);
+  --focus-offset: 2px;
+  --focus-ring-color: var(--color-primary-500);
+  --outline-style: solid;
+  --outline-width: 2px;
+
+  /* 
+   * NEUTRAL/GRAY COLOR SCALE
+   * For backgrounds, text, and borders
+   */
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #d1d5db;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #111827;
+  --color-neutral-950: #030712;
 }
 
 /* 

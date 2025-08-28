@@ -58,6 +58,18 @@
   --font-weight-heading: var(--font-weight-semibold);
   --letter-spacing-heading: var(--letter-spacing-tight);
   
+  /* Enhanced Typography */
+  --font-family-primary: 'Poppins', sans-serif;
+  --font-family-heading: 'Poppins', sans-serif;
+  --font-scale-ratio: 1.25;
+  
+  /* Component theming */
+  --button-radius: 8px;
+  --card-radius: 12px;
+  --input-radius: 6px;
+  --card-shadow: var(--shadow-md);
+  --button-shadow: var(--shadow-sm);
+  
   /* Border radius */
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
@@ -116,6 +128,18 @@
   --font-weight-heading: var(--font-weight-bold);
   --letter-spacing-heading: var(--letter-spacing-normal);
   
+  /* Enhanced Typography */
+  --font-family-primary: 'Montserrat', sans-serif;
+  --font-family-heading: 'Montserrat', sans-serif;
+  --font-scale-ratio: 1.25;
+  
+  /* Component theming */
+  --button-radius: 4px;
+  --card-radius: 8px;
+  --input-radius: 4px;
+  --card-shadow: var(--shadow-md);
+  --button-shadow: var(--shadow-sm);
+  
   /* Border radius */
   --border-radius-md: 4px;
   --border-radius-lg: 8px;
@@ -169,6 +193,20 @@
 
   /* Typography */
   --font-family-sans: 'Playfair Display, serif';
+  
+  /* Enhanced Typography */
+  --font-family-primary: 'Playfair Display', serif;
+  --font-family-heading: 'Playfair Display', serif;
+  --font-scale-ratio: 1.33;
+  --font-weight-heading: var(--font-weight-bold);
+  --letter-spacing-heading: var(--letter-spacing-normal);
+  
+  /* Component theming */
+  --button-radius: 16px;
+  --card-radius: 24px;
+  --input-radius: 12px;
+  --card-shadow: var(--shadow-lg);
+  --button-shadow: var(--shadow-md);
   
   /* Border radius */
   --border-radius-md: 16px;
@@ -228,6 +266,18 @@
   --font-weight-heading: var(--font-weight-bold);
   --letter-spacing-heading: var(--letter-spacing-tight);
   
+  /* Enhanced Typography */
+  --font-family-primary: 'Montserrat Alternates', sans-serif;
+  --font-family-heading: 'OPTI Tomaso', serif;
+  --font-scale-ratio: 1.2;
+  
+  /* Component theming */
+  --button-radius: 4px;
+  --card-radius: 8px;
+  --input-radius: 4px;
+  --card-shadow: var(--shadow-md);
+  --button-shadow: var(--shadow-sm);
+  
   /* Border radius */
   --border-radius-md: 4px;
   --border-radius-lg: 8px;
@@ -285,11 +335,389 @@
   --font-heading: 'Playfair Display', serif;
   --font-weight-heading: var(--font-weight-medium);
   --letter-spacing-heading: var(--letter-spacing-wide);
-  --font-weight-body: var(--font-weight-regular);
+  --font-weight-body: var(--font-weight-normal);
   --line-height-body: var(--line-height-relaxed);
-  --font-size-body: var(--font-size-md);
+  
+  /* Enhanced Typography */
+  --font-family-primary: 'Roboto', sans-serif;
+  --font-family-heading: 'Playfair Display', serif;
+  --font-scale-ratio: 1.2;
+  
+  /* Component theming */
+  --button-radius: 2px;
+  --card-radius: 4px;
+  --input-radius: 2px;
+  --card-shadow: var(--shadow-sm);
+  --button-shadow: var(--shadow-sm);
   
   /* Border radius */
   --border-radius-md: 2px;
   --border-radius-lg: 4px;
+}
+
+/* 
+ * INDUSTRY-SPECIFIC THEME PRESETS
+ * Professional pre-configured themes for different industries
+ * These themes can be used as starting points for AI generation
+ */
+
+/* 
+ * Industry Theme: Professional/Corporate
+ * Conservative colors, clean typography, trust-building design
+ */
+.theme-industry-professional {
+  background-color: #f8fafc;
+  
+  /* Primary color - Professional Blue */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --color-primary-950: #172554;
+
+  /* Secondary color - Neutral Gray */
+  --color-secondary-50: #f8fafc;
+  --color-secondary-100: #f1f5f9;
+  --color-secondary-200: #e2e8f0;
+  --color-secondary-300: #cbd5e1;
+  --color-secondary-400: #94a3b8;
+  --color-secondary-500: #64748b;
+  --color-secondary-600: #475569;
+  --color-secondary-700: #334155;
+  --color-secondary-800: #1e293b;
+  --color-secondary-900: #0f172a;
+  --color-secondary-950: #020617;
+
+  /* Accent color - Professional Teal */
+  --color-accent-50: #f0fdfa;
+  --color-accent-100: #ccfbf1;
+  --color-accent-200: #99f6e4;
+  --color-accent-300: #5eead4;
+  --color-accent-400: #2dd4bf;
+  --color-accent-500: #14b8a6;
+  --color-accent-600: #0d9488;
+  --color-accent-700: #0f766e;
+  --color-accent-800: #115e59;
+  --color-accent-900: #134e4a;
+  --color-accent-950: #042f2e;
+
+  /* Typography */
+  --font-family-primary: 'Inter', sans-serif;
+  --font-family-heading: 'Inter', sans-serif;
+  --font-scale-ratio: 1.2; /* Minor third - more conservative */
+  --font-weight-heading: var(--font-weight-semibold);
+  --letter-spacing-heading: var(--letter-spacing-tight);
+  
+  /* Component theming */
+  --button-radius: 6px;
+  --card-radius: 8px;
+  --input-radius: 4px;
+  --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+/* 
+ * Industry Theme: Creative/Design
+ * Bold colors, artistic fonts, vibrant design
+ */
+.theme-industry-creative {
+  background-color: #fef7ff;
+  
+  /* Primary color - Creative Purple */
+  --color-primary-50: #faf5ff;
+  --color-primary-100: #f3e8ff;
+  --color-primary-200: #e9d5ff;
+  --color-primary-300: #d8b4fe;
+  --color-primary-400: #c084fc;
+  --color-primary-500: #a855f7;
+  --color-primary-600: #9333ea;
+  --color-primary-700: #7e22ce;
+  --color-primary-800: #6b21a8;
+  --color-primary-900: #581c87;
+  --color-primary-950: #3b0764;
+
+  /* Secondary color - Creative Orange */
+  --color-secondary-50: #fff7ed;
+  --color-secondary-100: #ffedd5;
+  --color-secondary-200: #fed7aa;
+  --color-secondary-300: #fdba74;
+  --color-secondary-400: #fb923c;
+  --color-secondary-500: #f97316;
+  --color-secondary-600: #ea580c;
+  --color-secondary-700: #c2410c;
+  --color-secondary-800: #9a3412;
+  --color-secondary-900: #7c2d12;
+  --color-secondary-950: #431407;
+
+  /* Accent color - Creative Pink */
+  --color-accent-50: #fdf2f8;
+  --color-accent-100: #fce7f3;
+  --color-accent-200: #fbcfe8;
+  --color-accent-300: #f9a8d4;
+  --color-accent-400: #f472b6;
+  --color-accent-500: #ec4899;
+  --color-accent-600: #db2777;
+  --color-accent-700: #be185d;
+  --color-accent-800: #9d174d;
+  --color-accent-900: #831843;
+  --color-accent-950: #500724;
+
+  /* Typography */
+  --font-family-primary: 'Inter', sans-serif;
+  --font-family-heading: 'Playfair Display', serif;
+  --font-scale-ratio: 1.33; /* Perfect fourth - more dramatic */
+  --font-weight-heading: var(--font-weight-bold);
+  --letter-spacing-heading: var(--letter-spacing-normal);
+  
+  /* Component theming */
+  --button-radius: 16px;
+  --card-radius: 20px;
+  --input-radius: 12px;
+  --card-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* 
+ * Industry Theme: Healthcare
+ * Trust-building blues and greens, clean and reassuring design
+ */
+.theme-industry-healthcare {
+  background-color: #f0fdfa;
+  
+  /* Primary color - Healthcare Teal */
+  --color-primary-50: #f0fdfa;
+  --color-primary-100: #ccfbf1;
+  --color-primary-200: #99f6e4;
+  --color-primary-300: #5eead4;
+  --color-primary-400: #2dd4bf;
+  --color-primary-500: #14b8a6;
+  --color-primary-600: #0d9488;
+  --color-primary-700: #0f766e;
+  --color-primary-800: #115e59;
+  --color-primary-900: #134e4a;
+  --color-primary-950: #042f2e;
+
+  /* Secondary color - Healthcare Blue */
+  --color-secondary-50: #eff6ff;
+  --color-secondary-100: #dbeafe;
+  --color-secondary-200: #bfdbfe;
+  --color-secondary-300: #93c5fd;
+  --color-secondary-400: #60a5fa;
+  --color-secondary-500: #3b82f6;
+  --color-secondary-600: #2563eb;
+  --color-secondary-700: #1d4ed8;
+  --color-secondary-800: #1e40af;
+  --color-secondary-900: #1e3a8a;
+  --color-secondary-950: #172554;
+
+  /* Accent color - Healthcare Green */
+  --color-accent-50: #f0fdf4;
+  --color-accent-100: #dcfce7;
+  --color-accent-200: #bbf7d0;
+  --color-accent-300: #86efac;
+  --color-accent-400: #4ade80;
+  --color-accent-500: #22c55e;
+  --color-accent-600: #16a34a;
+  --color-accent-700: #15803d;
+  --color-accent-800: #166534;
+  --color-accent-900: #14532d;
+  --color-accent-950: #052e16;
+
+  /* Typography */
+  --font-family-primary: 'Source Sans Pro', sans-serif;
+  --font-family-heading: 'Source Sans Pro', sans-serif;
+  --font-scale-ratio: 1.25; /* Major third - balanced */
+  --font-weight-heading: var(--font-weight-semibold);
+  --letter-spacing-heading: var(--letter-spacing-normal);
+  
+  /* Component theming */
+  --button-radius: 8px;
+  --card-radius: 12px;
+  --input-radius: 6px;
+  --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* 
+ * Industry Theme: Technology
+ * Modern colors, technical fonts, cutting-edge design
+ */
+.theme-industry-technology {
+  background-color: #0f0f23;
+  color: #e4e7eb;
+  
+  /* Primary color - Tech Blue */
+  --color-primary-50: #dbeafe;
+  --color-primary-100: #bfdbfe;
+  --color-primary-200: #93c5fd;
+  --color-primary-300: #60a5fa;
+  --color-primary-400: #3b82f6;
+  --color-primary-500: #2563eb;
+  --color-primary-600: #1d4ed8;
+  --color-primary-700: #1e40af;
+  --color-primary-800: #1e3a8a;
+  --color-primary-900: #172554;
+  --color-primary-950: #0f172a;
+
+  /* Secondary color - Tech Cyan */
+  --color-secondary-50: #ecfeff;
+  --color-secondary-100: #cffafe;
+  --color-secondary-200: #a5f3fc;
+  --color-secondary-300: #67e8f9;
+  --color-secondary-400: #22d3ee;
+  --color-secondary-500: #06b6d4;
+  --color-secondary-600: #0891b2;
+  --color-secondary-700: #0e7490;
+  --color-secondary-800: #155e75;
+  --color-secondary-900: #164e63;
+  --color-secondary-950: #083344;
+
+  /* Accent color - Tech Green */
+  --color-accent-50: #ecfdf5;
+  --color-accent-100: #d1fae5;
+  --color-accent-200: #a7f3d0;
+  --color-accent-300: #6ee7b7;
+  --color-accent-400: #34d399;
+  --color-accent-500: #10b981;
+  --color-accent-600: #059669;
+  --color-accent-700: #047857;
+  --color-accent-800: #065f46;
+  --color-accent-900: #064e3b;
+  --color-accent-950: #022c22;
+
+  /* Typography */
+  --font-family-primary: 'Inter', sans-serif;
+  --font-family-heading: 'JetBrains Mono', monospace;
+  --font-scale-ratio: 1.25; /* Major third */
+  --font-weight-heading: var(--font-weight-medium);
+  --letter-spacing-heading: var(--letter-spacing-wide);
+  
+  /* Component theming */
+  --button-radius: 4px;
+  --card-radius: 8px;
+  --input-radius: 4px;
+  --card-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+/* 
+ * Industry Theme: Finance
+ * Professional blues and grays, authoritative typography
+ */
+.theme-industry-finance {
+  background-color: #f8fafc;
+  
+  /* Primary color - Finance Navy */
+  --color-primary-50: #f0f9ff;
+  --color-primary-100: #e0f2fe;
+  --color-primary-200: #bae6fd;
+  --color-primary-300: #7dd3fc;
+  --color-primary-400: #38bdf8;
+  --color-primary-500: #0ea5e9;
+  --color-primary-600: #0284c7;
+  --color-primary-700: #0369a1;
+  --color-primary-800: #075985;
+  --color-primary-900: #0c4a6e;
+  --color-primary-950: #082f49;
+
+  /* Secondary color - Finance Gray */
+  --color-secondary-50: #f8fafc;
+  --color-secondary-100: #f1f5f9;
+  --color-secondary-200: #e2e8f0;
+  --color-secondary-300: #cbd5e1;
+  --color-secondary-400: #94a3b8;
+  --color-secondary-500: #64748b;
+  --color-secondary-600: #475569;
+  --color-secondary-700: #334155;
+  --color-secondary-800: #1e293b;
+  --color-secondary-900: #0f172a;
+  --color-secondary-950: #020617;
+
+  /* Accent color - Finance Gold */
+  --color-accent-50: #fffbeb;
+  --color-accent-100: #fef3c7;
+  --color-accent-200: #fde68a;
+  --color-accent-300: #fcd34d;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+  --color-accent-700: #b45309;
+  --color-accent-800: #92400e;
+  --color-accent-900: #78350f;
+  --color-accent-950: #451a03;
+
+  /* Typography */
+  --font-family-primary: 'Inter', sans-serif;
+  --font-family-heading: 'Playfair Display', serif;
+  --font-scale-ratio: 1.2; /* Minor third - conservative */
+  --font-weight-heading: var(--font-weight-bold);
+  --letter-spacing-heading: var(--letter-spacing-tight);
+  
+  /* Component theming */
+  --button-radius: 6px;
+  --card-radius: 8px;
+  --input-radius: 4px;
+  --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+/* 
+ * Industry Theme: Retail/E-commerce
+ * Conversion-optimized colors, friendly design
+ */
+.theme-industry-retail {
+  background-color: #fefce8;
+  
+  /* Primary color - Retail Orange */
+  --color-primary-50: #fff7ed;
+  --color-primary-100: #ffedd5;
+  --color-primary-200: #fed7aa;
+  --color-primary-300: #fdba74;
+  --color-primary-400: #fb923c;
+  --color-primary-500: #f97316;
+  --color-primary-600: #ea580c;
+  --color-primary-700: #c2410c;
+  --color-primary-800: #9a3412;
+  --color-primary-900: #7c2d12;
+  --color-primary-950: #431407;
+
+  /* Secondary color - Retail Red */
+  --color-secondary-50: #fef2f2;
+  --color-secondary-100: #fee2e2;
+  --color-secondary-200: #fecaca;
+  --color-secondary-300: #fca5a5;
+  --color-secondary-400: #f87171;
+  --color-secondary-500: #ef4444;
+  --color-secondary-600: #dc2626;
+  --color-secondary-700: #b91c1c;
+  --color-secondary-800: #991b1b;
+  --color-secondary-900: #7f1d1d;
+  --color-secondary-950: #450a0a;
+
+  /* Accent color - Retail Yellow */
+  --color-accent-50: #fefce8;
+  --color-accent-100: #fef9c3;
+  --color-accent-200: #fef08a;
+  --color-accent-300: #fde047;
+  --color-accent-400: #facc15;
+  --color-accent-500: #eab308;
+  --color-accent-600: #ca8a04;
+  --color-accent-700: #a16207;
+  --color-accent-800: #854d0e;
+  --color-accent-900: #713f12;
+  --color-accent-950: #422006;
+
+  /* Typography */
+  --font-family-primary: 'Open Sans', sans-serif;
+  --font-family-heading: 'Montserrat', sans-serif;
+  --font-scale-ratio: 1.25; /* Major third */
+  --font-weight-heading: var(--font-weight-bold);
+  --letter-spacing-heading: var(--letter-spacing-normal);
+  
+  /* Component theming */
+  --button-radius: 12px;
+  --card-radius: 16px;
+  --input-radius: 8px;
+  --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
