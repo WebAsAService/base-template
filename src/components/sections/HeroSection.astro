@@ -1,5 +1,7 @@
 ---
-// Hero section component for the landing page
+import { clientConfig } from '@/config/client.js';
+
+const { hero } = clientConfig.sections;
 ---
 
 <section class="py-20 bg-gradient-to-r from-primary-50 to-secondary-50">
@@ -8,27 +10,42 @@
       <!-- Left content - Text -->
       <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-          Build Beautiful Websites with Our <span class="text-primary-500">Theme System</span>
+          {hero.headline}
         </h1>
         <p class="text-xl text-gray-600 mb-8">
-          Create stunning, responsive websites with our customizable theme system. Switch between themes instantly and deliver tailored experiences for every client.
+          {hero.subheadline}
         </p>
         <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-          <a href="#features" class="btn btn-primary">Explore Features</a>
-          <a href="#contact" class="btn btn-outline">Contact Us</a>
+          <a href={hero.cta.primary.link} class={`btn btn-${hero.cta.primary.style}`}>
+            {hero.cta.primary.text}
+          </a>
+          <a href={hero.cta.secondary.link} class={`btn btn-${hero.cta.secondary.style}`}>
+            {hero.cta.secondary.text}
+          </a>
         </div>
       </div>
       
-      <!-- Right content - Image -->
+      <!-- Right content - Image/Video -->
       <div class="md:w-1/2">
         <div class="relative">
-          <!-- Main image -->
+          <!-- Main media -->
           <div class="rounded-lg shadow-xl overflow-hidden">
-            <img 
-              src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-              alt="Theme System Dashboard" 
-              class="w-full h-auto"
-            />
+            {hero.media.type === 'video' ? (
+              <video 
+                src={hero.media.src}
+                poster={hero.media.poster}
+                alt={hero.media.alt}
+                class="w-full h-auto"
+                controls
+                preload="metadata"
+              />
+            ) : (
+              <img 
+                src={hero.media.src} 
+                alt={hero.media.alt} 
+                class="w-full h-auto"
+              />
+            )}
           </div>
           
           <!-- Decorative elements -->
@@ -39,15 +56,20 @@
     </div>
     
     <!-- Trusted by section -->
-    <div class="mt-20 text-center">
-      <p class="text-gray-500 mb-8">Trusted by innovative companies worldwide</p>
-      <div class="flex flex-wrap justify-center items-center gap-8 opacity-70">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png" alt="Google" class="h-8 grayscale" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Slack_Technologies_Logo.svg/2560px-Slack_Technologies_Logo.svg.png" alt="Slack" class="h-8 grayscale" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/2560px-Microsoft_logo_%282012%29.svg.png" alt="Microsoft" class="h-8 grayscale" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tinder_logo_with_flame.svg/2560px-Tinder_logo_with_flame.svg.png" alt="Tinder" class="h-8 grayscale" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Twitch_logo_2019.svg/2560px-Twitch_logo_2019.svg.png" alt="Twitch" class="h-8 grayscale" />
+    {hero.trustedBy.enabled && hero.trustedBy.logos.length > 0 && (
+      <div class="mt-20 text-center">
+        <p class="text-gray-500 mb-8">{hero.trustedBy.title}</p>
+        <div class="flex flex-wrap justify-center items-center gap-8 opacity-70">
+          {hero.trustedBy.logos.map((logo) => (
+            <img 
+              src={logo.src} 
+              alt={logo.alt} 
+              style={`height: ${logo.height}`}
+              class="grayscale hover:grayscale-0 transition-all duration-300"
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    )}
   </div>
 </section>
