@@ -1,0 +1,115 @@
+# Example GitHub Actions workflow for logo processing
+# This file demonstrates how to integrate the logo processor into a CI/CD pipeline
+
+name: Process Client Logo
+
+on:
+  workflow_dispatch:
+    inputs:
+      logo_url:
+        description: 'URL of the logo to process'
+        required: true
+        type: string
+      client_name:
+        description: 'Client name for organizing files'
+        required: true
+        type: string
+
+jobs:
+  process-logo:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+      
+      - name: Install dependencies
+        run: yarn install
+      
+      - name: Process Logo
+        id: process
+        run: |
+          node scripts/process-logo.js \
+            --url "${{ inputs.logo_url }}" \
+            --client "${{ inputs.client_name }}" \
+            --output "public/images" \
+            --extract-colors "temp/colors.json"
+      
+      - name: Upload processed logos
+        uses: actions/upload-artifact@v4
+        with:
+          name: processed-logos-${{ inputs.client_name }}
+          path: |
+            public/images/clients/${{ inputs.client_name }}/
+            temp/colors.json
+      
+      - name: Display extracted colors
+        run: |
+          echo "Extracted color palette:"
+          cat temp/colors.json
+      
+      - name: Commit processed logos
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add public/images/clients/${{ inputs.client_name }}/
+          git commit -m "feat: Add processed logos for ${{ inputs.client_name }}" || echo "No changes to commit"
+      
+      - name: Push changes
+        if: success()
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+
+  # Optional: Generate theme using extracted colors
+  generate-theme:
+    needs: process-logo
+    runs-on: ubuntu-latest
+    if: success()
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Download processed logos
+        uses: actions/download-artifact@v4
+        with:
+          name: processed-logos-${{ inputs.client_name }}
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install Python dependencies
+        run: |
+          pip install anthropic pyyaml
+      
+      - name: Generate theme from colors
+        run: |
+          python scripts/generate-theme.py \
+            --client "${{ inputs.client_name }}" \
+            --colors "temp/colors.json" \
+            --style "modern"
+      
+      - name: Commit theme
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add src/styles/client-themes.css
+          git add src/pages/clients/${{ inputs.client_name }}/
+          git commit -m "feat: Add AI-generated theme for ${{ inputs.client_name }}" || echo "No changes to commit"
+      
+      - name: Push theme changes
+        if: success()
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}

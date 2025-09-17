@@ -9,7 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.7.12"
+    "astro": "^5.7.12",
+    "sharp": "^0.33.5",
+    "node-vibrant": "^3.2.1-alpha.1",
+    "png-to-ico": "^2.1.8"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^6.0.2",
