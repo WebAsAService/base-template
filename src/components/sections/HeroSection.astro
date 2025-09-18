@@ -1,7 +1,8 @@
 ---
-import { clientConfig } from '@/config/client.js';
+import { clientConfig } from '@/config/client';
+import type { HeroSection } from '@/config/client.types';
 
-const { hero } = clientConfig.sections;
+const hero: HeroSection = clientConfig.sections.hero;
 ---
 
 <section class="py-20 bg-gradient-to-r from-primary-50 to-secondary-50">

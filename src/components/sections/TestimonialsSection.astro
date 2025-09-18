@@ -1,8 +1,9 @@
 ---
-import { clientConfig } from '../../config/client.js';
+import { clientConfig } from '../../config/client';
+import type { TestimonialItem, ClientConfig } from '../../config/client.types';
 
-const { config = clientConfig } = Astro.props;
-const { testimonials = [] } = config.sections;
+const { config = clientConfig } = Astro.props as { config?: ClientConfig };
+const testimonials: TestimonialItem[] = config.sections.testimonials || [];
 
 const renderStars = (rating) => {
   return Array.from({ length: 5 }, (_, i) => i < rating ? '★' : '☆').join('');

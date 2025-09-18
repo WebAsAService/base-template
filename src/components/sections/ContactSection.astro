@@ -1,8 +1,9 @@
 ---
-import { clientConfig } from '@/config/client.js';
+import { clientConfig } from '@/config/client';
+import type { ContactSection as ContactSectionType } from '@/config/client.types';
 
 const { contact, social, sections } = clientConfig;
-const contactSection = sections.contact;
+const contactSection: ContactSectionType = sections.contact;
 ---
 
 <section id="contact" class="py-20 bg-gray-50">
