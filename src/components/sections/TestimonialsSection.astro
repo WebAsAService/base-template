@@ -1,6 +1,6 @@
 ---
 import { clientConfig } from '../../config/client';
-import type { TestimonialItem, ClientConfig } from '../../config/client.types';
+import type { TestimonialItem, ClientConfig } from '@/config/client.types';
 
 const { config = clientConfig } = Astro.props as { config?: ClientConfig };
 const testimonials: TestimonialItem[] = config.sections.testimonials || [];
