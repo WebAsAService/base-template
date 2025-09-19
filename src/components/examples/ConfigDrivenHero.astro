@@ -8,7 +8,8 @@
  * Usage:
  * import ConfigDrivenHero from '@components/examples/ConfigDrivenHero.astro';
  */
-import { clientConfig, getConfigValue, isSectionEnabled } from '@config/client.js';
+import { clientConfig, getConfigValue, isSectionEnabled } from '@config/client';
+import type { HeroSection } from '@config/client.types';
 
 // Get hero section configuration with fallbacks
 const hero = clientConfig.sections.hero;

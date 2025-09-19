@@ -6,7 +6,7 @@
  * comprehensive fallback values to prevent broken sites.
  * 
  * Usage:
- * import { clientConfig } from '@/config/client.js';
+ * import { clientConfig } from '@/config/client';
  * 
  * Structure supports:
  * - AI population via GitHub Actions
@@ -19,11 +19,23 @@
  * @version 1.0.0
  */
 
+import type { 
+  ClientConfig, 
+  ConfigValuePath,
+  ConfigSection,
+  HeroSection,
+  FeaturesSection,
+  ServiceItem,
+  TestimonialItem,
+  AboutSection,
+  ContactSection
+} from './client.types';
+
 /**
  * Main client configuration object
  * This structure covers all dynamic content needs across the entire website
  */
-export const clientConfig = {
+export const clientConfig: ClientConfig = {
   // =============================================================================
   // BUSINESS IDENTITY
   // =============================================================================
@@ -303,7 +315,8 @@ export const clientConfig = {
         ],
         cta: {
           text: "Get Started",
-          link: "#contact"
+          link: "#contact",
+          style: "primary"
         }
       },
       {
@@ -321,7 +334,8 @@ export const clientConfig = {
         ],
         cta: {
           text: "Choose Growth",
-          link: "#contact"
+          link: "#contact",
+          style: "primary"
         }
       },
       {
@@ -339,7 +353,8 @@ export const clientConfig = {
         ],
         cta: {
           text: "Contact Sales",
-          link: "#contact"
+          link: "#contact",
+          style: "primary"
         }
       }
     ],
@@ -377,7 +392,7 @@ export const clientConfig = {
         company: "StartupXYZ",
         position: "Founder",
         text: "Outstanding service and results. The team delivered exactly what we needed on time and within budget.",
-        rating: 4
+        rating: 4 as 1 | 2 | 3 | 4 | 5
       }
     ],
 
@@ -571,13 +586,13 @@ export const clientConfig = {
 
 /**
  * Helper function to get nested configuration values with fallbacks
- * @param {string} path - Dot notation path (e.g., 'sections.hero.headline')
- * @param {any} fallback - Fallback value if path doesn't exist
- * @returns {any} Configuration value or fallback
+ * @param path - Dot notation path (e.g., 'sections.hero.headline')
+ * @param fallback - Fallback value if path doesn't exist
+ * @returns Configuration value or fallback
  */
-export function getConfigValue(path, fallback = null) {
+export function getConfigValue<T = any>(path: ConfigValuePath | string, fallback: T | null = null): T | null {
   const keys = path.split('.');
-  let current = clientConfig;
+  let current: any = clientConfig;
   
   for (const key of keys) {
     if (current && typeof current === 'object' && key in current) {
@@ -587,18 +602,30 @@ export function getConfigValue(path, fallback = null) {
     }
   }
   
-  return current;
+  return current as T;
 }
 
 /**
  * Helper function to check if a feature/section is enabled
- * @param {string} section - Section name to check
- * @returns {boolean} Whether section is enabled and has content
+ * @param section - Section name to check
+ * @returns Whether section is enabled and has content
  */
-export function isSectionEnabled(section) {
+export function isSectionEnabled(section: ConfigSection): boolean {
   const sectionConfig = getConfigValue(`sections.${section}`);
-  return sectionConfig && Object.keys(sectionConfig).length > 0;
+  return sectionConfig !== null && Object.keys(sectionConfig).length > 0;
 }
+
+/**
+ * Type-safe helper functions for accessing specific configuration values
+ */
+export const getBusinessName = (): string => clientConfig.businessName;
+export const getContactEmail = (): string => clientConfig.contact.email;
+export const getHeroSection = (): HeroSection => clientConfig.sections.hero;
+export const getFeaturesSection = (): FeaturesSection => clientConfig.sections.features;
+export const getServices = (): ServiceItem[] => clientConfig.sections.services;
+export const getTestimonials = (): TestimonialItem[] => clientConfig.sections.testimonials;
+export const getAboutSection = (): AboutSection => clientConfig.sections.about;
+export const getContactSection = (): ContactSection => clientConfig.sections.contact;
 
 /**
  * Export default configuration for easier importing

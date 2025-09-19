@@ -1,8 +1,9 @@
 ---
-import { clientConfig } from '@/config/client.js';
+import { clientConfig } from '@/config/client';
+import type { ServiceItem } from '@/config/client.types';
 
 // Get services from client configuration
-const { services } = clientConfig.sections;
+const services: ServiceItem[] = clientConfig.sections.services;
 ---
 
 <section id="services" class="py-20 bg-gray-50">

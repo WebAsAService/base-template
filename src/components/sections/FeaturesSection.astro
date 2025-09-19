@@ -1,8 +1,9 @@
 ---
-import { clientConfig } from '@/config/client.js';
+import { clientConfig } from '@/config/client';
+import type { FeaturesSection } from '@/config/client.types';
 
 // Get features from client configuration
-const { features } = clientConfig.sections;
+const features: FeaturesSection = clientConfig.sections.features;
 
 // Icon mapping for different feature types
 const iconMap = {
