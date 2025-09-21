@@ -1,7 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"],
+  "include": [".astro/types.d.ts", "**/*", "tests/**/*"],
+  "exclude": ["dist", "node_modules"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -12,6 +12,9 @@
       "@utils/*": ["src/utils/*"],
       "@config/*": ["src/config/*"],
       "@types/*": ["src/types/*"]
-    }
+    },
+    "types": ["jest", "node", "@playwright/test"],
+    "esModuleInterop": true,
+    "resolveJsonModule": true
   }
 }
