@@ -5,7 +5,9 @@ export default {
   roots: ['<rootDir>/tests'],
   testMatch: [
     '**/__tests__/**/*.+(ts|tsx|js)',
-    '**/?(*.)+(spec|test).+(ts|tsx|js)'
+    '**/?(*.)+(spec|test).+(ts|tsx|js)',
+    '!**/e2e/**',
+    '!**/performance/**'
   ],
   transform: {
     '^.+\\.(ts|tsx)$': ['ts-jest', {
@@ -41,7 +43,7 @@ export default {
     '!src/**/__tests__/**',
     '!**/node_modules/**'
   ],
-  coverageThresholds: {
+  coverageThreshold: {
     global: {
       branches: 80,
       functions: 80,
@@ -49,6 +51,9 @@ export default {
       statements: 80
     }
   },
+  transformIgnorePatterns: [
+    'node_modules/(?!(lighthouse)/)'
+  ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node', 'astro'],
   testTimeout: 10000,
   verbose: true

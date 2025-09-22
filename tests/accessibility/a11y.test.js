@@ -186,15 +186,16 @@ describe('Accessibility Tests', () => {
     it('should have logical tab order', async () => {
       container.innerHTML = `
         <header>
-          <nav>
-            <a href="/" tabindex="1">Home</a>
-            <a href="/about" tabindex="2">About</a>
+          <nav aria-label="Main">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
           </nav>
         </header>
         <main>
           <form>
-            <input type="text" tabindex="3">
-            <button type="submit" tabindex="4">Submit</button>
+            <label for="search-input">Search:</label>
+            <input type="text" id="search-input" name="search">
+            <button type="submit">Submit</button>
           </form>
         </main>
       `;
