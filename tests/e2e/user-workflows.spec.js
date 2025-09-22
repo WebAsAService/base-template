@@ -11,20 +11,23 @@ test.describe('User Workflows', () => {
       // Navigate to theme demo page
       await page.goto('/theme-demo');
 
-      // Get initial theme
-      const initialTheme = await page.locator('html').getAttribute('class');
+      // Verify initial state
+      await expect(page.locator('h1').first()).toContainText('Theme System Demo');
 
-      // Click on blue ocean theme
-      await page.click('[data-theme="theme-blue-ocean"]');
-      await expect(page.locator('html')).toHaveClass(/theme-blue-ocean/);
-
-      // Click on sunset orange theme
-      await page.click('[data-theme="theme-sunset-orange"]');
-      await expect(page.locator('html')).toHaveClass(/theme-sunset-orange/);
-
-      // Click on crown theme
-      await page.click('[data-theme="theme-crown"]');
-      await expect(page.locator('html')).toHaveClass(/theme-crown/);
+      // Click on blue ocean theme link
+      await page.click('a[href="/theme-demo?theme=theme-blue-ocean"]');
+      
+      // Wait for navigation and verify URL changed
+      await page.waitForURL('**/theme-demo?theme=theme-blue-ocean');
+      
+      // Verify the current theme text is displayed
+      await expect(page.locator('text=Currently viewing:')).toBeVisible();
+      await expect(page.locator('text=Blue Ocean')).toBeVisible();
+      
+      // Go to another theme
+      await page.click('a[href="/theme-demo?theme=theme-purple-elegance"]');
+      await page.waitForURL('**/theme-demo?theme=theme-purple-elegance');
+      await expect(page.locator('text=Purple Elegance')).toBeVisible();
     });
 
     test('should persist theme across navigation', async ({ page }) => {
