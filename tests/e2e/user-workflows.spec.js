@@ -69,21 +69,23 @@ test.describe('User Workflows', () => {
 
   test.describe('Navigation', () => {
     test('should navigate through main menu', async ({ page }) => {
-      // Click About link
-      await page.click('nav a[href="/about"]');
-      await expect(page).toHaveURL(/.*about/);
+      // Click Features link (anchor navigation)
+      await page.click('nav a[href="#features"]');
+      
+      // Should stay on same page but URL should update
+      await expect(page).toHaveURL(/.*#features$/);
 
-      // Click Services link
-      await page.click('nav a[href="/services"]');
-      await expect(page).toHaveURL(/.*services/);
+      // Click Pricing link
+      await page.click('nav a[href="#pricing"]');
+      await expect(page).toHaveURL(/.*#pricing$/);
 
-      // Click Contact link
-      await page.click('nav a[href="/contact"]');
-      await expect(page).toHaveURL(/.*contact/);
+      // Click Contact link  
+      await page.click('nav a[href="#contact"]');
+      await expect(page).toHaveURL(/.*#contact$/);
 
-      // Return home via logo
-      await page.click('header a[href="/"]');
-      await expect(page).toHaveURL('/');
+      // Return to top via logo
+      await page.click('header a[href="#top"]');
+      await expect(page).toHaveURL(/.*#top$/);
     });
 
     test('should handle mobile navigation', async ({ page }) => {
@@ -91,21 +93,21 @@ test.describe('User Workflows', () => {
       await page.setViewportSize({ width: 375, height: 667 });
 
       // Mobile menu should be hidden initially
-      const mobileMenu = page.locator('nav ul');
-      await expect(mobileMenu).toBeHidden();
+      const mobileMenu = page.locator('#mobile-menu');
+      await expect(mobileMenu).toHaveClass(/hidden/);
 
-      // Click hamburger menu
-      await page.click('[aria-label="Open menu"]');
+      // Click hamburger menu button
+      await page.click('#mobile-menu-button');
 
       // Menu should be visible
-      await expect(mobileMenu).toBeVisible();
+      await expect(mobileMenu).not.toHaveClass(/hidden/);
 
-      // Click a link
-      await page.click('nav a[href="/about"]');
+      // Click a link in mobile menu
+      await page.click('#mobile-menu a[href="#features"]');
 
-      // Menu should close and navigate
-      await expect(mobileMenu).toBeHidden();
-      await expect(page).toHaveURL(/.*about/);
+      // Menu should close and navigate to features section
+      await expect(mobileMenu).toHaveClass(/hidden/);
+      await expect(page).toHaveURL(/.*#features$/);
     });
 
     test('should support keyboard navigation', async ({ page }) => {
