@@ -161,6 +161,8 @@ jobs:
       
       - name: Generate AI content and theme
         id: generate_ai
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           python scripts/generate-theme.py \
             --business-name "${{ steps.setup.outputs.business_name }}" \
