@@ -551,6 +551,9 @@ if (import.meta.url === `file://${process.argv[1]}`) {
         
         // Save colors to specified file if requested
         if (args.extract_colors) {
+          // Ensure the directory for the extract_colors file exists
+          const extractColorsDir = path.dirname(args.extract_colors);
+          await fs.mkdir(extractColorsDir, { recursive: true });
           await fs.writeFile(args.extract_colors, JSON.stringify(result.colors, null, 2));
           console.log(`💾 Colors saved to: ${args.extract_colors}`);
         }

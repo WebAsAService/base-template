@@ -86,7 +86,7 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install
-          pip install anthropic pillow requests beautifulsoup4
+          pip install anthropic pillow requests beautifulsoup4 aiohttp
       
       - name: Setup inputs and send start webhook
         id: setup
@@ -144,7 +144,8 @@ jobs:
         run: |
           node scripts/process-logo.js \
             --logo-url "${{ steps.setup.outputs.logo_url }}" \
-            --client-name "${{ steps.setup.outputs.client_name }}"
+            --client-name "${{ steps.setup.outputs.client_name }}" \
+            --extract-colors "temp/extracted_colors.json"
           
           # Send logo processed webhook
           if [ -n "$STATUS_WEBHOOK_URL" ]; then
