@@ -57,7 +57,11 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  actions: read
+  actions: write
+  checks: write
+  statuses: write
+  issues: write
+  repository-projects: write
 
 env:
   ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -138,8 +142,10 @@ jobs:
           CLIENT_NAME="${{ steps.setup.outputs.client_name }}"
           BRANCH_NAME="client/${CLIENT_NAME}-$(date +%Y%m%d-%H%M%S)"
           
+          # Configure git with proper credentials
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git config --global url."https://x-access-token:${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
           
           git checkout -b "$BRANCH_NAME"
           echo "branch_name=$BRANCH_NAME" >> $GITHUB_ENV
