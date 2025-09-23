@@ -16,6 +16,10 @@ const {
   clientTheme = clientConfig.themeClass
 } = Astro.props;
 
+// Check for theme override from URL parameters
+const themeParam = Astro.url.searchParams.get('theme');
+const finalTheme = themeParam || clientTheme || '';
+
 // Create complete page title with template
 const pageTitle = title === clientConfig.businessName 
   ? title 
@@ -57,7 +61,7 @@ import "../styles/global.css";
 ---
 
 <!doctype html>
-<html lang="en" class={clientTheme}>
+<html lang="en" class={finalTheme}>
 	<head>
 		<!-- Basic Meta Tags -->
 		<meta charset="UTF-8" />
@@ -109,8 +113,28 @@ import "../styles/global.css";
 				min-height: 100vh;
 			}
 		</style>
+		
+		<script>
+			// Client-side theme handling for URL parameters
+			(function() {
+				const urlParams = new URLSearchParams(window.location.search);
+				const themeParam = urlParams.get('theme');
+				
+				if (themeParam) {
+					// Remove any existing theme classes
+					document.documentElement.className = document.documentElement.className
+						.replace(/theme-[\w-]+/g, '').trim();
+					document.body.className = document.body.className
+						.replace(/theme-[\w-]+/g, '').trim();
+					
+					// Add the new theme class
+					document.documentElement.classList.add(themeParam);
+					document.body.classList.add(themeParam);
+				}
+			})();
+		</script>
 	</head>
-	<body class={clientTheme}>
+	<body class={finalTheme}>
 		<slot />
 	</body>
 </html>
