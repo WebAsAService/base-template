@@ -54,6 +54,11 @@ on:
   repository_dispatch:
     types: [generate-client-site]
 
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
 env:
   ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
   STATUS_WEBHOOK_URL: ${{ secrets.STATUS_WEBHOOK_URL }}
@@ -203,6 +208,8 @@ jobs:
       - name: Commit and push changes
         run: |
           git add .
+          # Remove temp file from staging
+          git reset HEAD temp/extracted_colors.json || true
           git status
           
           if git diff --cached --quiet; then
