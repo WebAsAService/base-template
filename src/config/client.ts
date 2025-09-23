@@ -159,17 +159,17 @@ export const clientConfig: ClientConfig = {
     /**
      * Main logo (light backgrounds)
      */
-    main: "/images/clients/default/logo-main.png",
+    main: "/images/default/waas-logo.jpg",
     
     /**
      * Dark version (dark backgrounds)
      */
-    dark: "/images/clients/default/logo-dark.png",
+    dark: "/images/default/logo-dark.png",
     
     /**
      * Favicon path
      */
-    favicon: "/images/clients/default/favicon.svg",
+    favicon: "/images/default/favicon.svg",
     
     /**
      * Logo alt text for accessibility

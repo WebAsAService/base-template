@@ -1,14 +1,21 @@
 name: Claude Code Review
 
 on:
-  pull_request:
-    types: [opened, synchronize]
-    # Optional: Only run on specific file changes
-    # paths:
-    #   - "src/**/*.ts"
-    #   - "src/**/*.tsx"
-    #   - "src/**/*.js"
-    #   - "src/**/*.jsx"
+  # Manual trigger only - disable automatic runs
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to review'
+        required: true
+        type: string
+  # Uncomment to enable automatic reviews on PR events
+  # pull_request:
+  #   types: [opened, synchronize]
+  #   paths:
+  #     - "src/**/*.ts"
+  #     - "src/**/*.tsx"
+  #     - "src/**/*.js"
+  #     - "src/**/*.jsx"
 
 jobs:
   claude-review:
@@ -37,16 +44,11 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           prompt: |
-            Please review this pull request and provide feedback on:
-            - Code quality and best practices
-            - Potential bugs or issues
-            - Performance considerations
-            - Security concerns
-            - Test coverage
+            Please provide a brief, focused review of this pull request. Focus only on:
+            - Critical bugs or security issues
+            - Major code quality concerns
             
-            Use the repository's CLAUDE.md for guidance on style and conventions. Be constructive and helpful in your feedback.
-
-            Use `gh pr comment` with your Bash tool to leave your review as a comment on the PR.
+            Keep feedback minimal and actionable. Use `gh pr comment` to leave a concise review.
           
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://docs.anthropic.com/en/docs/claude-code/sdk#command-line for available options
