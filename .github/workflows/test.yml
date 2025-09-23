@@ -92,13 +92,13 @@ jobs:
         uses: treosh/lighthouse-ci-action@v10
         with:
           urls: |
-            http://localhost:3000
-            http://localhost:3000/theme-demo
-            http://localhost:3000/clients/crown
+            http://localhost:4173
+            http://localhost:4173/theme-demo
+            http://localhost:4173/clients/crown
           uploadArtifacts: true
           temporaryPublicStorage: true
           runs: 3
-          serverCommand: yarn preview
+          serverCommand: yarn preview --port 4173
 
       - name: Check Lighthouse scores
         run: |
@@ -142,7 +142,7 @@ jobs:
 
   visual-regression:
     runs-on: ubuntu-latest
-    needs: build
+    needs: test
 
     steps:
       - name: Checkout code
