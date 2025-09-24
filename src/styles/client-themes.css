@@ -721,3 +721,72 @@
   --input-radius: 8px;
   --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
+
+
+/* 
+ * Client Theme: FIFA
+ * Generated on: 2025-09-24 03:05:32
+ * Industry: Sports
+ */
+.theme-fifa {
+  /* Background for visual distinction */
+  background-color: #f8fafc;
+  
+  /* Primary color scale */
+  --color-primary-50: #f8fafc;
+  --color-primary-100: #f1f5f9;
+  --color-primary-200: #e2e8f0;
+  --color-primary-300: #cbd5e1;
+  --color-primary-400: #94a3b8;
+  --color-primary-500: #2563eb;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #2563eb;
+  --color-primary-800: #2563eb;
+  --color-primary-900: #1e293b;
+  --color-primary-950: #0f172a;
+
+  /* Secondary color scale */
+  --color-secondary-50: #f8fafc;
+  --color-secondary-100: #f1f5f9;
+  --color-secondary-200: #e2e8f0;
+  --color-secondary-300: #cbd5e1;
+  --color-secondary-400: #94a3b8;
+  --color-secondary-500: #64748b;
+  --color-secondary-600: #64748b;
+  --color-secondary-700: #64748b;
+  --color-secondary-800: #64748b;
+  --color-secondary-900: #1e293b;
+  --color-secondary-950: #0f172a;
+
+  /* Accent color scale */
+  --color-accent-50: #f8fafc;
+  --color-accent-100: #f1f5f9;
+  --color-accent-200: #e2e8f0;
+  --color-accent-300: #cbd5e1;
+  --color-accent-400: #94a3b8;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #f59e0b;
+  --color-accent-700: #f59e0b;
+  --color-accent-800: #f59e0b;
+  --color-accent-900: #1e293b;
+  --color-accent-950: #0f172a;
+
+  /* Typography */
+  --font-family-primary: 'Inter', sans-serif;
+  --font-family-heading: 'Inter', sans-serif;
+  --font-scale-ratio: 1.25;
+  --font-weight-heading: var(--font-weight-semibold);
+  --letter-spacing-heading: var(--letter-spacing-tight);
+  
+  /* Component theming */
+  --button-radius: 8px;
+  --card-radius: calc(8px * 1.5);
+  --input-radius: calc(8px * 0.75);
+  --card-shadow: var(--shadow-md);
+  --button-shadow: var(--shadow-sm);
+  
+  /* Border radius */
+  --border-radius-md: 8px;
+  --border-radius-lg: calc(8px * 1.5);
+}
+
