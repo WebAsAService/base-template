@@ -1,0 +1,66 @@
+---
+/**
+ * Client Page: tech6
+ * Generated automatically by AI workflow
+ */
+
+import Layout from '@layouts/Layout.astro';
+import HeroSection from '@components/sections/HeroSection.astro';
+import FeaturesSection from '@components/sections/FeaturesSection.astro';
+import ServicesSection from '@components/sections/ServicesSection.astro';
+import TestimonialsSection from '@components/sections/TestimonialsSection.astro';
+import ContactSection from '@components/sections/ContactSection.astro';
+
+// Import client configuration
+import { clientConfig } from '@/config/clients/tech6.js';
+
+// Set client theme class
+const clientTheme = 'theme-tech6';
+---
+
+<Layout 
+  title={clientConfig.businessName}
+  description={clientConfig.description}
+  clientTheme={clientTheme}
+>
+  <main class="min-h-screen">
+    <!-- Hero Section -->
+    <HeroSection config={clientConfig.sections.hero} />
+    
+    <!-- Features Section -->
+    <FeaturesSection 
+      title={clientConfig.sections.features.title}
+      subtitle={clientConfig.sections.features.subtitle}
+      features={clientConfig.sections.features.items}
+    />
+    
+    <!-- Services/Pricing Section -->
+    <ServicesSection 
+      title="Our Services"
+      services={clientConfig.sections.services}
+    />
+    
+    <!-- Testimonials Section -->
+    <TestimonialsSection 
+      title="What Our Clients Say"
+      testimonials={clientConfig.sections.testimonials}
+    />
+    
+    <!-- Contact Section -->
+    <ContactSection 
+      title={clientConfig.sections.contact.title}
+      subtitle={clientConfig.sections.contact.subtitle}
+      form={clientConfig.sections.contact.form}
+      methods={clientConfig.sections.contact.methods}
+      contact={clientConfig.contact}
+    />
+  </main>
+</Layout>
+
+<style>
+  /* Client-specific page styles can go here */
+  main {
+    /* Ensure theme variables are applied */
+    @apply text-secondary-900;
+  }
+</style>
