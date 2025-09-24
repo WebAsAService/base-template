@@ -36,14 +36,27 @@ class ThemeGenerator:
         for attempt in range(max_retries):
             try:
                 return self.client.messages.create(**kwargs)
-            except anthropic.OverloadedError as e:
+            except anthropic.RateLimitError as e:
                 if attempt == max_retries - 1:  # Last attempt
                     raise e
                 
                 # Calculate delay with exponential backoff + jitter
                 delay = base_delay * (2 ** attempt) + random.uniform(0, 1)
-                print(f"API overloaded (attempt {attempt + 1}/{max_retries}). Retrying in {delay:.1f} seconds...")
+                print(f"API rate limited (attempt {attempt + 1}/{max_retries}). Retrying in {delay:.1f} seconds...")
                 time.sleep(delay)
+            except anthropic.APIStatusError as e:
+                # Check if it's a 529 overload error or similar retryable error
+                if hasattr(e, 'status_code') and e.status_code in [429, 529]:
+                    if attempt == max_retries - 1:  # Last attempt
+                        raise e
+                    
+                    # Calculate delay with exponential backoff + jitter
+                    delay = base_delay * (2 ** attempt) + random.uniform(0, 1)
+                    print(f"API overloaded (status {e.status_code}, attempt {attempt + 1}/{max_retries}). Retrying in {delay:.1f} seconds...")
+                    time.sleep(delay)
+                else:
+                    # For other API errors, don't retry
+                    raise e
             except Exception as e:
                 # For other errors, don't retry
                 raise e
@@ -369,7 +382,7 @@ OUTPUT: Provide ONLY the content sections in this JSON structure:
             print("Generating AI content with Claude API...")
             
             message = await self.call_claude_with_retry(
-                model="claude-3-5-sonnet-20241217",
+                model="claude-3-5-sonnet-20241022",
                 max_tokens=4000,
                 temperature=0.7,
                 system=system_prompt,
@@ -398,7 +411,7 @@ OUTPUT: Provide ONLY the content sections in this JSON structure:
             print("Generating custom marketing content with Claude API...")
             
             message = await self.call_claude_with_retry(
-                model="claude-3-5-sonnet-20241217",
+                model="claude-3-5-sonnet-20241022",
                 max_tokens=4000,
                 temperature=0.8,  # Slightly higher temperature for creative content
                 system="You are a professional copywriter and marketing expert. Create compelling, industry-specific marketing content that converts visitors into customers. Always provide content in valid JSON format without markdown code blocks.",
@@ -831,7 +844,7 @@ async def main():
             'industry': args.industry,
             'generated_at': datetime.now().isoformat(),
             'files_created': [client_config_path, themes_css_path],
-            'ai_model': 'claude-3-5-sonnet-20241217',
+            'ai_model': 'claude-3-5-sonnet-20241022',
             'generation_steps': ['base_config', 'custom_content', 'theme_css'],
             'content_customized': True,
             'colors_from_logo': True,
