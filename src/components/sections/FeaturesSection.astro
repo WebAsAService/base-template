@@ -1,9 +1,22 @@
 ---
-import { clientConfig } from '@/config/client';
-import type { FeaturesSection } from '@/config/client.types';
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  features?: any[];
+}
 
-// Get features from client configuration
-const features: FeaturesSection = clientConfig.sections.features;
+const { 
+  title = "Our Features", 
+  subtitle = "What we offer", 
+  features = [] 
+} = Astro.props;
+
+// Create features object for template compatibility
+const featuresData = {
+  title,
+  subtitle,
+  items: features
+};
 
 // Icon mapping for different feature types
 const iconMap = {
@@ -27,15 +40,15 @@ function getIconPath(iconName) {
   <div class="container mx-auto px-4">
     <!-- Section header -->
     <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">{features.title}</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">{featuresData.title}</h2>
       <p class="text-xl text-gray-600">
-        {features.subtitle}
+        {featuresData.subtitle}
       </p>
     </div>
     
     <!-- Features grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {features.items.map((feature) => (
+      {featuresData.items.map((feature) => (
         <div class="bg-gray-50 rounded-lg p-8 transition-transform hover:scale-105">
           <div class="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">

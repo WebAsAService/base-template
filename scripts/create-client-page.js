@@ -87,6 +87,7 @@ const clientTheme = 'theme-${clientName}';
       form={{}}
       methods={[]}
       contact={clientConfig.contact}
+      social={clientConfig.social}
     />
   </main>
 </Layout>

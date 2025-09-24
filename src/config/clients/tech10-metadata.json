@@ -1,0 +1,31 @@
+{
+  "client_name": "tech10",
+  "business_name": "Tech 10",
+  "industry": "Technology",
+  "generated_at": "2025-09-24T18:16:44.550841",
+  "files_created": [
+    "src/config/clients/tech10.js",
+    "src/styles/client-themes.css"
+  ],
+  "ai_model": "claude-3-5-sonnet-20241022",
+  "generation_steps": [
+    "base_config",
+    "custom_content",
+    "theme_css"
+  ],
+  "content_customized": true,
+  "colors_from_logo": true,
+  "business_data": {
+    "business_name": "Tech 10",
+    "business_description": "Telecom and Software factory",
+    "industry": "Technology",
+    "target_audience": "Big telecom companies and startups requiring custom mobile or software developemnt",
+    "services": "Mobeile Development, Telecom networks building, fiber optic installations",
+    "contact_email": "jonasgraterol@gmail.com",
+    "contact_phone": "6475225312",
+    "website_domain": "techintenius.com",
+    "client_name": "tech10",
+    "logo_colors": "{\n  \"dominantColors\": [\n    \"#fc7c04\",\n    \"#d46c04\",\n    \"#fcbc7a\",\n    \"#974a01\",\n    \"#1c140d\"\n  ],\n  \"palette\": {\n    \"primary\": \"#fc7c04\",\n    \"secondary\": \"#d46c04\",\n    \"accent\": \"#fcbc7a\",\n    \"neutral\": \"#974a01\"\n  },\n  \"brightness\": \"mixed\",\n  \"contrast\": \"high\",\n  \"raw\": {\n    \"vibrant\": \"#fc7c04\",\n    \"darkVibrant\": \"#d46c04\",\n    \"lightVibrant\": \"#fcbc7a\",\n    \"muted\": \"#974a01\",\n    \"darkMuted\": \"#1c140d\",\n    \"lightMuted\": \"#954d03\"\n  }\n}",
+    "logo_path": "public/images/clients/tech10/logo.png"
+  }
+}

@@ -1,16 +1,20 @@
 ---
-import { clientConfig } from '@/config/client';
-import type { ServiceItem } from '@/config/client.types';
+export interface Props {
+  title?: string;
+  services?: any[];
+}
 
-// Get services from client configuration
-const services: ServiceItem[] = clientConfig.sections.services;
+const { 
+  title = "Our Services", 
+  services = [] 
+} = Astro.props;
 ---
 
 <section id="services" class="py-20 bg-gray-50">
   <div class="container mx-auto px-4">
     <!-- Section header -->
     <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
       <p class="text-xl text-gray-600">
         Comprehensive solutions tailored to your business needs
       </p>

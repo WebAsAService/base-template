@@ -1,8 +1,28 @@
 ---
-import { clientConfig } from '@/config/client';
-import type { HeroSection } from '@/config/client.types';
+export interface Props {
+  config?: any;
+}
 
-const hero: HeroSection = clientConfig.sections.hero;
+const { config } = Astro.props;
+// Use passed config or fall back to the expected structure
+const hero = config || {
+  headline: "Welcome to Our Service",
+  subheadline: "Professional solutions for your business",
+  cta: {
+    primary: { text: "Get Started", link: "#contact", style: "primary" },
+    secondary: { text: "Learn More", link: "#about", style: "outline" }
+  },
+  media: {
+    type: "image",
+    src: "/images/hero-placeholder.jpg",
+    alt: "Hero image"
+  },
+  trustedBy: {
+    enabled: false,
+    title: "",
+    logos: []
+  }
+};
 ---
 
 <section class="py-20 bg-gradient-to-r from-primary-50 to-secondary-50">
@@ -17,12 +37,28 @@ const hero: HeroSection = clientConfig.sections.hero;
           {hero.subheadline}
         </p>
         <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-          <a href={hero.cta.primary.link} class={`btn btn-${hero.cta.primary.style}`}>
-            {hero.cta.primary.text}
-          </a>
-          <a href={hero.cta.secondary.link} class={`btn btn-${hero.cta.secondary.style}`}>
-            {hero.cta.secondary.text}
-          </a>
+          {/* Handle both string and object CTA formats */}
+          {typeof hero.cta === 'string' ? (
+            <>
+              <a href="#contact" class="btn btn-primary">
+                {hero.cta}
+              </a>
+              {hero.secondaryCta && (
+                <a href="#about" class="btn btn-outline">
+                  {hero.secondaryCta}
+                </a>
+              )}
+            </>
+          ) : (
+            <>
+              <a href={hero.cta?.primary?.link || '#contact'} class={`btn btn-${hero.cta?.primary?.style || 'primary'}`}>
+                {hero.cta?.primary?.text || 'Get Started'}
+              </a>
+              <a href={hero.cta?.secondary?.link || '#about'} class={`btn btn-${hero.cta?.secondary?.style || 'outline'}`}>
+                {hero.cta?.secondary?.text || 'Learn More'}
+              </a>
+            </>
+          )}
         </div>
       </div>
       
@@ -31,7 +67,14 @@ const hero: HeroSection = clientConfig.sections.hero;
         <div class="relative">
           <!-- Main media -->
           <div class="rounded-lg shadow-xl overflow-hidden">
-            {hero.media.type === 'video' ? (
+            {/* Handle both simple image and media object formats */}
+            {hero.image ? (
+              <img 
+                src={hero.image} 
+                alt="Hero image" 
+                class="w-full h-auto"
+              />
+            ) : hero.media?.type === 'video' ? (
               <video 
                 src={hero.media.src}
                 poster={hero.media.poster}
@@ -42,8 +85,8 @@ const hero: HeroSection = clientConfig.sections.hero;
               />
             ) : (
               <img 
-                src={hero.media.src} 
-                alt={hero.media.alt} 
+                src={hero.media?.src || '/images/hero-placeholder.jpg'} 
+                alt={hero.media?.alt || 'Hero image'} 
                 class="w-full h-auto"
               />
             )}
@@ -57,7 +100,7 @@ const hero: HeroSection = clientConfig.sections.hero;
     </div>
     
     <!-- Trusted by section -->
-    {hero.trustedBy.enabled && hero.trustedBy.logos.length > 0 && (
+    {hero.trustedBy?.enabled && hero.trustedBy?.logos?.length > 0 && (
       <div class="mt-20 text-center">
         <p class="text-gray-500 mb-8">{hero.trustedBy.title}</p>
         <div class="flex flex-wrap justify-center items-center gap-8 opacity-70">
