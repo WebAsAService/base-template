@@ -1,0 +1,24 @@
+{
+  "client_name": "fifa",
+  "business_name": "FIFA",
+  "industry": "Sports",
+  "generated_at": "2025-09-24T02:53:39.827068",
+  "files_created": [
+    "src/config/clients/fifa.js",
+    "src/styles/client-themes.css"
+  ],
+  "ai_model": "claude-3-5-sonnet-20241022",
+  "business_data": {
+    "business_name": "FIFA",
+    "business_description": "Federation Internation Football association",
+    "industry": "Sports",
+    "target_audience": "Futbol fans",
+    "services": "futbol tournaments",
+    "contact_email": "contact@fifa.com",
+    "contact_phone": "",
+    "website_domain": "",
+    "client_name": "fifa",
+    "logo_colors": "{\n  \"dominantColors\": [\n    \"#6b7280\",\n    \"#6b7280\",\n    \"#6b7280\"\n  ],\n  \"palette\": {\n    \"primary\": \"#6b7280\",\n    \"secondary\": \"#6b7280\",\n    \"accent\": \"#6b7280\",\n    \"neutral\": \"#6b7280\"\n  },\n  \"brightness\": \"mixed\",\n  \"contrast\": \"medium\",\n  \"raw\": {}\n}",
+    "logo_path": "public/images/clients/fifa/logo.png"
+  }
+}
