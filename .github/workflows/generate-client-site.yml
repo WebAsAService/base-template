@@ -240,6 +240,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ env.branch_name }}
+          base: main
           title: "🚀 New client site: ${{ steps.setup.outputs.business_name }}"
           body: |
             ## 🎨 New Client Site Generated
