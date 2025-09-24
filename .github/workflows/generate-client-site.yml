@@ -215,10 +215,8 @@ jobs:
           echo "=== Files in working directory ==="
           find . -name "*.js" -o -name "*.astro" -o -name "*.css" -o -name "*.json" -o -name "*.md" -o -name "*.png" -o -name "*.webp" -o -name "*.ico" | grep -E "(src/|public/)" | sort
           
-          # Add all files explicitly
-          git add src/ public/ || true
-          # Remove temp file from staging
-          git reset HEAD temp/extracted_colors.json || true
+          # Add all relevant files (excluding temp directory)
+          git add src/ public/
           
           echo "=== Git status after adding ==="
           git status
