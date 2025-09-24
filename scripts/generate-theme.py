@@ -82,29 +82,153 @@ Services/Products:
 
 {colors_info}
 
-Please generate a complete client configuration following this structure:
+CRITICAL: You must follow this EXACT nested object structure. Do NOT use flat properties:
 
-1. **Business Identity**: Compelling business name, tagline, description
-2. **Contact Information**: Complete contact details and business hours
-3. **Social Media**: Appropriate social media profile suggestions
-4. **Branding**: Logo paths and theme class configuration
-5. **Content Sections**:
-   - Hero: Powerful headline, subheadline, and CTAs
-   - Features: 4-6 key business features/services
-   - Services/Pricing: 3 service tiers with realistic pricing
-   - Testimonials: 4 realistic customer testimonials
-   - About: Company story and team information
-   - Contact: Contact form and methods
-6. **SEO Configuration**: Meta descriptions, keywords, Open Graph settings
+```javascript
+// Client Configuration for [Business Name]
+export const clientConfig = {{
+  // Business Identity - NESTED under 'business'
+  business: {{
+    name: "[Business Name]",
+    legalName: "[Legal Business Name]",
+    tagline: "[Compelling tagline]",
+    shortDescription: "[Brief description for meta tags]",
+    longDescription: "[Detailed company description]",
+    yearFounded: 2020,
+    industry: "[Industry]",
+    license: "[License if applicable]"
+  }},
 
-Make the content:
-- Industry-specific and professional
-- Conversion-focused with strong CTAs
-- SEO-optimized with relevant keywords
-- Realistic and credible
-- Ready for immediate use
+  // Contact Information - NESTED under 'contact'
+  contact: {{
+    email: "{business_data['contact_email']}",
+    phone: "{business_data.get('contact_phone', '')}",
+    address: {{
+      street: "[Street Address]",
+      city: "[City]",
+      state: "[State/Province]",
+      country: "[Country]",
+      zip: "[Postal Code]"
+    }},
+    hours: {{
+      monday: "9:00 AM - 5:00 PM",
+      tuesday: "9:00 AM - 5:00 PM",
+      wednesday: "9:00 AM - 5:00 PM",
+      thursday: "9:00 AM - 5:00 PM",
+      friday: "9:00 AM - 5:00 PM",
+      saturday: "Closed",
+      sunday: "Closed"
+    }},
+    website: "{business_data.get('website_domain', '')}"
+  }},
 
-Generate the complete JavaScript configuration object that exports as 'clientConfig'."""
+  // Social Media - NESTED under 'social'
+  social: {{
+    linkedin: "[linkedin-handle]",
+    twitter: "[twitter-handle]",
+    facebook: "[facebook-handle]",
+    instagram: "[instagram-handle]"
+  }},
+
+  // Branding - NESTED under 'branding'
+  branding: {{
+    logo: {{
+      main: "/images/logo.svg",
+      dark: "/images/logo-dark.svg",
+      light: "/images/logo-light.svg"
+    }},
+    colors: {{
+      primary: "[Primary Color Hex]",
+      secondary: "[Secondary Color Hex]",
+      accent: "[Accent Color Hex]",
+      neutral: "[Neutral Color Hex]"
+    }},
+    fonts: {{
+      heading: "[Heading Font]",
+      body: "[Body Font]"
+    }}
+  }},
+
+  // Content Sections - NESTED under 'content'
+  content: {{
+    hero: {{
+      headline: "[Powerful headline]",
+      subheadline: "[Supporting subheadline]",
+      cta: "[Primary CTA]",
+      secondaryCta: "[Secondary CTA]",
+      image: "/images/hero.jpg"
+    }},
+
+    features: [
+      {{
+        title: "[Feature Title]",
+        description: "[Feature Description]",
+        icon: "[icon-name]",
+        image: "/images/feature1.jpg"
+      }}
+      // ... more features
+    ],
+
+    services: [
+      {{
+        name: "[Service Name]",
+        description: "[Service Description]",
+        features: [
+          "[Feature 1]",
+          "[Feature 2]"
+        ],
+        price: "[Price]",
+        cta: "[CTA Text]"
+      }}
+      // ... more services
+    ],
+
+    testimonials: [
+      {{
+        quote: "[Customer testimonial]",
+        author: "[Author Name]",
+        title: "[Author Title]",
+        company: "[Company Name]"
+      }}
+      // ... more testimonials
+    ],
+
+    about: {{
+      story: "[Company story]",
+      mission: "[Mission statement]",
+      values: ["[Value 1]", "[Value 2]"],
+      team: [
+        {{
+          name: "[Team Member Name]",
+          title: "[Title]",
+          image: "/images/team/member.jpg"
+        }}
+      ]
+    }}
+  }},
+
+  // SEO Configuration - NESTED under 'seo'
+  seo: {{
+    title: "[SEO Title]",
+    description: "[Meta description]",
+    keywords: ["[keyword1]", "[keyword2]"],
+    og: {{
+      title: "[Open Graph Title]",
+      description: "[OG Description]",
+      image: "/images/og-image.jpg",
+      url: "[Website URL]"
+    }}
+  }}
+}};
+```
+
+IMPORTANT PROPERTY ACCESS PATTERNS:
+- Business name: clientConfig.business.name (NOT clientConfig.businessName)
+- Brand colors: clientConfig.branding.colors.primary (NOT clientConfig.colors.primary)
+- Hero content: clientConfig.content.hero.headline (NOT clientConfig.hero.headline)
+- Contact info: clientConfig.contact.email (NOT clientConfig.email)
+
+Generate the complete JavaScript configuration object following this EXACT structure."""
     
     async def generate_theme_config(self, business_data: Dict[str, Any]) -> str:
         """Generate theme configuration using Claude API"""

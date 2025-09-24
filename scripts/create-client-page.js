@@ -46,39 +46,39 @@ const clientTheme = 'theme-${clientName}';
 ---
 
 <Layout 
-  title={clientConfig.businessName}
-  description={clientConfig.description}
+  title={clientConfig.business.name}
+  description={clientConfig.business.shortDescription}
   clientTheme={clientTheme}
 >
   <main class="min-h-screen">
     <!-- Hero Section -->
-    <HeroSection config={clientConfig.sections.hero} />
+    <HeroSection config={clientConfig.content.hero} />
     
     <!-- Features Section -->
     <FeaturesSection 
-      title={clientConfig.sections.features.title}
-      subtitle={clientConfig.sections.features.subtitle}
-      features={clientConfig.sections.features.items}
+      title="Our Features"
+      subtitle="What we offer"
+      features={clientConfig.content.features}
     />
     
     <!-- Services/Pricing Section -->
     <ServicesSection 
       title="Our Services"
-      services={clientConfig.sections.services}
+      services={clientConfig.content.services}
     />
     
     <!-- Testimonials Section -->
     <TestimonialsSection 
       title="What Our Clients Say"
-      testimonials={clientConfig.sections.testimonials}
+      testimonials={clientConfig.content.testimonials}
     />
     
     <!-- Contact Section -->
     <ContactSection 
-      title={clientConfig.sections.contact.title}
-      subtitle={clientConfig.sections.contact.subtitle}
-      form={clientConfig.sections.contact.form}
-      methods={clientConfig.sections.contact.methods}
+      title="Contact Us"
+      subtitle="Get in touch"
+      form={{}}
+      methods={[]}
       contact={clientConfig.contact}
     />
   </main>
@@ -110,15 +110,15 @@ const logoBasePath = '/images/clients/${clientName}';
 ---
 
 <Layout 
-  title={\`\${clientConfig.businessName} - Brand Assets\`}
-  description={\`Brand assets and logo variants for \${clientConfig.businessName}\`}
+  title={\`\${clientConfig.business.name} - Brand Assets\`}
+  description={\`Brand assets and logo variants for \${clientConfig.business.name}\`}
   clientTheme={clientTheme}
 >
   <main class="min-h-screen py-16">
     <div class="container mx-auto px-4">
       <!-- Header -->
       <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold mb-4">{clientConfig.businessName}</h1>
+        <h1 class="text-4xl font-bold mb-4">{clientConfig.business.name}</h1>
         <p class="text-xl text-secondary-600">Brand Assets & Logo Variants</p>
       </div>
       
@@ -128,7 +128,7 @@ const logoBasePath = '/images/clients/${clientName}';
         <div class="bg-white p-8 rounded-lg shadow-md text-center">
           <img 
             src={\`\${logoBasePath}/logo.png\`}
-            alt={\`\${clientConfig.businessName} Logo\`}
+            alt={\`\${clientConfig.business.name} Logo\`}
             class="max-h-24 mx-auto mb-4"
           />
           <h3 class="font-semibold">Main Logo</h3>
@@ -139,7 +139,7 @@ const logoBasePath = '/images/clients/${clientName}';
         <div class="bg-secondary-900 p-8 rounded-lg shadow-md text-center">
           <img 
             src={\`\${logoBasePath}/logo-dark.png\`}
-            alt={\`\${clientConfig.businessName} Logo Dark\`}
+            alt={\`\${clientConfig.business.name} Logo Dark\`}
             class="max-h-24 mx-auto mb-4"
           />
           <h3 class="font-semibold text-white">Dark Version</h3>
@@ -150,7 +150,7 @@ const logoBasePath = '/images/clients/${clientName}';
         <div class="bg-secondary-50 p-8 rounded-lg shadow-md text-center">
           <img 
             src={\`\${logoBasePath}/logo-sm.png\`}
-            alt={\`\${clientConfig.businessName} Small Logo\`}
+            alt={\`\${clientConfig.business.name} Small Logo\`}
             class="max-h-16 mx-auto mb-4"
           />
           <h3 class="font-semibold">Small Size</h3>
@@ -177,21 +177,21 @@ const logoBasePath = '/images/clients/${clientName}';
           <div class="text-center">
             <div class="w-20 h-20 bg-primary-500 rounded-lg mx-auto mb-2 shadow-md"></div>
             <h4 class="font-semibold">Primary</h4>
-            <p class="text-sm text-secondary-600">{clientConfig.colors.primary}</p>
+            <p class="text-sm text-secondary-600">{clientConfig.branding.colors.primary}</p>
           </div>
           
           <!-- Secondary Color -->
           <div class="text-center">
             <div class="w-20 h-20 bg-secondary-500 rounded-lg mx-auto mb-2 shadow-md"></div>
             <h4 class="font-semibold">Secondary</h4>
-            <p class="text-sm text-secondary-600">{clientConfig.colors.secondary}</p>
+            <p class="text-sm text-secondary-600">{clientConfig.branding.colors.secondary}</p>
           </div>
           
           <!-- Accent Color -->
           <div class="text-center">
             <div class="w-20 h-20 bg-accent-500 rounded-lg mx-auto mb-2 shadow-md"></div>
             <h4 class="font-semibold">Accent</h4>
-            <p class="text-sm text-secondary-600">{clientConfig.colors.accent}</p>
+            <p class="text-sm text-secondary-600">{clientConfig.branding.colors.accent}</p>
           </div>
         </div>
       </div>

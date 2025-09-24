@@ -19,39 +19,39 @@ const clientTheme = 'theme-tech6';
 ---
 
 <Layout 
-  title={clientConfig.businessName}
-  description={clientConfig.description}
+  title={clientConfig.business.name}
+  description={clientConfig.business.shortDescription}
   clientTheme={clientTheme}
 >
   <main class="min-h-screen">
     <!-- Hero Section -->
-    <HeroSection config={clientConfig.sections.hero} />
+    <HeroSection config={clientConfig.content.hero} />
     
     <!-- Features Section -->
     <FeaturesSection 
-      title={clientConfig.sections.features.title}
-      subtitle={clientConfig.sections.features.subtitle}
-      features={clientConfig.sections.features.items}
+      title="Our Features"
+      subtitle="What we offer"
+      features={clientConfig.content.features}
     />
     
     <!-- Services/Pricing Section -->
     <ServicesSection 
       title="Our Services"
-      services={clientConfig.sections.services}
+      services={clientConfig.content.services}
     />
     
     <!-- Testimonials Section -->
     <TestimonialsSection 
       title="What Our Clients Say"
-      testimonials={clientConfig.sections.testimonials}
+      testimonials={clientConfig.content.testimonials}
     />
     
     <!-- Contact Section -->
     <ContactSection 
-      title={clientConfig.sections.contact.title}
-      subtitle={clientConfig.sections.contact.subtitle}
-      form={clientConfig.sections.contact.form}
-      methods={clientConfig.sections.contact.methods}
+      title="Contact Us"
+      subtitle="Get in touch"
+      form={{}}
+      methods={[]}
       contact={clientConfig.contact}
     />
   </main>
