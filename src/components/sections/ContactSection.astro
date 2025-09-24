@@ -1,18 +1,30 @@
 ---
-import { clientConfig } from '@/config/client';
-import type { ContactSection as ContactSectionType } from '@/config/client.types';
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  form?: any;
+  methods?: any[];
+  contact?: any;
+  social?: any;
+}
 
-const { contact, social, sections } = clientConfig;
-const contactSection: ContactSectionType = sections.contact;
+const { 
+  title = "Contact Us",
+  subtitle = "Get in touch",
+  form = {},
+  methods = [],
+  contact = {},
+  social = {}
+} = Astro.props;
 ---
 
 <section id="contact" class="py-20 bg-gray-50">
   <div class="container mx-auto px-4">
     <!-- Section header -->
     <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">{contactSection.title}</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
       <p class="text-xl text-gray-600">
-        {contactSection.subtitle}
+        {subtitle}
       </p>
     </div>
     
@@ -101,8 +113,8 @@ const contactSection: ContactSectionType = sections.contact;
             <div>
               <h4 class="font-bold mb-1">Email Us</h4>
               <p class="text-gray-600 mb-2">Our friendly team is here to help.</p>
-              <a href={`mailto:${contact.email}`} class="text-primary-500 hover:text-primary-700 hover:underline">
-                {contact.email}
+              <a href={`mailto:${contact.email || 'info@example.com'}`} class="text-primary-500 hover:text-primary-700 hover:underline">
+                {contact.email || 'info@example.com'}
               </a>
             </div>
           </div>
@@ -117,8 +129,8 @@ const contactSection: ContactSectionType = sections.contact;
             <div>
               <h4 class="font-bold mb-1">Call Us</h4>
               <p class="text-gray-600 mb-2">Mon-Fri from 8am to 5pm.</p>
-              <a href={`tel:${contact.phone}`} class="text-primary-500 hover:text-primary-700 hover:underline">
-                {contact.phone}
+              <a href={`tel:${contact.phone || '+1-555-123-4567'}`} class="text-primary-500 hover:text-primary-700 hover:underline">
+                {contact.phone || '+1-555-123-4567'}
               </a>
             </div>
           </div>
@@ -135,9 +147,9 @@ const contactSection: ContactSectionType = sections.contact;
               <h4 class="font-bold mb-1">Visit Us</h4>
               <p class="text-gray-600 mb-2">Come say hello at our office.</p>
               <address class="not-italic text-gray-700">
-                {contact.address.street}<br />
-                {contact.address.city}, {contact.address.state} {contact.address.zipCode}<br />
-                {contact.address.country}
+                {contact.address?.street || '123 Main Street'}<br />
+                {contact.address?.city || 'City'}, {contact.address?.state || 'State'} {contact.address?.zip || contact.address?.zipCode || '12345'}<br />
+                {contact.address?.country || 'Country'}
               </address>
             </div>
           </div>

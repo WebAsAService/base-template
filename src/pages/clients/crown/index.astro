@@ -26,7 +26,10 @@ const clientTheme = 'theme-crown';
 		<FeaturesSection />
 		<PricingSection />
 		<TestimonialsSection config={crownConfig} />
-		<ContactSection />
+		<ContactSection 
+			contact={crownConfig.contact}
+			social={crownConfig.social}
+		/>
 	</main>
 	
 	<Footer />

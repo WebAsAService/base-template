@@ -1,9 +1,13 @@
 ---
-import { clientConfig } from '../../config/client';
-import type { TestimonialItem, ClientConfig } from '@/config/client.types';
+export interface Props {
+  title?: string;
+  testimonials?: any[];
+}
 
-const { config = clientConfig } = Astro.props as { config?: ClientConfig };
-const testimonials: TestimonialItem[] = config.sections.testimonials || [];
+const { 
+  title = "What Our Clients Say", 
+  testimonials = [] 
+} = Astro.props;
 
 const renderStars = (rating) => {
   return Array.from({ length: 5 }, (_, i) => i < rating ? '★' : '☆').join('');
@@ -17,7 +21,7 @@ const getInitials = (name) => {
 <section id="testimonials" class="py-20 bg-gray-50">
   <div class="container mx-auto px-4">
     <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
       <p class="text-xl text-gray-600">
         Don't just take our word for it
       </p>
@@ -37,23 +41,23 @@ const getInitials = (name) => {
           </div>
           
           <blockquote class="text-gray-600 mb-6 italic">
-            "{testimonial.text}"
+            "{testimonial.quote || testimonial.text}"
           </blockquote>
           
           <div class="flex items-center">
             <div class="w-12 h-12 bg-gray-200 rounded-full mr-4 flex items-center justify-center overflow-hidden">
               {testimonial.image ? (
-                <img src={testimonial.image} alt={testimonial.name} class="w-12 h-12 rounded-full object-cover" />
+                <img src={testimonial.image} alt={testimonial.author || testimonial.name} class="w-12 h-12 rounded-full object-cover" />
               ) : (
                 <span class="text-gray-500 font-semibold text-sm">
-                  {getInitials(testimonial.name)}
+                  {getInitials(testimonial.author || testimonial.name)}
                 </span>
               )}
             </div>
             <div>
-              <div class="font-semibold text-gray-900">{testimonial.name}</div>
+              <div class="font-semibold text-gray-900">{testimonial.author || testimonial.name}</div>
               <div class="text-sm text-gray-600">
-                {testimonial.position && `${testimonial.position}, `}{testimonial.company}
+                {(testimonial.title || testimonial.position) && `${testimonial.title || testimonial.position}, `}{testimonial.company}
               </div>
             </div>
           </div>
