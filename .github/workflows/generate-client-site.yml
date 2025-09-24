@@ -244,55 +244,56 @@ jobs:
       
       - name: Create pull request
         id: create_pr
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ env.branch_name }}
-          base: main
-          title: "🚀 New client site: ${{ steps.setup.outputs.business_name }}"
-          body: |
-            ## 🎨 New Client Site Generated
-            
-            **Client:** ${{ steps.setup.outputs.business_name }}  
-            **Industry:** ${{ steps.setup.outputs.industry }}  
-            **Generated:** $(date -u +"%Y-%m-%d %H:%M UTC")
-            
-            ### ✨ What's Generated
-            
-            - **🎨 Custom Theme**: Brand colors extracted from logo
-            - **📝 Personalized Content**: AI-generated copy tailored to business
-            - **🖼️ Optimized Assets**: Logo processed in multiple formats
-            - **📱 Responsive Design**: Mobile-friendly layout
-            - **🔧 Configuration**: Complete client config in `src/config/clients/${{ steps.setup.outputs.client_name }}.js`
-            
-            ### 📂 Files Added/Modified
-            
-            - `src/config/clients/${{ steps.setup.outputs.client_name }}.js` - Client configuration
-            - `src/styles/client-themes.css` - Custom theme styles
-            - `src/pages/clients/${{ steps.setup.outputs.client_name }}/index.astro` - Client page
-            - `public/images/clients/${{ steps.setup.outputs.client_name }}/` - Logo assets
-            
-            ### 🔗 Preview
-            
-            After merging, the site will be available at:
-            `https://yoursite.com/clients/${{ steps.setup.outputs.client_name }}/`
-            
-            ### 🤖 AI Generation Details
-            
-            This client site was automatically generated using:
-            - Claude API for content generation
-            - Advanced color extraction from logo
-            - Industry-specific messaging and design patterns
-            
-            ---
-            
-            🤖 **Generated with [Claude Code](https://claude.ai/code)** and GitHub Actions
-          labels: |
-            client-generation
-            ai-generated
-            ready-for-review
-          assignees: ${{ github.actor }}
-          draft: false
+        run: |
+          # Create PR using GitHub CLI
+          PR_BODY="## 🎨 New Client Site Generated
+
+          **Client:** ${{ steps.setup.outputs.business_name }}  
+          **Industry:** ${{ steps.setup.outputs.industry }}  
+          **Generated:** $(date -u +"%Y-%m-%d %H:%M UTC")
+
+          ### ✨ What's Generated
+
+          - **🎨 Custom Theme**: Brand colors extracted from logo
+          - **📝 Personalized Content**: AI-generated copy tailored to business
+          - **🖼️ Optimized Assets**: Logo processed in multiple formats
+          - **📱 Responsive Design**: Mobile-friendly layout
+          - **🔧 Configuration**: Complete client config in \`src/config/clients/${{ steps.setup.outputs.client_name }}.js\`
+
+          ### 📂 Files Added/Modified
+
+          - \`src/config/clients/${{ steps.setup.outputs.client_name }}.js\` - Client configuration
+          - \`src/styles/client-themes.css\` - Custom theme styles
+          - \`src/pages/clients/${{ steps.setup.outputs.client_name }}/index.astro\` - Client page
+          - \`public/images/clients/${{ steps.setup.outputs.client_name }}/\` - Logo assets
+
+          ### 🔗 Preview
+
+          After merging, the site will be available at:
+          \`https://yoursite.com/clients/${{ steps.setup.outputs.client_name }}/\`
+
+          ### 🤖 AI Generation Details
+
+          This client site was automatically generated using:
+          - Claude API for content generation
+          - Advanced color extraction from logo
+          - Industry-specific messaging and design patterns
+
+          ---
+
+          🤖 **Generated with [Claude Code](https://claude.ai/code)** and GitHub Actions"
+
+          # Create the PR
+          PR_URL=$(gh pr create \
+            --title "🚀 New client site: ${{ steps.setup.outputs.business_name }}" \
+            --body "$PR_BODY" \
+            --base main \
+            --head "${{ env.branch_name }}" \
+            --label "client-generation,ai-generated,ready-for-review" \
+            --assignee "${{ github.actor }}")
+          
+          echo "pr_url=$PR_URL" >> $GITHUB_OUTPUT
+          echo "Created PR: $PR_URL"
       
       - name: Send completion webhook
         if: success()
@@ -303,7 +304,7 @@ jobs:
               -d '{
                 "status": "completed",
                 "client_name": "${{ steps.setup.outputs.client_name }}",
-                "pr_url": "${{ steps.create_pr.outputs.pull-request-url }}",
+                "pr_url": "${{ steps.create_pr.outputs.pr_url }}",
                 "preview_url": "https://yoursite.com/clients/${{ steps.setup.outputs.client_name }}/",
                 "message": "Client site generated successfully",
                 "timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'"
