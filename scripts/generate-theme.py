@@ -46,7 +46,7 @@ Key requirements:
 - Ensure all content is professional and conversion-focused
 - Make the configuration complete and ready-to-use
 
-Always respond with valid JavaScript that can be directly saved as a .js file."""
+CRITICAL: Always respond with ONLY valid JavaScript code that can be directly saved as a .js file. Do NOT wrap the JavaScript in markdown code fences (```javascript or ```). The response should start with comments or export statement and end with the closing brace and semicolon."""
     
     def create_user_prompt(self, business_data: Dict[str, Any]) -> str:
         colors_info = ""
@@ -127,11 +127,41 @@ Generate the complete JavaScript configuration object that exports as 'clientCon
             response_content = message.content[0].text
             print(f"Generated {len(response_content)} characters of configuration")
             
+            # Clean up any markdown code fences that might have been generated
+            response_content = self.clean_javascript_response(response_content)
+            
             return response_content
             
         except Exception as e:
             print(f"Error generating AI content: {str(e)}")
             raise
+    
+    def clean_javascript_response(self, content: str) -> str:
+        """Clean up AI response to ensure pure JavaScript code"""
+        # Remove markdown code fences if present
+        content = content.strip()
+        
+        # Remove opening code fence
+        if content.startswith('```javascript') or content.startswith('```js'):
+            lines = content.split('\n')
+            content = '\n'.join(lines[1:])  # Remove first line
+        elif content.startswith('```'):
+            lines = content.split('\n')
+            content = '\n'.join(lines[1:])  # Remove first line
+        
+        # Remove closing code fence
+        if content.endswith('```'):
+            lines = content.split('\n')
+            content = '\n'.join(lines[:-1])  # Remove last line
+        
+        # Clean up any remaining artifacts
+        content = content.strip()
+        
+        # Validate that it looks like JavaScript
+        if not (content.startswith('//') or content.startswith('/*') or content.startswith('export')):
+            print("Warning: Generated content may not be valid JavaScript")
+        
+        return content
     
     def generate_css_theme(self, business_data: Dict[str, Any]) -> str:
         """Generate CSS theme styles based on brand colors"""
