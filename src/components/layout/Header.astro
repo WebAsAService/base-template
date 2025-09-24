@@ -1,12 +1,11 @@
 ---
-// Header component for the landing page
-import { clientConfig } from '@/config/client';
-
 // Props for customization
 interface Props {
-  // Logo image path (optional - falls back to clientConfig.logo.main)
+  // Client configuration object
+  clientConfig: any;
+  // Logo image path (optional - falls back to clientConfig.branding.logo.main)
   logo?: string;
-  // Business name (optional - falls back to clientConfig.businessName)  
+  // Business name (optional - falls back to clientConfig.business.name)  
   businessName?: string;
   // Background color for the header (optional)
   bgColor?: string;
@@ -20,12 +19,13 @@ interface Props {
 
 // Default values for props with clientConfig fallbacks
 const {
-  logo = clientConfig.logo.main,
-  businessName = clientConfig.businessName,
+  clientConfig,
+  logo = clientConfig?.branding?.logo?.main || '/images/logo.svg',
+  businessName = clientConfig?.business?.name || 'Business Name',
   bgColor = 'bg-white/90',
   textColor = 'text-gray-700',
   hoverColor = 'text-primary-500',
-  showFontsLink = true,
+  showFontsLink = false,
 } = Astro.props;
 ---
 
@@ -37,7 +37,7 @@ const {
         {logo ? (
           <img 
             src={logo} 
-            alt={clientConfig.logo.altText} 
+            alt={`${businessName} Logo`} 
             class="h-8 w-auto" 
           />
         ) : null}

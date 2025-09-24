@@ -1,0 +1,25 @@
+{
+  "dominantColors": [
+    "#fc7c04",
+    "#d46c04",
+    "#fcbc7a",
+    "#974a01",
+    "#1c140d"
+  ],
+  "palette": {
+    "primary": "#fc7c04",
+    "secondary": "#d46c04",
+    "accent": "#fcbc7a",
+    "neutral": "#974a01"
+  },
+  "brightness": "mixed",
+  "contrast": "high",
+  "raw": {
+    "vibrant": "#fc7c04",
+    "darkVibrant": "#d46c04",
+    "lightVibrant": "#fcbc7a",
+    "muted": "#974a01",
+    "darkMuted": "#1c140d",
+    "lightMuted": "#954d03"
+  }
+}
