@@ -445,98 +445,129 @@ OUTPUT: Provide ONLY the content sections in this JSON structure:
             # Parse the custom content JSON
             custom_data = json.loads(custom_content)
             
+            # Escape quotes and newlines in strings for safe JS insertion
+            def escape_js_string(s):
+                if not isinstance(s, str):
+                    return str(s)
+                return s.replace('"', '\\"').replace('\n', '\\n').replace('\r', '\\r')
+            
             # Replace placeholder content in the base config with custom content
             updated_config = base_config
             
-            # Replace hero section
+            # Replace hero section with more specific patterns
             if 'hero' in custom_data:
                 hero = custom_data['hero']
+                
+                # Use more specific regex patterns to avoid conflicts
                 updated_config = re.sub(
-                    r'headline: "[^"]*"',
-                    f'headline: "{hero.get("headline", "")}"',
-                    updated_config
+                    r'(hero: \{[^}]*?)headline: "[^"]*"',
+                    f'\\1headline: "{escape_js_string(hero.get("headline", ""))}"',
+                    updated_config, flags=re.DOTALL
                 )
                 updated_config = re.sub(
-                    r'subheadline: "[^"]*"',
-                    f'subheadline: "{hero.get("subheadline", "")}"',
-                    updated_config
+                    r'(hero: \{[^}]*?)subheadline: "[^"]*"',
+                    f'\\1subheadline: "{escape_js_string(hero.get("subheadline", ""))}"',
+                    updated_config, flags=re.DOTALL
                 )
                 updated_config = re.sub(
-                    r'cta: "[^"]*"',
-                    f'cta: "{hero.get("cta", "")}"',
-                    updated_config
+                    r'(hero: \{[^}]*?)cta: "[^"]*"',
+                    f'\\1cta: "{escape_js_string(hero.get("cta", ""))}"',
+                    updated_config, flags=re.DOTALL
                 )
                 updated_config = re.sub(
-                    r'secondaryCta: "[^"]*"',
-                    f'secondaryCta: "{hero.get("secondaryCta", "")}"',
-                    updated_config
+                    r'(hero: \{[^}]*?)secondaryCta: "[^"]*"',
+                    f'\\1secondaryCta: "{escape_js_string(hero.get("secondaryCta", ""))}"',
+                    updated_config, flags=re.DOTALL
                 )
             
-            # Replace features section
+            # Replace features section with proper bracket matching
             if 'features' in custom_data and custom_data['features']:
                 features_js = "[\n"
                 for feature in custom_data['features']:
+                    title = escape_js_string(feature.get('title', ''))
+                    desc = escape_js_string(feature.get('description', ''))
                     features_js += f"""      {{
-        title: "{feature.get('title', '')}",
-        description: "{feature.get('description', '')}",
+        title: "{title}",
+        description: "{desc}",
         icon: "code",
         image: "/images/feature.jpg"
       }},\n"""
                 features_js = features_js.rstrip(',\n') + "\n    ]"
                 
-                # Replace features array
+                # Use more precise regex for features array
                 updated_config = re.sub(
-                    r'features: \[[\s\S]*?\]',
-                    f'features: {features_js}',
-                    updated_config
+                    r'(features: )\[[\s\S]*?\](\s*,?\s*(?=\w+:|\}))',
+                    f'\\1{features_js}\\2',
+                    updated_config, flags=re.DOTALL
                 )
             
-            # Replace services section 
+            # Replace services section with better parsing
             if 'services' in custom_data and custom_data['services']:
                 services_js = "[\n"
                 for service in custom_data['services']:
-                    features_list = '", "'.join(service.get('features', []))
+                    name = escape_js_string(service.get('name', ''))
+                    desc = escape_js_string(service.get('description', ''))
+                    price = escape_js_string(service.get('price', ''))
+                    cta = escape_js_string(service.get('cta', ''))
+                    
+                    # Handle features array properly
+                    features = service.get('features', [])
+                    if features and len(features) > 0:
+                        features_str = '", "'.join([escape_js_string(f) for f in features])
+                        features_array = f'["{features_str}"]'
+                    else:
+                        features_array = '[]'
+                    
                     services_js += f"""      {{
-        name: "{service.get('name', '')}",
-        description: "{service.get('description', '')}",
-        features: ["{features_list}"],
-        price: "{service.get('price', '')}",
-        cta: "{service.get('cta', '')}"
+        name: "{name}",
+        description: "{desc}",
+        features: {features_array},
+        price: "{price}",
+        cta: "{cta}"
       }},\n"""
                 services_js = services_js.rstrip(',\n') + "\n    ]"
                 
+                # Use more precise regex for services array
                 updated_config = re.sub(
-                    r'services: \[[\s\S]*?\]',
-                    f'services: {services_js}',
-                    updated_config
+                    r'(services: )\[[\s\S]*?\](\s*,?\s*(?=\w+:|\}))',
+                    f'\\1{services_js}\\2',
+                    updated_config, flags=re.DOTALL
                 )
             
             # Replace testimonials section
             if 'testimonials' in custom_data and custom_data['testimonials']:
                 testimonials_js = "[\n"
                 for testimonial in custom_data['testimonials']:
+                    quote = escape_js_string(testimonial.get('quote', ''))
+                    author = escape_js_string(testimonial.get('author', ''))
+                    title = escape_js_string(testimonial.get('title', ''))
+                    company = escape_js_string(testimonial.get('company', ''))
+                    
                     testimonials_js += f"""      {{
-        quote: "{testimonial.get('quote', '')}",
-        author: "{testimonial.get('author', '')}",
-        title: "{testimonial.get('title', '')}",
-        company: "{testimonial.get('company', '')}"
+        quote: "{quote}",
+        author: "{author}",
+        title: "{title}",
+        company: "{company}"
       }},\n"""
                 testimonials_js = testimonials_js.rstrip(',\n') + "\n    ]"
                 
                 updated_config = re.sub(
-                    r'testimonials: \[[\s\S]*?\]',
-                    f'testimonials: {testimonials_js}',
-                    updated_config
+                    r'(testimonials: )\[[\s\S]*?\](\s*,?\s*(?=\w+:|\}))',
+                    f'\\1{testimonials_js}\\2',
+                    updated_config, flags=re.DOTALL
                 )
             
             # Replace about section
             if 'about' in custom_data:
                 about = custom_data['about']
-                values_list = '", "'.join(about.get('values', []))
+                story = escape_js_string(about.get('story', ''))
+                mission = escape_js_string(about.get('mission', ''))
+                values = about.get('values', [])
+                values_list = '", "'.join([escape_js_string(v) for v in values])
                 
                 about_js = f"""{{
-      story: "{about.get('story', '')}",
-      mission: "{about.get('mission', '')}",
+      story: "{story}",
+      mission: "{mission}",
       values: ["{values_list}"],
       team: [
         {{
@@ -548,16 +579,62 @@ OUTPUT: Provide ONLY the content sections in this JSON structure:
     }}"""
                 
                 updated_config = re.sub(
-                    r'about: \{[\s\S]*?\}(?=\s*\})',
-                    f'about: {about_js}',
-                    updated_config
+                    r'(about: )\{[\s\S]*?\}(\s*(?=\}\s*,?\s*\w+:|^\s*\}|$))',
+                    f'\\1{about_js}\\2',
+                    updated_config, flags=re.DOTALL | re.MULTILINE
                 )
             
-            return updated_config
+            # Validate the merged configuration before returning
+            if self.validate_javascript_config(updated_config):
+                return updated_config
+            else:
+                print("Warning: Merged config failed validation, using base config")
+                return base_config
             
         except Exception as e:
-            print(f"Warning: Could not merge custom content: {e}")
+            print(f"Warning: Could not merge custom content, using base config: {e}")
+            import traceback
+            traceback.print_exc()
             return base_config
+
+    def validate_javascript_config(self, config_content: str) -> bool:
+        """Validate that the JavaScript configuration is syntactically correct"""
+        try:
+            import subprocess
+            import tempfile
+            import os
+            
+            # Create a temporary file with the config
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.js', delete=False) as f:
+                f.write(config_content)
+                temp_file = f.name
+            
+            try:
+                # Use Node.js to validate the syntax
+                result = subprocess.run(
+                    ['node', '--check', temp_file], 
+                    capture_output=True, 
+                    text=True,
+                    timeout=10
+                )
+                
+                is_valid = result.returncode == 0
+                if not is_valid:
+                    print(f"JavaScript validation failed: {result.stderr}")
+                
+                return is_valid
+                
+            finally:
+                # Clean up temp file
+                try:
+                    os.unlink(temp_file)
+                except:
+                    pass
+                    
+        except Exception as e:
+            print(f"Warning: Could not validate JavaScript (validation disabled): {e}")
+            # If validation fails, assume it's valid to not block the process
+            return True
     
     def clean_javascript_response(self, content: str) -> str:
         """Clean up AI response to ensure pure JavaScript code"""
