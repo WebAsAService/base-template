@@ -859,3 +859,72 @@
   --border-radius-lg: calc(4px * 1.5);
 }
 
+
+
+/* 
+ * Client Theme: Tech 10
+ * Generated on: 2025-09-24 18:16:44
+ * Industry: Technology
+ */
+.theme-tech10 {
+  /* Background for visual distinction */
+  background-color: #ffeb07;
+  
+  /* Primary color scale */
+  --color-primary-50: #ffeb07;
+  --color-primary-100: #ffd206;
+  --color-primary-200: #ffba06;
+  --color-primary-300: #ffa105;
+  --color-primary-400: #ff8804;
+  --color-primary-500: #fc7c04;
+  --color-primary-600: #e26f03;
+  --color-primary-700: #b05602;
+  --color-primary-800: #7e3e02;
+  --color-primary-900: #4b2501;
+  --color-primary-950: #190c00;
+
+  /* Secondary color scale */
+  --color-secondary-50: #ffcd07;
+  --color-secondary-100: #ffb706;
+  --color-secondary-200: #ffa206;
+  --color-secondary-300: #ff8c05;
+  --color-secondary-400: #e97604;
+  --color-secondary-500: #d46c04;
+  --color-secondary-600: #be6103;
+  --color-secondary-700: #944b02;
+  --color-secondary-800: #6a3602;
+  --color-secondary-900: #3f2001;
+  --color-secondary-950: #150a00;
+
+  /* Accent color scale */
+  --color-accent-50: #ffffe7;
+  --color-accent-100: #ffffcf;
+  --color-accent-200: #ffffb7;
+  --color-accent-300: #fff49e;
+  --color-accent-400: #ffce86;
+  --color-accent-500: #fcbc7a;
+  --color-accent-600: #e2a96d;
+  --color-accent-700: #b08355;
+  --color-accent-800: #7e5e3d;
+  --color-accent-900: #4b3824;
+  --color-accent-950: #19120c;
+
+  /* Typography */
+  --font-family-primary: 'Inter', sans-serif;
+  --font-family-heading: 'JetBrains Mono', sans-serif;
+  --font-scale-ratio: 1.25;
+  --font-weight-heading: var(--font-weight-semibold);
+  --letter-spacing-heading: var(--letter-spacing-tight);
+  
+  /* Component theming */
+  --button-radius: 4px;
+  --card-radius: calc(4px * 1.5);
+  --input-radius: calc(4px * 0.75);
+  --card-shadow: var(--shadow-lg);
+  --button-shadow: var(--shadow-sm);
+  
+  /* Border radius */
+  --border-radius-md: 4px;
+  --border-radius-lg: calc(4px * 1.5);
+}
+
