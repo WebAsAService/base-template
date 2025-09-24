@@ -25,7 +25,8 @@ export default defineConfig({
         '@components': path.resolve('./src/components'),
         '@layouts': path.resolve('./src/layouts'),
         '@styles': path.resolve('./src/styles'),
-        '@utils': path.resolve('./src/utils')
+        '@utils': path.resolve('./src/utils'),
+        '@config': path.resolve('./src/config')
       }
     }
   }

@@ -39,7 +39,7 @@ import TestimonialsSection from '@components/sections/TestimonialsSection.astro'
 import ContactSection from '@components/sections/ContactSection.astro';
 
 // Import client configuration
-import { clientConfig } from '@/config/clients/${clientName}.js';
+import { clientConfig } from '@config/clients/${clientName}.js';
 
 // Set client theme class
 const clientTheme = 'theme-${clientName}';
@@ -103,7 +103,7 @@ function generateAssetsPageTemplate(clientName) {
  */
 
 import Layout from '@layouts/Layout.astro';
-import { clientConfig } from '@/config/clients/${clientName}.js';
+import { clientConfig } from '@config/clients/${clientName}.js';
 
 const clientTheme = 'theme-${clientName}';
 const logoBasePath = '/images/clients/${clientName}';
