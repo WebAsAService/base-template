@@ -32,6 +32,7 @@ function generateClientPageTemplate(clientName) {
  */
 
 import Layout from '@layouts/Layout.astro';
+import Header from '@components/layout/Header.astro';
 import HeroSection from '@components/sections/HeroSection.astro';
 import FeaturesSection from '@components/sections/FeaturesSection.astro';
 import ServicesSection from '@components/sections/ServicesSection.astro';
@@ -50,6 +51,12 @@ const clientTheme = 'theme-${clientName}';
   description={clientConfig.business.shortDescription}
   clientTheme={clientTheme}
 >
+  <!-- Header with logo and navigation -->
+  <Header 
+    clientConfig={clientConfig}
+    logo="/images/clients/${clientName}/logo.png"
+  />
+  
   <main class="min-h-screen">
     <!-- Hero Section -->
     <HeroSection config={clientConfig.content.hero} />
