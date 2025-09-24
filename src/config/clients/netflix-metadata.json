@@ -1,0 +1,31 @@
+{
+  "client_name": "netflix",
+  "business_name": "Netflix",
+  "industry": "Entertainment",
+  "generated_at": "2025-09-24T23:50:39.952790",
+  "files_created": [
+    "src/config/clients/netflix.js",
+    "src/styles/client-themes.css"
+  ],
+  "ai_model": "claude-3-5-sonnet-20241022",
+  "generation_steps": [
+    "base_config",
+    "custom_content",
+    "theme_css"
+  ],
+  "content_customized": true,
+  "colors_from_logo": true,
+  "business_data": {
+    "business_name": "Netflix",
+    "business_description": "Streaming platform",
+    "industry": "Entertainment",
+    "target_audience": "Pretty much anyone how enjoy to watch TV content",
+    "services": "Movies, series, documental and sports",
+    "contact_email": "test@netflix.com",
+    "contact_phone": "",
+    "website_domain": "netflix.com",
+    "client_name": "netflix",
+    "logo_colors": "{\n  \"dominantColors\": [\n    \"#e40c14\",\n    \"#cc0d15\",\n    \"#e59a9d\",\n    \"#91070c\",\n    \"#8f090e\"\n  ],\n  \"palette\": {\n    \"primary\": \"#e40c14\",\n    \"secondary\": \"#cc0d15\",\n    \"accent\": \"#e59a9d\",\n    \"neutral\": \"#91070c\"\n  },\n  \"brightness\": \"dark\",\n  \"contrast\": \"medium\",\n  \"raw\": {\n    \"vibrant\": \"#e40c14\",\n    \"darkVibrant\": \"#cc0d15\",\n    \"lightVibrant\": \"#e59a9d\",\n    \"muted\": \"#91070c\",\n    \"darkMuted\": \"#8f090e\",\n    \"lightMuted\": \"#791f22\"\n  }\n}",
+    "logo_path": "public/images/clients/netflix/logo.png"
+  }
+}
