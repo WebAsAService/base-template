@@ -244,6 +244,8 @@ jobs:
       
       - name: Create pull request
         id: create_pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Create PR using GitHub CLI
           PR_BODY="## 🎨 New Client Site Generated
