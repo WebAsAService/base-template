@@ -4,7 +4,7 @@ export interface Props {
 }
 
 const { config } = Astro.props;
-// Use passed config or fall back to the expected structure
+// Use passed config or fall back to image-free structure
 const hero = config || {
   headline: "Welcome to Our Service",
   subheadline: "Professional solutions for your business",
@@ -12,11 +12,7 @@ const hero = config || {
     primary: { text: "Get Started", link: "#contact", style: "primary" },
     secondary: { text: "Learn More", link: "#about", style: "outline" }
   },
-  media: {
-    type: "image",
-    src: "/images/hero-placeholder.jpg",
-    alt: "Hero image"
-  },
+  // No media/image fallback - will use CSS visual instead
   trustedBy: {
     enabled: false,
     title: "",
@@ -30,13 +26,13 @@ const hero = config || {
     <div class="flex flex-col md:flex-row items-center">
       <!-- Left content - Text -->
       <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 hero-slide-up">
           {hero.headline}
         </h1>
-        <p class="text-xl text-gray-600 mb-8">
+        <p class="text-xl text-gray-600 mb-8 hero-slide-up-delay-1">
           {hero.subheadline}
         </p>
-        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 hero-slide-up-delay-2">
           {/* Handle both string and object CTA formats */}
           {typeof hero.cta === 'string' ? (
             <>
@@ -62,19 +58,22 @@ const hero = config || {
         </div>
       </div>
       
-      <!-- Right content - Image/Video -->
+      <!-- Right content - Visual Element -->
       <div class="md:w-1/2">
         <div class="relative">
-          <!-- Main media -->
-          <div class="rounded-lg shadow-xl overflow-hidden">
-            {/* Handle both simple image and media object formats */}
-            {hero.image ? (
+          <!-- Conditional rendering: Image/Video OR CSS Visual -->
+          {hero.image ? (
+            <!-- Legacy image support for existing clients -->
+            <div class="rounded-lg shadow-xl overflow-hidden hero-fade-in">
               <img 
                 src={hero.image} 
                 alt="Hero image" 
                 class="w-full h-auto"
               />
-            ) : hero.media?.type === 'video' ? (
+            </div>
+          ) : hero.media?.type === 'video' ? (
+            <!-- Video support -->
+            <div class="rounded-lg shadow-xl overflow-hidden hero-fade-in">
               <video 
                 src={hero.media.src}
                 poster={hero.media.poster}
@@ -83,18 +82,57 @@ const hero = config || {
                 controls
                 preload="metadata"
               />
-            ) : (
+            </div>
+          ) : hero.media?.src && !hero.media.src.includes('hero-placeholder.jpg') ? (
+            <!-- Existing image (not placeholder) -->
+            <div class="rounded-lg shadow-xl overflow-hidden hero-fade-in">
               <img 
-                src={hero.media?.src || '/images/hero-placeholder.jpg'} 
+                src={hero.media.src} 
                 alt={hero.media?.alt || 'Hero image'} 
                 class="w-full h-auto"
               />
-            )}
-          </div>
+            </div>
+          ) : (
+            <!-- New CSS Visual for image-free designs -->
+            <div class="relative w-full h-80 rounded-lg shadow-xl overflow-hidden hero-fade-in">
+              <!-- Dynamic gradient background -->
+              <div class="absolute inset-0 bg-gradient-to-br from-primary-400 via-secondary-400 to-accent-400 hero-gradient-animation"></div>
+              
+              <!-- Animated geometric patterns -->
+              <div class="absolute inset-0">
+                <!-- Floating circles -->
+                <div class="absolute top-8 left-8 w-20 h-20 bg-white/20 rounded-full hero-float-1"></div>
+                <div class="absolute top-24 right-12 w-12 h-12 bg-white/15 rounded-full hero-float-2"></div>
+                <div class="absolute bottom-16 left-16 w-16 h-16 bg-white/25 rounded-full hero-float-3"></div>
+                
+                <!-- Geometric shapes -->
+                <div class="absolute top-12 right-8 w-24 h-24 border-2 border-white/20 rounded-lg rotate-12 hero-rotate-slow"></div>
+                <div class="absolute bottom-8 right-20 w-8 h-8 bg-white/30 rotate-45 hero-pulse"></div>
+                
+                <!-- Grid pattern overlay -->
+                <div class="absolute inset-0 opacity-10">
+                  <div style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+                </div>
+              </div>
+              
+              <!-- Content overlay with subtle animation -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white hero-slide-up">
+                  <div class="w-20 h-20 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <p class="text-sm font-medium opacity-90">Professional Solutions</p>
+                </div>
+              </div>
+            </div>
+          )}
           
-          <!-- Decorative elements -->
-          <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-500 rounded-lg opacity-20"></div>
-          <div class="absolute -top-6 -right-6 w-32 h-32 bg-secondary-500 rounded-full opacity-20"></div>
+          <!-- Enhanced decorative elements with animations -->
+          <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-500 rounded-lg opacity-20 hero-float-1"></div>
+          <div class="absolute -top-6 -right-6 w-32 h-32 bg-secondary-500 rounded-full opacity-20 hero-float-2"></div>
+          <div class="absolute top-1/2 -left-4 w-16 h-16 bg-accent-400 rounded-full opacity-15 hero-pulse"></div>
         </div>
       </div>
     </div>
@@ -117,3 +155,172 @@ const hero = config || {
     )}
   </div>
 </section>
+
+<style>
+  /* Hero Animation Keyframes */
+  @keyframes heroSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes heroFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes heroFloat1 {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    33% {
+      transform: translateY(-10px) translateX(5px);
+    }
+    66% {
+      transform: translateY(5px) translateX(-3px);
+    }
+  }
+
+  @keyframes heroFloat2 {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    50% {
+      transform: translateY(-15px) translateX(-8px);
+    }
+  }
+
+  @keyframes heroFloat3 {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    25% {
+      transform: translateY(-8px) translateX(3px);
+    }
+    75% {
+      transform: translateY(8px) translateX(-5px);
+    }
+  }
+
+  @keyframes heroRotateSlow {
+    from {
+      transform: rotate(12deg);
+    }
+    to {
+      transform: rotate(372deg);
+    }
+  }
+
+  @keyframes heroPulse {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes heroGradientShift {
+    0%, 100% {
+      background: linear-gradient(135deg, var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to));
+    }
+    25% {
+      background: linear-gradient(225deg, var(--tw-gradient-from), var(--tw-gradient-to), var(--tw-gradient-via));
+    }
+    50% {
+      background: linear-gradient(315deg, var(--tw-gradient-via), var(--tw-gradient-to), var(--tw-gradient-from));
+    }
+    75% {
+      background: linear-gradient(45deg, var(--tw-gradient-to), var(--tw-gradient-from), var(--tw-gradient-via));
+    }
+  }
+
+  /* Animation Classes */
+  .hero-slide-up {
+    animation: heroSlideUp 0.8s ease-out forwards;
+  }
+
+  .hero-slide-up-delay-1 {
+    opacity: 0;
+    animation: heroSlideUp 0.8s ease-out 0.2s forwards;
+  }
+
+  .hero-slide-up-delay-2 {
+    opacity: 0;
+    animation: heroSlideUp 0.8s ease-out 0.4s forwards;
+  }
+
+  .hero-fade-in {
+    animation: heroFadeIn 1s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  .hero-float-1 {
+    animation: heroFloat1 6s ease-in-out infinite;
+  }
+
+  .hero-float-2 {
+    animation: heroFloat2 8s ease-in-out infinite 1s;
+  }
+
+  .hero-float-3 {
+    animation: heroFloat3 7s ease-in-out infinite 2s;
+  }
+
+  .hero-rotate-slow {
+    animation: heroRotateSlow 20s linear infinite;
+  }
+
+  .hero-pulse {
+    animation: heroPulse 3s ease-in-out infinite;
+  }
+
+  .hero-gradient-animation {
+    animation: heroGradientShift 8s ease-in-out infinite;
+  }
+
+  /* Accessibility: Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-slide-up,
+    .hero-slide-up-delay-1,
+    .hero-slide-up-delay-2,
+    .hero-fade-in {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .hero-float-1,
+    .hero-float-2,
+    .hero-float-3,
+    .hero-rotate-slow,
+    .hero-pulse,
+    .hero-gradient-animation {
+      animation: none;
+    }
+  }
+
+  /* Performance optimization: GPU acceleration */
+  .hero-slide-up,
+  .hero-fade-in,
+  .hero-float-1,
+  .hero-float-2,
+  .hero-float-3,
+  .hero-rotate-slow,
+  .hero-pulse {
+    will-change: transform, opacity;
+  }
+</style>

@@ -83,6 +83,109 @@ Key requirements:
 
 CRITICAL: Always respond with ONLY valid JavaScript code that can be directly saved as a .js file. Do NOT wrap the JavaScript in markdown code fences (```javascript or ```). The response should start with comments or export statement and end with the closing brace and semicolon."""
     
+    def generate_business_based_colors(self, business_data: Dict[str, Any]) -> Dict[str, str]:
+        """Generate color palette based on business information"""
+        business_name = business_data.get('business_name', '').lower()
+        industry = business_data.get('industry', '').lower()
+        description = business_data.get('business_description', '').lower()
+        target_audience = business_data.get('target_audience', '').lower()
+        
+        # Industry-based color mappings
+        industry_colors = {
+            # Technology & Software
+            'technology': {'primary': '#2563eb', 'secondary': '#475569', 'accent': '#06b6d4'},
+            'software': {'primary': '#1d4ed8', 'secondary': '#64748b', 'accent': '#0ea5e9'},
+            'ai': {'primary': '#7c3aed', 'secondary': '#64748b', 'accent': '#a855f7'},
+            'cybersecurity': {'primary': '#dc2626', 'secondary': '#374151', 'accent': '#f59e0b'},
+            
+            # Finance & Legal
+            'finance': {'primary': '#065f46', 'secondary': '#374151', 'accent': '#d97706'},
+            'banking': {'primary': '#1e40af', 'secondary': '#475569', 'accent': '#059669'},
+            'legal': {'primary': '#1f2937', 'secondary': '#6b7280', 'accent': '#b45309'},
+            'consulting': {'primary': '#374151', 'secondary': '#6b7280', 'accent': '#0891b2'},
+            
+            # Healthcare
+            'health': {'primary': '#059669', 'secondary': '#6b7280', 'accent': '#0284c7'},
+            'medical': {'primary': '#0369a1', 'secondary': '#64748b', 'accent': '#059669'},
+            'wellness': {'primary': '#16a34a', 'secondary': '#64748b', 'accent': '#0ea5e9'},
+            
+            # Creative & Marketing
+            'creative': {'primary': '#dc2626', 'secondary': '#64748b', 'accent': '#f59e0b'},
+            'design': {'primary': '#7c3aed', 'secondary': '#64748b', 'accent': '#f59e0b'},
+            'marketing': {'primary': '#dc2626', 'secondary': '#6b7280', 'accent': '#ea580c'},
+            'advertising': {'primary': '#c2410c', 'secondary': '#64748b', 'accent': '#7c3aed'},
+            
+            # Real Estate & Construction
+            'real estate': {'primary': '#0369a1', 'secondary': '#64748b', 'accent': '#d97706'},
+            'construction': {'primary': '#b45309', 'secondary': '#6b7280', 'accent': '#dc2626'},
+            
+            # Education
+            'education': {'primary': '#1d4ed8', 'secondary': '#64748b', 'accent': '#059669'},
+            'training': {'primary': '#0369a1', 'secondary': '#6b7280', 'accent': '#16a34a'},
+            
+            # Retail & E-commerce
+            'retail': {'primary': '#dc2626', 'secondary': '#64748b', 'accent': '#f59e0b'},
+            'ecommerce': {'primary': '#7c3aed', 'secondary': '#64748b', 'accent': '#dc2626'},
+            
+            # Food & Hospitality
+            'food': {'primary': '#dc2626', 'secondary': '#64748b', 'accent': '#f59e0b'},
+            'restaurant': {'primary': '#b45309', 'secondary': '#6b7280', 'accent': '#dc2626'},
+            'hospitality': {'primary': '#0369a1', 'secondary': '#64748b', 'accent': '#d97706'},
+        }
+        
+        # Name-based color heuristics (simple hash-based approach)
+        def name_to_color(name: str) -> str:
+            """Generate a color based on business name characteristics"""
+            name_hash = abs(hash(name)) % 12
+            name_colors = [
+                '#2563eb', '#dc2626', '#059669', '#d97706', '#7c3aed', '#0369a1',
+                '#b45309', '#0891b2', '#16a34a', '#c2410c', '#1d4ed8', '#065f46'
+            ]
+            return name_colors[name_hash]
+        
+        # Find matching industry colors
+        colors = None
+        for industry_key, industry_palette in industry_colors.items():
+            if industry_key in industry:
+                colors = industry_palette.copy()
+                break
+        
+        # If no industry match, generate from business characteristics
+        if not colors:
+            # Check for keywords in business description and target audience
+            keywords_to_colors = {
+                'premium': {'primary': '#1f2937', 'secondary': '#6b7280', 'accent': '#d97706'},
+                'luxury': {'primary': '#0f172a', 'secondary': '#64748b', 'accent': '#f59e0b'},
+                'eco': {'primary': '#059669', 'secondary': '#64748b', 'accent': '#16a34a'},
+                'green': {'primary': '#16a34a', 'secondary': '#64748b', 'accent': '#059669'},
+                'digital': {'primary': '#2563eb', 'secondary': '#64748b', 'accent': '#06b6d4'},
+                'innovation': {'primary': '#7c3aed', 'secondary': '#64748b', 'accent': '#a855f7'},
+                'global': {'primary': '#0369a1', 'secondary': '#64748b', 'accent': '#0891b2'},
+                'local': {'primary': '#b45309', 'secondary': '#6b7280', 'accent': '#dc2626'},
+                'enterprise': {'primary': '#374151', 'secondary': '#6b7280', 'accent': '#0891b2'},
+                'startup': {'primary': '#dc2626', 'secondary': '#64748b', 'accent': '#f59e0b'},
+            }
+            
+            combined_text = f"{description} {target_audience}".lower()
+            for keyword, keyword_colors in keywords_to_colors.items():
+                if keyword in combined_text:
+                    colors = keyword_colors.copy()
+                    break
+        
+        # Final fallback: generate from business name
+        if not colors:
+            primary_color = name_to_color(business_name)
+            colors = {
+                'primary': primary_color,
+                'secondary': '#64748b',
+                'accent': name_to_color(business_name + 'accent')
+            }
+        
+        # Add neutral color
+        colors['neutral'] = colors.get('secondary', '#64748b')
+        
+        return colors
+
     def create_user_prompt(self, business_data: Dict[str, Any]) -> str:
         # Extract and prepare logo colors for the prompt
         extracted_colors = {'primary': '#2563eb', 'secondary': '#64748b', 'accent': '#f59e0b', 'neutral': '#64748b'}
@@ -91,29 +194,63 @@ CRITICAL: Always respond with ONLY valid JavaScript code that can be directly sa
         if business_data.get('logo_colors'):
             try:
                 logo_colors = json.loads(business_data['logo_colors'])
+                
+                # Check if this is business-based generation (no logo)
+                if logo_colors.get('businessBased'):
+                    extracted_colors = self.generate_business_based_colors(business_data)
+                    colors_info = f"""
+Business-Based Theme Colors (No Logo Provided):
+- Primary: {extracted_colors['primary']} (derived from: {business_data.get('industry', 'business characteristics')})
+- Secondary: {extracted_colors['secondary']}
+- Accent: {extracted_colors['accent']}
+- Neutral: {extracted_colors['neutral']}
+- Generation method: Industry + business name analysis"""
+                    
                 # Use the same logic as theme generation for consistency
-                if 'palette' in logo_colors:
+                elif 'palette' in logo_colors:
                     palette = logo_colors['palette']
                     extracted_colors['primary'] = palette.get('primary', extracted_colors['primary'])
                     extracted_colors['secondary'] = palette.get('secondary', extracted_colors['secondary']) 
                     extracted_colors['accent'] = palette.get('accent', extracted_colors['accent'])
                     extracted_colors['neutral'] = palette.get('neutral', extracted_colors['secondary'])
-                elif 'dominantColors' in logo_colors and len(logo_colors['dominantColors']) >= 3:
-                    dominant = logo_colors['dominantColors']
-                    extracted_colors['primary'] = dominant[0]
-                    extracted_colors['secondary'] = dominant[1] 
-                    extracted_colors['accent'] = dominant[2]
-                    extracted_colors['neutral'] = dominant[3] if len(dominant) > 3 else dominant[1]
-                    
-                colors_info = f"""
+                    colors_info = f"""
 Brand Colors Extracted from Logo:
 - Primary: {extracted_colors['primary']}
 - Secondary: {extracted_colors['secondary']}
 - Accent: {extracted_colors['accent']}
 - Neutral: {extracted_colors['neutral']}
 - Full extraction: {logo_colors.get('palette', logo_colors.get('dominantColors', []))}"""
-            except:
-                colors_info = "Logo colors: Using default professional palette"
+                elif 'dominantColors' in logo_colors and len(logo_colors['dominantColors']) >= 3:
+                    dominant = logo_colors['dominantColors']
+                    extracted_colors['primary'] = dominant[0]
+                    extracted_colors['secondary'] = dominant[1] 
+                    extracted_colors['accent'] = dominant[2]
+                    extracted_colors['neutral'] = dominant[3] if len(dominant) > 3 else dominant[1]
+                    colors_info = f"""
+Brand Colors Extracted from Logo:
+- Primary: {extracted_colors['primary']}
+- Secondary: {extracted_colors['secondary']}
+- Accent: {extracted_colors['accent']}
+- Neutral: {extracted_colors['neutral']}
+- Full extraction: {logo_colors.get('palette', logo_colors.get('dominantColors', []))}"""
+            except Exception as e:
+                print(f"Warning: Could not parse logo colors, using business-based generation: {e}")
+                extracted_colors = self.generate_business_based_colors(business_data)
+                colors_info = f"""
+Business-Based Theme Colors (Logo parsing failed):
+- Primary: {extracted_colors['primary']}
+- Secondary: {extracted_colors['secondary']}
+- Accent: {extracted_colors['accent']}
+- Neutral: {extracted_colors['neutral']}"""
+        else:
+            # No logo colors provided at all
+            extracted_colors = self.generate_business_based_colors(business_data)
+            colors_info = f"""
+Business-Based Theme Colors (No Logo):
+- Primary: {extracted_colors['primary']}
+- Secondary: {extracted_colors['secondary']}
+- Accent: {extracted_colors['accent']}
+- Neutral: {extracted_colors['neutral']}"""
         
         services_list = business_data.get('services', '').split(',') if business_data.get('services') else []
         services_formatted = '\n'.join([f"- {service.strip()}" for service in services_list if service.strip()])
@@ -207,8 +344,8 @@ export const clientConfig = {{
       headline: "[Powerful headline]",
       subheadline: "[Supporting subheadline]",
       cta: "[Primary CTA]",
-      secondaryCta: "[Secondary CTA]",
-      image: "/images/hero.jpg"
+      secondaryCta: "[Secondary CTA]"
+      // No image required - will use CSS gradient visual
     }},
 
     features: [
@@ -664,16 +801,22 @@ OUTPUT: Provide ONLY the content sections in this JSON structure:
         return content
     
     def generate_css_theme(self, business_data: Dict[str, Any]) -> str:
-        """Generate CSS theme styles based on brand colors"""
+        """Generate CSS theme styles based on brand colors or business information"""
         client_name = business_data['client_name']
         
-        # Extract colors from logo analysis - prioritize actual logo colors
+        # Extract colors from logo analysis or generate from business info
         colors = {'primary': '#2563eb', 'secondary': '#64748b', 'accent': '#f59e0b'}
         if business_data.get('logo_colors'):
             try:
                 extracted_colors = json.loads(business_data['logo_colors'])
+                
+                # Check if this is business-based generation (no logo)
+                if extracted_colors.get('businessBased'):
+                    colors = self.generate_business_based_colors(business_data)
+                    print(f"Generated business-based colors: {colors}")
+                    
                 # Use the extracted palette if available
-                if 'palette' in extracted_colors:
+                elif 'palette' in extracted_colors:
                     palette = extracted_colors['palette']
                     colors['primary'] = palette.get('primary', colors['primary'])
                     colors['secondary'] = palette.get('secondary', colors['secondary']) 
@@ -694,8 +837,12 @@ OUTPUT: Provide ONLY the content sections in this JSON structure:
                     colors['accent'] = raw.get('lightVibrant', colors['accent'])
                     colors['neutral'] = raw.get('darkMuted', colors['secondary'])
             except Exception as e:
-                print(f"Warning: Could not parse logo colors, using defaults: {e}")
-                pass
+                print(f"Warning: Could not parse logo colors, using business-based generation: {e}")
+                colors = self.generate_business_based_colors(business_data)
+        else:
+            # No logo colors provided at all
+            colors = self.generate_business_based_colors(business_data)
+            print(f"No logo provided, generated business-based colors: {colors}")
         
         # Generate industry-appropriate styling
         industry = business_data.get('industry', '').lower()
