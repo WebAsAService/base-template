@@ -4,9 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       logo_url:
-        description: 'Logo URL'
-        required: true
+        description: 'Logo URL (optional - if not provided, theme will be generated from business info)'
+        required: false
         type: string
+        default: ''
       business_name:
         description: 'Business Name'
         required: true
@@ -151,21 +152,44 @@ jobs:
       - name: Download and process logo
         id: process_logo
         run: |
-          node scripts/process-logo.js \
-            --logo-url "${{ steps.setup.outputs.logo_url }}" \
-            --client-name "${{ steps.setup.outputs.client_name }}" \
-            --extract-colors "temp/extracted_colors.json"
+          LOGO_URL="${{ steps.setup.outputs.logo_url }}"
           
-          # Send logo processed webhook
-          if [ -n "$STATUS_WEBHOOK_URL" ]; then
-            curl -X POST "$STATUS_WEBHOOK_URL" \
-              -H "Content-Type: application/json" \
-              -d '{
-                "status": "logo_processed",
-                "client_name": "${{ steps.setup.outputs.client_name }}",
-                "message": "Logo downloaded and optimized",
-                "timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'"
-              }' || echo "Webhook failed, continuing..."
+          if [ -n "$LOGO_URL" ] && [ "$LOGO_URL" != "" ]; then
+            echo "Processing logo from URL: $LOGO_URL"
+            node scripts/process-logo.js \
+              --logo-url "$LOGO_URL" \
+              --client-name "${{ steps.setup.outputs.client_name }}" \
+              --extract-colors "temp/extracted_colors.json"
+            
+            # Send logo processed webhook
+            if [ -n "$STATUS_WEBHOOK_URL" ]; then
+              curl -X POST "$STATUS_WEBHOOK_URL" \
+                -H "Content-Type: application/json" \
+                -d '{
+                  "status": "logo_processed",
+                  "client_name": "${{ steps.setup.outputs.client_name }}",
+                  "message": "Logo downloaded and optimized",
+                  "timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'"
+                }' || echo "Webhook failed, continuing..."
+            fi
+          else
+            echo "No logo URL provided, generating business-based theme colors"
+            
+            # Create empty colors file for business-based generation
+            mkdir -p temp
+            echo '{"businessBased": true}' > temp/extracted_colors.json
+            
+            # Send logo skipped webhook
+            if [ -n "$STATUS_WEBHOOK_URL" ]; then
+              curl -X POST "$STATUS_WEBHOOK_URL" \
+                -H "Content-Type: application/json" \
+                -d '{
+                  "status": "logo_skipped",
+                  "client_name": "${{ steps.setup.outputs.client_name }}",
+                  "message": "Logo-less generation - using business-based colors",
+                  "timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'"
+                }' || echo "Webhook failed, continuing..."
+            fi
           fi
       
       - name: Generate AI content and theme
