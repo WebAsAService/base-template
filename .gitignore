@@ -29,3 +29,14 @@ test-results/
 coverage/
 *-snapshots/
 **/*-snapshots/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+scripts/__pycache__/
+
+# Temporary files and directories
+temp/
+*.tmp
+*.log
