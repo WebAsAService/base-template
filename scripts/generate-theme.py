@@ -207,8 +207,8 @@ export const clientConfig = {{
       headline: "[Powerful headline]",
       subheadline: "[Supporting subheadline]",
       cta: "[Primary CTA]",
-      secondaryCta: "[Secondary CTA]",
-      image: "/images/hero.jpg"
+      secondaryCta: "[Secondary CTA]"
+      // No image required - will use CSS gradient visual
     }},
 
     features: [
