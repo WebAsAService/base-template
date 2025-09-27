@@ -186,18 +186,301 @@ CRITICAL: Always respond with ONLY valid JavaScript code that can be directly sa
         
         return colors
 
-    def create_user_prompt(self, business_data: Dict[str, Any]) -> str:
-        # Extract and prepare logo colors for the prompt
-        extracted_colors = {'primary': '#2563eb', 'secondary': '#64748b', 'accent': '#f59e0b', 'neutral': '#64748b'}
-        colors_info = ""
+    def validate_hex_color(self, color: str) -> bool:
+        """Validate hex color format (#RRGGBB)"""
+        if not color:
+            return False
         
+        # Remove # if present
+        if color.startswith('#'):
+            color = color[1:]
+        
+        # Check if it's exactly 6 hex characters
+        if len(color) != 6:
+            return False
+            
+        try:
+            int(color, 16)
+            return True
+        except ValueError:
+            return False
+
+    def hex_to_hsl(self, hex_color: str) -> tuple:
+        """Convert hex color to HSL"""
+        # Remove # if present
+        hex_color = hex_color.lstrip('#')
+        
+        # Convert to RGB
+        r = int(hex_color[0:2], 16) / 255.0
+        g = int(hex_color[2:4], 16) / 255.0
+        b = int(hex_color[4:6], 16) / 255.0
+        
+        max_val = max(r, g, b)
+        min_val = min(r, g, b)
+        
+        h = 0
+        s = 0
+        l = (max_val + min_val) / 2
+        
+        if max_val == min_val:
+            h = s = 0  # achromatic
+        else:
+            d = max_val - min_val
+            s = d / (2 - max_val - min_val) if l > 0.5 else d / (max_val + min_val)
+            
+            if max_val == r:
+                h = (g - b) / d + (6 if g < b else 0)
+            elif max_val == g:
+                h = (b - r) / d + 2
+            elif max_val == b:
+                h = (r - g) / d + 4
+            h /= 6
+        
+        return (h * 360, s * 100, l * 100)
+
+    def hsl_to_hex(self, h: float, s: float, l: float) -> str:
+        """Convert HSL to hex color"""
+        h = h / 360
+        s = s / 100
+        l = l / 100
+        
+        def hue_to_rgb(p, q, t):
+            if t < 0:
+                t += 1
+            if t > 1:
+                t -= 1
+            if t < 1/6:
+                return p + (q - p) * 6 * t
+            if t < 1/2:
+                return q
+            if t < 2/3:
+                return p + (q - p) * (2/3 - t) * 6
+            return p
+        
+        if s == 0:
+            r = g = b = l  # achromatic
+        else:
+            q = l * (1 + s) if l < 0.5 else l + s - l * s
+            p = 2 * l - q
+            r = hue_to_rgb(p, q, h + 1/3)
+            g = hue_to_rgb(p, q, h)
+            b = hue_to_rgb(p, q, h - 1/3)
+        
+        return f"#{int(r * 255):02x}{int(g * 255):02x}{int(b * 255):02x}"
+
+    def generate_color_scale(self, hex_color: str) -> Dict[str, str]:
+        """Generate Tailwind-compatible color scale (50-950) from base color"""
+        try:
+            if not self.validate_hex_color(hex_color):
+                # Return neutral scale if invalid
+                return {
+                    '50': '#f8fafc', '100': '#f1f5f9', '200': '#e2e8f0', '300': '#cbd5e1',
+                    '400': '#94a3b8', '500': hex_color, '600': '#64748b', '700': '#475569',
+                    '800': '#334155', '900': '#1e293b', '950': '#0f172a'
+                }
+            
+            # Ensure proper hex format
+            if not hex_color.startswith('#'):
+                hex_color = f'#{hex_color}'
+            
+            h, s, l = self.hex_to_hsl(hex_color)
+            scales = {}
+            
+            # Generate lighter shades (50-400)
+            lightness_values = [95, 90, 80, 65, 50]  # More refined lightness distribution
+            for i, shade in enumerate([50, 100, 200, 300, 400]):
+                new_lightness = lightness_values[i]
+                scales[str(shade)] = self.hsl_to_hex(h, max(s * 0.9, 10), new_lightness)
+            
+            # Base color (500)
+            scales['500'] = hex_color
+            
+            # Generate darker shades (600-950)
+            darkness_values = [40, 30, 20, 12, 6]  # More refined darkness distribution
+            for i, shade in enumerate([600, 700, 800, 900, 950]):
+                new_lightness = darkness_values[i]
+                scales[str(shade)] = self.hsl_to_hex(h, min(s * 1.1, 100), new_lightness)
+            
+            return scales
+            
+        except Exception as e:
+            print(f"Warning: Error generating color scale for {hex_color}: {e}")
+            # Return neutral scale as fallback
+            return {
+                '50': '#f8fafc', '100': '#f1f5f9', '200': '#e2e8f0', '300': '#cbd5e1',
+                '400': '#94a3b8', '500': hex_color, '600': '#64748b', '700': '#475569',
+                '800': '#334155', '900': '#1e293b', '950': '#0f172a'
+            }
+
+    def validate_color_harmony(self, primary: str, secondary: str, accent: str) -> Dict[str, Any]:
+        """Validate color harmony and provide accessibility warnings"""
+        warnings = []
+        suggestions = []
+        
+        try:
+            # Convert colors to HSL for analysis
+            if self.validate_hex_color(primary):
+                p_h, p_s, p_l = self.hex_to_hsl(primary)
+            else:
+                warnings.append("Invalid primary color format")
+                return {"warnings": warnings, "suggestions": ["Use valid hex format (#RRGGBB)"]}
+            
+            if self.validate_hex_color(secondary):
+                s_h, s_s, s_l = self.hex_to_hsl(secondary)
+            else:
+                secondary = primary  # Use primary as fallback
+                s_h, s_s, s_l = p_h, p_s, p_l
+                warnings.append("Invalid secondary color, using primary as fallback")
+            
+            if self.validate_hex_color(accent):
+                a_h, a_s, a_l = self.hex_to_hsl(accent)
+            else:
+                # Generate complementary accent
+                accent = self.hsl_to_hex((p_h + 180) % 360, p_s, max(p_l + 20, 70))
+                a_h, a_s, a_l = self.hex_to_hsl(accent)
+                warnings.append("Invalid accent color, generated complementary color")
+            
+            # Check contrast ratios (simplified)
+            if p_l < 20:
+                warnings.append("Primary color may be too dark for accessibility")
+                suggestions.append("Consider using a lighter shade for better contrast")
+            
+            if abs(p_l - s_l) < 15:
+                warnings.append("Primary and secondary colors have similar lightness")
+                suggestions.append("Consider adjusting lightness for better distinction")
+            
+            if a_l < 50:
+                warnings.append("Accent color may not be vibrant enough for CTAs")
+                suggestions.append("Consider using a brighter accent color for call-to-action elements")
+            
+            # Check color harmony
+            hue_diff_ps = abs(p_h - s_h)
+            hue_diff_pa = abs(p_h - a_h)
+            
+            if hue_diff_ps < 30 and hue_diff_pa < 30:
+                warnings.append("Colors may be too similar - consider more contrast")
+                suggestions.append("Try using complementary or triadic color schemes")
+            
+            return {
+                "warnings": warnings,
+                "suggestions": suggestions,
+                "harmony_score": max(0, 10 - len(warnings)),  # Simple scoring
+                "accessible": len([w for w in warnings if "accessibility" in w.lower()]) == 0
+            }
+            
+        except Exception as e:
+            return {
+                "warnings": [f"Error validating colors: {e}"],
+                "suggestions": ["Please check color format and try again"],
+                "harmony_score": 0,
+                "accessible": False
+            }
+
+    def get_user_colors_with_priority(self, business_data: Dict[str, Any]) -> Dict[str, str]:
+        """Get colors with priority: user-specified > logo-extracted > business-based"""
+        colors = {'primary': '', 'secondary': '', 'accent': ''}
+        
+        # Priority 1: User-specified colors (highest priority)
+        user_primary = business_data.get('primary_color', '').strip()
+        user_secondary = business_data.get('secondary_color', '').strip()
+        user_accent = business_data.get('accent_color', '').strip()
+        
+        # Validate and use user colors if provided
+        if user_primary and self.validate_hex_color(user_primary):
+            colors['primary'] = user_primary if user_primary.startswith('#') else f'#{user_primary}'
+            print(f"Using user-specified primary color: {colors['primary']}")
+        
+        if user_secondary and self.validate_hex_color(user_secondary):
+            colors['secondary'] = user_secondary if user_secondary.startswith('#') else f'#{user_secondary}'
+            print(f"Using user-specified secondary color: {colors['secondary']}")
+            
+        if user_accent and self.validate_hex_color(user_accent):
+            colors['accent'] = user_accent if user_accent.startswith('#') else f'#{user_accent}'
+            print(f"Using user-specified accent color: {colors['accent']}")
+        
+        # Priority 2: Logo-extracted colors (for missing user colors)
         if business_data.get('logo_colors'):
             try:
                 logo_colors = json.loads(business_data['logo_colors'])
                 
-                # Check if this is business-based generation (no logo)
+                if not logo_colors.get('businessBased'):  # Only use if not business-based
+                    if not colors['primary'] and 'palette' in logo_colors:
+                        palette = logo_colors['palette']
+                        if palette.get('primary'):
+                            colors['primary'] = palette['primary']
+                            print(f"Using logo-extracted primary color: {colors['primary']}")
+                    
+                    if not colors['secondary'] and 'palette' in logo_colors:
+                        palette = logo_colors['palette']
+                        if palette.get('secondary'):
+                            colors['secondary'] = palette['secondary']
+                            print(f"Using logo-extracted secondary color: {colors['secondary']}")
+                    
+                    if not colors['accent'] and 'palette' in logo_colors:
+                        palette = logo_colors['palette']
+                        if palette.get('accent'):
+                            colors['accent'] = palette['accent']
+                            print(f"Using logo-extracted accent color: {colors['accent']}")
+            except:
+                pass
+        
+        # Priority 3: Business-based colors (for remaining missing colors)
+        business_colors = self.generate_business_based_colors(business_data)
+        
+        if not colors['primary']:
+            colors['primary'] = business_colors['primary']
+            print(f"Using business-based primary color: {colors['primary']}")
+            
+        if not colors['secondary']:
+            colors['secondary'] = business_colors['secondary']
+            print(f"Using business-based secondary color: {colors['secondary']}")
+            
+        if not colors['accent']:
+            colors['accent'] = business_colors['accent']
+            print(f"Using business-based accent color: {colors['accent']}")
+        
+        # Validate color harmony if user provided colors
+        if any([user_primary, user_secondary, user_accent]):
+            harmony = self.validate_color_harmony(colors['primary'], colors['secondary'], colors['accent'])
+            if harmony['warnings']:
+                print("🎨 Color Harmony Analysis:")
+                for warning in harmony['warnings']:
+                    print(f"  ⚠️  {warning}")
+                if harmony['suggestions']:
+                    print("💡 Suggestions:")
+                    for suggestion in harmony['suggestions']:
+                        print(f"  💡 {suggestion}")
+                print(f"📊 Harmony Score: {harmony['harmony_score']}/10")
+        
+        return colors
+
+    def create_user_prompt(self, business_data: Dict[str, Any]) -> str:
+        # Get colors using priority system: user-specified > logo-extracted > business-based
+        colors = self.get_user_colors_with_priority(business_data)
+        extracted_colors = {
+            'primary': colors['primary'],
+            'secondary': colors['secondary'], 
+            'accent': colors['accent'],
+            'neutral': colors['secondary']
+        }
+        
+        # Determine color source for info message
+        user_colors = [business_data.get('primary_color', ''), business_data.get('secondary_color', ''), business_data.get('accent_color', '')]
+        user_provided = any(color.strip() for color in user_colors)
+        
+        if user_provided:
+            colors_info = f"""
+User-Specified Theme Colors (High Priority):
+- Primary: {extracted_colors['primary']} (user-specified: {business_data.get('primary_color', 'auto-generated')})
+- Secondary: {extracted_colors['secondary']} (user-specified: {business_data.get('secondary_color', 'auto-generated')})
+- Accent: {extracted_colors['accent']} (user-specified: {business_data.get('accent_color', 'auto-generated')})
+- Neutral: {extracted_colors['neutral']}
+- Color Priority: User colors override logo/business colors"""
+        else:
+            # Determine source based on what was actually used
+            try:
+                logo_colors = json.loads(business_data.get('logo_colors', '{}'))
                 if logo_colors.get('businessBased'):
-                    extracted_colors = self.generate_business_based_colors(business_data)
                     colors_info = f"""
 Business-Based Theme Colors (No Logo Provided):
 - Primary: {extracted_colors['primary']} (derived from: {business_data.get('industry', 'business characteristics')})
@@ -205,48 +488,24 @@ Business-Based Theme Colors (No Logo Provided):
 - Accent: {extracted_colors['accent']}
 - Neutral: {extracted_colors['neutral']}
 - Generation method: Industry + business name analysis"""
-                    
-                # Use the same logic as theme generation for consistency
-                elif 'palette' in logo_colors:
-                    palette = logo_colors['palette']
-                    extracted_colors['primary'] = palette.get('primary', extracted_colors['primary'])
-                    extracted_colors['secondary'] = palette.get('secondary', extracted_colors['secondary']) 
-                    extracted_colors['accent'] = palette.get('accent', extracted_colors['accent'])
-                    extracted_colors['neutral'] = palette.get('neutral', extracted_colors['secondary'])
+                elif 'palette' in logo_colors or 'dominantColors' in logo_colors:
                     colors_info = f"""
 Brand Colors Extracted from Logo:
 - Primary: {extracted_colors['primary']}
 - Secondary: {extracted_colors['secondary']}
 - Accent: {extracted_colors['accent']}
 - Neutral: {extracted_colors['neutral']}
-- Full extraction: {logo_colors.get('palette', logo_colors.get('dominantColors', []))}"""
-                elif 'dominantColors' in logo_colors and len(logo_colors['dominantColors']) >= 3:
-                    dominant = logo_colors['dominantColors']
-                    extracted_colors['primary'] = dominant[0]
-                    extracted_colors['secondary'] = dominant[1] 
-                    extracted_colors['accent'] = dominant[2]
-                    extracted_colors['neutral'] = dominant[3] if len(dominant) > 3 else dominant[1]
+- Source: Logo color extraction"""
+                else:
                     colors_info = f"""
-Brand Colors Extracted from Logo:
-- Primary: {extracted_colors['primary']}
-- Secondary: {extracted_colors['secondary']}
-- Accent: {extracted_colors['accent']}
-- Neutral: {extracted_colors['neutral']}
-- Full extraction: {logo_colors.get('palette', logo_colors.get('dominantColors', []))}"""
-            except Exception as e:
-                print(f"Warning: Could not parse logo colors, using business-based generation: {e}")
-                extracted_colors = self.generate_business_based_colors(business_data)
-                colors_info = f"""
-Business-Based Theme Colors (Logo parsing failed):
+Business-Based Theme Colors:
 - Primary: {extracted_colors['primary']}
 - Secondary: {extracted_colors['secondary']}
 - Accent: {extracted_colors['accent']}
 - Neutral: {extracted_colors['neutral']}"""
-        else:
-            # No logo colors provided at all
-            extracted_colors = self.generate_business_based_colors(business_data)
-            colors_info = f"""
-Business-Based Theme Colors (No Logo):
+            except:
+                colors_info = f"""
+Theme Colors:
 - Primary: {extracted_colors['primary']}
 - Secondary: {extracted_colors['secondary']}
 - Accent: {extracted_colors['accent']}
@@ -804,45 +1063,9 @@ OUTPUT: Provide ONLY the content sections in this JSON structure:
         """Generate CSS theme styles based on brand colors or business information"""
         client_name = business_data['client_name']
         
-        # Extract colors from logo analysis or generate from business info
-        colors = {'primary': '#2563eb', 'secondary': '#64748b', 'accent': '#f59e0b'}
-        if business_data.get('logo_colors'):
-            try:
-                extracted_colors = json.loads(business_data['logo_colors'])
-                
-                # Check if this is business-based generation (no logo)
-                if extracted_colors.get('businessBased'):
-                    colors = self.generate_business_based_colors(business_data)
-                    print(f"Generated business-based colors: {colors}")
-                    
-                # Use the extracted palette if available
-                elif 'palette' in extracted_colors:
-                    palette = extracted_colors['palette']
-                    colors['primary'] = palette.get('primary', colors['primary'])
-                    colors['secondary'] = palette.get('secondary', colors['secondary']) 
-                    colors['accent'] = palette.get('accent', colors['accent'])
-                    colors['neutral'] = palette.get('neutral', colors['secondary'])
-                # Fallback to dominant colors
-                elif 'dominantColors' in extracted_colors and len(extracted_colors['dominantColors']) >= 3:
-                    dominant = extracted_colors['dominantColors']
-                    colors['primary'] = dominant[0]
-                    colors['secondary'] = dominant[1] 
-                    colors['accent'] = dominant[2]
-                    colors['neutral'] = dominant[3] if len(dominant) > 3 else dominant[1]
-                # Use raw vibrant colors as last resort
-                elif 'raw' in extracted_colors:
-                    raw = extracted_colors['raw']
-                    colors['primary'] = raw.get('vibrant', colors['primary'])
-                    colors['secondary'] = raw.get('muted', colors['secondary'])
-                    colors['accent'] = raw.get('lightVibrant', colors['accent'])
-                    colors['neutral'] = raw.get('darkMuted', colors['secondary'])
-            except Exception as e:
-                print(f"Warning: Could not parse logo colors, using business-based generation: {e}")
-                colors = self.generate_business_based_colors(business_data)
-        else:
-            # No logo colors provided at all
-            colors = self.generate_business_based_colors(business_data)
-            print(f"No logo provided, generated business-based colors: {colors}")
+        # Get colors using priority system: user-specified > logo-extracted > business-based
+        colors = self.get_user_colors_with_priority(business_data)
+        print(f"Final theme colors: {colors}")
         
         # Generate industry-appropriate styling
         industry = business_data.get('industry', '').lower()
@@ -874,48 +1097,10 @@ OUTPUT: Provide ONLY the content sections in this JSON structure:
             radius = '8px'
             shadow = 'var(--shadow-md)'
         
-        # Generate color palette variations
-        def generate_color_scale(base_color: str) -> Dict[str, str]:
-            """Generate a proper color scale based on the base color"""
-            # Convert hex to RGB for manipulation
-            def hex_to_rgb(hex_color):
-                hex_color = hex_color.lstrip('#')
-                return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
-            
-            def rgb_to_hex(rgb):
-                return '#{:02x}{:02x}{:02x}'.format(int(rgb[0]), int(rgb[1]), int(rgb[2]))
-            
-            def adjust_lightness(rgb, factor):
-                """Adjust lightness by factor (0-2, where 1 is unchanged)"""
-                return tuple(max(0, min(255, c * factor)) for c in rgb)
-            
-            try:
-                base_rgb = hex_to_rgb(base_color)
-                
-                return {
-                    '50': rgb_to_hex(adjust_lightness(base_rgb, 1.9)),
-                    '100': rgb_to_hex(adjust_lightness(base_rgb, 1.7)),
-                    '200': rgb_to_hex(adjust_lightness(base_rgb, 1.5)),
-                    '300': rgb_to_hex(adjust_lightness(base_rgb, 1.3)),
-                    '400': rgb_to_hex(adjust_lightness(base_rgb, 1.1)),
-                    '500': base_color,
-                    '600': rgb_to_hex(adjust_lightness(base_rgb, 0.9)),
-                    '700': rgb_to_hex(adjust_lightness(base_rgb, 0.7)),
-                    '800': rgb_to_hex(adjust_lightness(base_rgb, 0.5)),
-                    '900': rgb_to_hex(adjust_lightness(base_rgb, 0.3)),
-                    '950': rgb_to_hex(adjust_lightness(base_rgb, 0.1))
-                }
-            except:
-                # Fallback to neutral scale if color parsing fails
-                return {
-                    '50': '#f8fafc', '100': '#f1f5f9', '200': '#e2e8f0', '300': '#cbd5e1',
-                    '400': '#94a3b8', '500': base_color, '600': base_color, '700': base_color,
-                    '800': base_color, '900': '#1e293b', '950': '#0f172a'
-                }
-        
-        primary_scale = generate_color_scale(colors['primary'])
-        secondary_scale = generate_color_scale(colors['secondary'])
-        accent_scale = generate_color_scale(colors['accent'])
+        # Generate color scales using new algorithm
+        primary_scale = self.generate_color_scale(colors['primary'])
+        secondary_scale = self.generate_color_scale(colors['secondary'])
+        accent_scale = self.generate_color_scale(colors['accent'])
         
         # Generate CSS theme
         css_theme = f"""
@@ -1001,6 +1186,9 @@ async def main():
     parser.add_argument('--client-name', required=True, help='Client name for files')
     parser.add_argument('--logo-colors', default='{}', help='Extracted logo colors JSON')
     parser.add_argument('--logo-path', default='', help='Path to processed logo')
+    parser.add_argument('--primary-color', default='', help='User-specified primary color (hex format)')
+    parser.add_argument('--secondary-color', default='', help='User-specified secondary color (hex format)')
+    parser.add_argument('--accent-color', default='', help='User-specified accent color (hex format)')
     
     args = parser.parse_args()
     
@@ -1023,7 +1211,10 @@ async def main():
             'website_domain': args.website_domain,
             'client_name': args.client_name,
             'logo_colors': args.logo_colors,
-            'logo_path': args.logo_path
+            'logo_path': args.logo_path,
+            'primary_color': args.primary_color,
+            'secondary_color': args.secondary_color,
+            'accent_color': args.accent_color
         }
         
         print(f"Generating theme for: {args.business_name}")

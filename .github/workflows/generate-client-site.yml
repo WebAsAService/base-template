@@ -50,6 +50,21 @@ on:
         description: 'Client Name (for file paths, lowercase, no spaces)'
         required: true
         type: string
+      primary_color:
+        description: 'Primary Brand Color (hex format: #RRGGBB, optional - overrides logo colors)'
+        required: false
+        type: string
+        default: ''
+      secondary_color:
+        description: 'Secondary Color (hex format: #RRGGBB, optional - overrides auto-generated)'
+        required: false
+        type: string
+        default: ''
+      accent_color:
+        description: 'Accent/CTA Color (hex format: #RRGGBB, optional - overrides auto-generated)'
+        required: false
+        type: string
+        default: ''
   
   # Support external API calls via repository dispatch
   repository_dispatch:
@@ -113,6 +128,9 @@ jobs:
             echo "contact_phone=${{ github.event.inputs.contact_phone }}" >> $GITHUB_OUTPUT
             echo "website_domain=${{ github.event.inputs.website_domain }}" >> $GITHUB_OUTPUT
             echo "client_name=${{ github.event.inputs.client_name }}" >> $GITHUB_OUTPUT
+            echo "primary_color=${{ github.event.inputs.primary_color }}" >> $GITHUB_OUTPUT
+            echo "secondary_color=${{ github.event.inputs.secondary_color }}" >> $GITHUB_OUTPUT
+            echo "accent_color=${{ github.event.inputs.accent_color }}" >> $GITHUB_OUTPUT
           else
             echo "logo_url=${{ github.event.client_payload.logo_url }}" >> $GITHUB_OUTPUT
             echo "business_name=${{ github.event.client_payload.business_name }}" >> $GITHUB_OUTPUT
@@ -124,6 +142,9 @@ jobs:
             echo "contact_phone=${{ github.event.client_payload.contact_phone }}" >> $GITHUB_OUTPUT
             echo "website_domain=${{ github.event.client_payload.website_domain }}" >> $GITHUB_OUTPUT
             echo "client_name=${{ github.event.client_payload.client_name }}" >> $GITHUB_OUTPUT
+            echo "primary_color=${{ github.event.client_payload.primary_color }}" >> $GITHUB_OUTPUT
+            echo "secondary_color=${{ github.event.client_payload.secondary_color }}" >> $GITHUB_OUTPUT
+            echo "accent_color=${{ github.event.client_payload.accent_color }}" >> $GITHUB_OUTPUT
           fi
           
           # Send start webhook
@@ -208,7 +229,10 @@ jobs:
             --website-domain "${{ steps.setup.outputs.website_domain }}" \
             --client-name "${{ steps.setup.outputs.client_name }}" \
             --logo-colors "$(cat temp/extracted_colors.json)" \
-            --logo-path "public/images/clients/${{ steps.setup.outputs.client_name }}/logo.png"
+            --logo-path "public/images/clients/${{ steps.setup.outputs.client_name }}/logo.png" \
+            --primary-color "${{ steps.setup.outputs.primary_color }}" \
+            --secondary-color "${{ steps.setup.outputs.secondary_color }}" \
+            --accent-color "${{ steps.setup.outputs.accent_color }}"
           
           # Send content generated webhook
           if [ -n "$STATUS_WEBHOOK_URL" ]; then
