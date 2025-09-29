@@ -1,0 +1,34 @@
+{
+  "client_name": "webler-test",
+  "business_name": "Webler Test",
+  "industry": "AI, Web, Design, IT",
+  "generated_at": "2025-09-29T23:28:35.921526",
+  "files_created": [
+    "src/config/clients/webler-test.js",
+    "src/styles/client-themes.css"
+  ],
+  "ai_model": "claude-3-5-sonnet-20241022",
+  "generation_steps": [
+    "base_config",
+    "custom_content",
+    "theme_css"
+  ],
+  "content_customized": true,
+  "colors_from_logo": true,
+  "business_data": {
+    "business_name": "Webler Test",
+    "business_description": "AI Web agency with expert human intervention. Webler is your website team on subscription. Instead of paying thousands upfront or managing DIY tools, you get a professional site in about a week with unlimited updates for one monthly price.",
+    "industry": "AI, Web, Design, IT",
+    "target_audience": "CFOs, Linkedin professionals",
+    "services": "Web Development, SEO, branding",
+    "contact_email": "",
+    "contact_phone": "",
+    "website_domain": "",
+    "client_name": "webler-test",
+    "logo_colors": "{\"businessBased\": true}",
+    "logo_path": "public/images/clients/webler-test/logo.png",
+    "primary_color": "",
+    "secondary_color": "",
+    "accent_color": ""
+  }
+}
