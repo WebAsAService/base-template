@@ -32,15 +32,10 @@ on:
         required: false
         type: string
         default: ''
-      contact_email:
-        description: 'Contact Email'
+      contact_info:
+        description: 'Contact Info (format: email=test@example.com,phone=+1234567890 - email required, phone optional)'
         required: true
         type: string
-      contact_phone:
-        description: 'Contact Phone'
-        required: false
-        type: string
-        default: ''
       website_domain:
         description: 'Website Domain'
         required: false
@@ -50,6 +45,11 @@ on:
         description: 'Client Name (for file paths, lowercase, no spaces)'
         required: true
         type: string
+      custom_colors:
+        description: 'Custom Colors (format: primary=#FF0000,secondary=#00FF00,accent=#0000FF - all optional)'
+        required: false
+        type: string
+        default: ''
   
   # Support external API calls via repository dispatch
   repository_dispatch:
@@ -109,10 +109,30 @@ jobs:
             echo "industry=${{ github.event.inputs.industry }}" >> $GITHUB_OUTPUT
             echo "target_audience=${{ github.event.inputs.target_audience }}" >> $GITHUB_OUTPUT
             echo "services=${{ github.event.inputs.services }}" >> $GITHUB_OUTPUT
-            echo "contact_email=${{ github.event.inputs.contact_email }}" >> $GITHUB_OUTPUT
-            echo "contact_phone=${{ github.event.inputs.contact_phone }}" >> $GITHUB_OUTPUT
+            
+            # Parse contact info from consolidated field
+            CONTACT_INFO="${{ github.event.inputs.contact_info }}"
+            
+            # Extract contact email and phone using parameter expansion
+            CONTACT_EMAIL=$(echo "$CONTACT_INFO" | sed -n 's/.*email=\([^,]*\).*/\1/p')
+            CONTACT_PHONE=$(echo "$CONTACT_INFO" | sed -n 's/.*phone=\([^,]*\).*/\1/p')
+            
+            echo "contact_email=$CONTACT_EMAIL" >> $GITHUB_OUTPUT
+            echo "contact_phone=$CONTACT_PHONE" >> $GITHUB_OUTPUT
             echo "website_domain=${{ github.event.inputs.website_domain }}" >> $GITHUB_OUTPUT
             echo "client_name=${{ github.event.inputs.client_name }}" >> $GITHUB_OUTPUT
+            
+            # Parse custom colors from consolidated field
+            CUSTOM_COLORS="${{ github.event.inputs.custom_colors }}"
+            
+            # Extract individual colors using parameter expansion
+            PRIMARY_COLOR=$(echo "$CUSTOM_COLORS" | sed -n 's/.*primary=\([^,]*\).*/\1/p')
+            SECONDARY_COLOR=$(echo "$CUSTOM_COLORS" | sed -n 's/.*secondary=\([^,]*\).*/\1/p')
+            ACCENT_COLOR=$(echo "$CUSTOM_COLORS" | sed -n 's/.*accent=\([^,]*\).*/\1/p')
+            
+            echo "primary_color=$PRIMARY_COLOR" >> $GITHUB_OUTPUT
+            echo "secondary_color=$SECONDARY_COLOR" >> $GITHUB_OUTPUT
+            echo "accent_color=$ACCENT_COLOR" >> $GITHUB_OUTPUT
           else
             echo "logo_url=${{ github.event.client_payload.logo_url }}" >> $GITHUB_OUTPUT
             echo "business_name=${{ github.event.client_payload.business_name }}" >> $GITHUB_OUTPUT
@@ -120,10 +140,30 @@ jobs:
             echo "industry=${{ github.event.client_payload.industry }}" >> $GITHUB_OUTPUT
             echo "target_audience=${{ github.event.client_payload.target_audience }}" >> $GITHUB_OUTPUT
             echo "services=${{ github.event.client_payload.services }}" >> $GITHUB_OUTPUT
-            echo "contact_email=${{ github.event.client_payload.contact_email }}" >> $GITHUB_OUTPUT
-            echo "contact_phone=${{ github.event.client_payload.contact_phone }}" >> $GITHUB_OUTPUT
+            
+            # Parse contact info from consolidated field
+            CONTACT_INFO="${{ github.event.client_payload.contact_info }}"
+            
+            # Extract contact email and phone using parameter expansion
+            CONTACT_EMAIL=$(echo "$CONTACT_INFO" | sed -n 's/.*email=\([^,]*\).*/\1/p')
+            CONTACT_PHONE=$(echo "$CONTACT_INFO" | sed -n 's/.*phone=\([^,]*\).*/\1/p')
+            
+            echo "contact_email=$CONTACT_EMAIL" >> $GITHUB_OUTPUT
+            echo "contact_phone=$CONTACT_PHONE" >> $GITHUB_OUTPUT
             echo "website_domain=${{ github.event.client_payload.website_domain }}" >> $GITHUB_OUTPUT
             echo "client_name=${{ github.event.client_payload.client_name }}" >> $GITHUB_OUTPUT
+            
+            # Parse custom colors from consolidated field
+            CUSTOM_COLORS="${{ github.event.client_payload.custom_colors }}"
+            
+            # Extract individual colors using parameter expansion
+            PRIMARY_COLOR=$(echo "$CUSTOM_COLORS" | sed -n 's/.*primary=\([^,]*\).*/\1/p')
+            SECONDARY_COLOR=$(echo "$CUSTOM_COLORS" | sed -n 's/.*secondary=\([^,]*\).*/\1/p')
+            ACCENT_COLOR=$(echo "$CUSTOM_COLORS" | sed -n 's/.*accent=\([^,]*\).*/\1/p')
+            
+            echo "primary_color=$PRIMARY_COLOR" >> $GITHUB_OUTPUT
+            echo "secondary_color=$SECONDARY_COLOR" >> $GITHUB_OUTPUT
+            echo "accent_color=$ACCENT_COLOR" >> $GITHUB_OUTPUT
           fi
           
           # Send start webhook
@@ -208,7 +248,10 @@ jobs:
             --website-domain "${{ steps.setup.outputs.website_domain }}" \
             --client-name "${{ steps.setup.outputs.client_name }}" \
             --logo-colors "$(cat temp/extracted_colors.json)" \
-            --logo-path "public/images/clients/${{ steps.setup.outputs.client_name }}/logo.png"
+            --logo-path "public/images/clients/${{ steps.setup.outputs.client_name }}/logo.png" \
+            --primary-color "${{ steps.setup.outputs.primary_color }}" \
+            --secondary-color "${{ steps.setup.outputs.secondary_color }}" \
+            --accent-color "${{ steps.setup.outputs.accent_color }}"
           
           # Send content generated webhook
           if [ -n "$STATUS_WEBHOOK_URL" ]; then
