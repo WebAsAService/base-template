@@ -1,0 +1,34 @@
+{
+  "client_name": "techingenius",
+  "business_name": "Tech test",
+  "industry": "Technology",
+  "generated_at": "2025-10-15T20:23:24.835239",
+  "files_created": [
+    "src/config/clients/techingenius.js",
+    "src/styles/client-themes.css"
+  ],
+  "ai_model": "claude-3-5-sonnet-20241022",
+  "generation_steps": [
+    "base_config",
+    "custom_content",
+    "theme_css"
+  ],
+  "content_customized": true,
+  "colors_from_logo": true,
+  "business_data": {
+    "business_name": "Tech test",
+    "business_description": "Telecom and Software factory",
+    "industry": "Technology",
+    "target_audience": "Big telecom companies and startups requiring custom mobile or software developemnt",
+    "services": "Web Development, SEO, branding",
+    "contact_email": "",
+    "contact_phone": "",
+    "website_domain": "",
+    "client_name": "techingenius",
+    "logo_colors": "{\n  \"dominantColors\": [\n    \"#fc7c04\",\n    \"#d46c04\",\n    \"#fcbc7a\",\n    \"#974a01\",\n    \"#1c140d\"\n  ],\n  \"palette\": {\n    \"primary\": \"#fc7c04\",\n    \"secondary\": \"#d46c04\",\n    \"accent\": \"#fcbc7a\",\n    \"neutral\": \"#974a01\"\n  },\n  \"brightness\": \"mixed\",\n  \"contrast\": \"high\",\n  \"raw\": {\n    \"vibrant\": \"#fc7c04\",\n    \"darkVibrant\": \"#d46c04\",\n    \"lightVibrant\": \"#fcbc7a\",\n    \"muted\": \"#974a01\",\n    \"darkMuted\": \"#1c140d\",\n    \"lightMuted\": \"#954d03\"\n  }\n}",
+    "logo_path": "public/images/clients/techingenius/logo.png",
+    "primary_color": "",
+    "secondary_color": "",
+    "accent_color": ""
+  }
+}
