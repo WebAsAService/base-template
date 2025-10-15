@@ -1,0 +1,112 @@
+---
+/**
+ * Client Assets Page: techingenius
+ * Shows different logo variants and brand assets
+ */
+
+import Layout from '@layouts/Layout.astro';
+import { clientConfig } from '@config/clients/techingenius.js';
+
+const clientTheme = 'theme-techingenius';
+const logoBasePath = '/images/clients/techingenius';
+---
+
+<Layout 
+  title={`${clientConfig.business.name} - Brand Assets`}
+  description={`Brand assets and logo variants for ${clientConfig.business.name}`}
+  clientTheme={clientTheme}
+>
+  <main class="min-h-screen py-16">
+    <div class="container mx-auto px-4">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold mb-4">{clientConfig.business.name}</h1>
+        <p class="text-xl text-secondary-600">Brand Assets & Logo Variants</p>
+      </div>
+      
+      <!-- Logo Variants Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <!-- Main Logo -->
+        <div class="bg-white p-8 rounded-lg shadow-md text-center">
+          <img 
+            src={`${logoBasePath}/logo.png`}
+            alt={`${clientConfig.business.name} Logo`}
+            class="max-h-24 mx-auto mb-4"
+          />
+          <h3 class="font-semibold">Main Logo</h3>
+          <p class="text-sm text-secondary-600">Primary brand mark</p>
+        </div>
+        
+        <!-- Dark Background Logo -->
+        <div class="bg-secondary-900 p-8 rounded-lg shadow-md text-center">
+          <img 
+            src={`${logoBasePath}/logo-dark.png`}
+            alt={`${clientConfig.business.name} Logo Dark`}
+            class="max-h-24 mx-auto mb-4"
+          />
+          <h3 class="font-semibold text-white">Dark Version</h3>
+          <p class="text-sm text-secondary-300">For dark backgrounds</p>
+        </div>
+        
+        <!-- Small Logo -->
+        <div class="bg-secondary-50 p-8 rounded-lg shadow-md text-center">
+          <img 
+            src={`${logoBasePath}/logo-sm.png`}
+            alt={`${clientConfig.business.name} Small Logo`}
+            class="max-h-16 mx-auto mb-4"
+          />
+          <h3 class="font-semibold">Small Size</h3>
+          <p class="text-sm text-secondary-600">Compact version</p>
+        </div>
+        
+        <!-- Favicon -->
+        <div class="bg-white p-8 rounded-lg shadow-md text-center border">
+          <img 
+            src={`${logoBasePath}/favicon.png`}
+            alt="Favicon"
+            class="w-8 h-8 mx-auto mb-4"
+          />
+          <h3 class="font-semibold">Favicon</h3>
+          <p class="text-sm text-secondary-600">Browser icon</p>
+        </div>
+      </div>
+      
+      <!-- Color Palette -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold text-center mb-8">Brand Colors</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <!-- Primary Color -->
+          <div class="text-center">
+            <div class="w-20 h-20 bg-primary-500 rounded-lg mx-auto mb-2 shadow-md"></div>
+            <h4 class="font-semibold">Primary</h4>
+            <p class="text-sm text-secondary-600">{clientConfig.branding.colors.primary}</p>
+          </div>
+          
+          <!-- Secondary Color -->
+          <div class="text-center">
+            <div class="w-20 h-20 bg-secondary-500 rounded-lg mx-auto mb-2 shadow-md"></div>
+            <h4 class="font-semibold">Secondary</h4>
+            <p class="text-sm text-secondary-600">{clientConfig.branding.colors.secondary}</p>
+          </div>
+          
+          <!-- Accent Color -->
+          <div class="text-center">
+            <div class="w-20 h-20 bg-accent-500 rounded-lg mx-auto mb-2 shadow-md"></div>
+            <h4 class="font-semibold">Accent</h4>
+            <p class="text-sm text-secondary-600">{clientConfig.branding.colors.accent}</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Back to Main Site -->
+      <div class="text-center">
+        <a 
+          href={`/clients/techingenius/`}
+          class="inline-flex items-center px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+        >
+          ← Back to Main Site
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>
