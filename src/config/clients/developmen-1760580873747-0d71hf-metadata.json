@@ -1,0 +1,34 @@
+{
+  "client_name": "developmen-1760580873747-0d71hf",
+  "business_name": "Development",
+  "industry": "Technology",
+  "generated_at": "2025-10-16T02:15:54.737687",
+  "files_created": [
+    "src/config/clients/developmen-1760580873747-0d71hf.js",
+    "src/styles/client-themes.css"
+  ],
+  "ai_model": "claude-3-5-sonnet-20241022",
+  "generation_steps": [
+    "base_config",
+    "custom_content",
+    "theme_css"
+  ],
+  "content_customized": true,
+  "colors_from_logo": true,
+  "business_data": {
+    "business_name": "Development",
+    "business_description": "Mobile and software development",
+    "industry": "Technology",
+    "target_audience": "Founders",
+    "services": "Mobile and software development",
+    "contact_email": "jonasgraterol@gmail.com",
+    "contact_phone": "",
+    "website_domain": "",
+    "client_name": "developmen-1760580873747-0d71hf",
+    "logo_colors": "{\"businessBased\": true}",
+    "logo_path": "public/images/clients/developmen-1760580873747-0d71hf/logo.png",
+    "primary_color": "",
+    "secondary_color": "",
+    "accent_color": ""
+  }
+}
