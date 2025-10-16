@@ -139,20 +139,26 @@ jobs:
             CLIENT_ID=$(echo "${{ github.event.inputs.business_name }}" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-\|-$//g')-$(date +%s)-$(openssl rand -hex 3)
             echo "client_id=$CLIENT_ID" >> $GITHUB_OUTPUT
           else
-            echo "logo_url=${{ github.event.client_payload.logoUrl }}" >> $GITHUB_OUTPUT
-            echo "business_name=${{ github.event.client_payload.businessName }}" >> $GITHUB_OUTPUT
-            echo "business_description=${{ github.event.client_payload.description }}" >> $GITHUB_OUTPUT
+            # Handle repository_dispatch from client portal
+            echo "logo_url=${{ github.event.client_payload.logo_url }}" >> $GITHUB_OUTPUT
+            echo "business_name=${{ github.event.client_payload.business_name }}" >> $GITHUB_OUTPUT
+            echo "business_description=${{ github.event.client_payload.business_description }}" >> $GITHUB_OUTPUT
             echo "industry=${{ github.event.client_payload.industry }}" >> $GITHUB_OUTPUT
-            echo "target_audience=${{ github.event.client_payload.targetAudience }}" >> $GITHUB_OUTPUT
-            echo "services=$(echo '${{ github.event.client_payload.services }}' | jq -r 'join(",")')" >> $GITHUB_OUTPUT
-            echo "contact_email=${{ github.event.client_payload.email }}" >> $GITHUB_OUTPUT
-            echo "contact_phone=${{ github.event.client_payload.phone }}" >> $GITHUB_OUTPUT
-            echo "website_domain=${{ github.event.client_payload.domain }}" >> $GITHUB_OUTPUT
-            echo "client_id=${{ github.event.client_payload.clientId }}" >> $GITHUB_OUTPUT
+            echo "target_audience=${{ github.event.client_payload.target_audience }}" >> $GITHUB_OUTPUT
+            echo "services=${{ github.event.client_payload.services }}" >> $GITHUB_OUTPUT
+            echo "contact_email=$(echo '${{ github.event.client_payload.contact_info }}' | sed -n 's/.*email=\([^,]*\).*/\1/p')" >> $GITHUB_OUTPUT
+            echo "contact_phone=$(echo '${{ github.event.client_payload.contact_info }}' | sed -n 's/.*phone=\([^,]*\).*/\1/p')" >> $GITHUB_OUTPUT
+            echo "client_name=${{ github.event.client_payload.client_name }}" >> $GITHUB_OUTPUT
+            echo "client_id=${{ github.event.client_payload.client_name }}" >> $GITHUB_OUTPUT
 
-            # Generate client_name from client_id for compatibility
-            CLIENT_NAME=$(echo "${{ github.event.client_payload.clientId }}" | cut -d'-' -f1-2)
-            echo "client_name=$CLIENT_NAME" >> $GITHUB_OUTPUT
+            # Parse metadata JSON for additional fields
+            METADATA='${{ github.event.client_payload.metadata }}'
+            if [ -n "$METADATA" ] && [ "$METADATA" != "null" ]; then
+              echo "website_domain=$(echo '$METADATA' | jq -r '.website_domain // ""')" >> $GITHUB_OUTPUT
+              echo "logo_url=$(echo '$METADATA' | jq -r '.logo_url // ""')" >> $GITHUB_OUTPUT
+            else
+              echo "website_domain=" >> $GITHUB_OUTPUT
+            fi
 
             # Extract colors (not implemented in client portal yet, but prepared)
             echo "primary_color=" >> $GITHUB_OUTPUT
