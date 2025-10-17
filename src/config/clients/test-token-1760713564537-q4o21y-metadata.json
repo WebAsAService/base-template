@@ -1,0 +1,34 @@
+{
+  "client_name": "test-token-1760713564537-q4o21y",
+  "business_name": "Test Token Loading",
+  "industry": "Technology",
+  "generated_at": "2025-10-17T15:07:30.833488",
+  "files_created": [
+    "src/config/clients/test-token-1760713564537-q4o21y.js",
+    "src/styles/client-themes.css"
+  ],
+  "ai_model": "claude-3-5-sonnet-20241022",
+  "generation_steps": [
+    "base_config",
+    "custom_content",
+    "theme_css"
+  ],
+  "content_customized": true,
+  "colors_from_logo": true,
+  "business_data": {
+    "business_name": "Test Token Loading",
+    "business_description": "Testing environment variable loading",
+    "industry": "Technology",
+    "target_audience": "Developers",
+    "services": "Consulting",
+    "contact_email": "test@example.com",
+    "contact_phone": "",
+    "website_domain": "",
+    "client_name": "test-token-1760713564537-q4o21y",
+    "logo_colors": "{\"businessBased\": true}",
+    "logo_path": "public/images/clients/test-token-1760713564537-q4o21y/logo.png",
+    "primary_color": "",
+    "secondary_color": "",
+    "accent_color": ""
+  }
+}
