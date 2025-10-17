@@ -1,0 +1,34 @@
+{
+  "client_name": "localhost--1760714104179-9f63jg",
+  "business_name": "Localhost services",
+  "industry": "Technology",
+  "generated_at": "2025-10-17T15:16:28.281202",
+  "files_created": [
+    "src/config/clients/localhost--1760714104179-9f63jg.js",
+    "src/styles/client-themes.css"
+  ],
+  "ai_model": "claude-3-5-sonnet-20241022",
+  "generation_steps": [
+    "base_config",
+    "custom_content",
+    "theme_css"
+  ],
+  "content_customized": true,
+  "colors_from_logo": true,
+  "business_data": {
+    "business_name": "Localhost services",
+    "business_description": "Software development",
+    "industry": "Technology",
+    "target_audience": "Startup founders",
+    "services": "Software development",
+    "contact_email": "jonasgraterol@gmail.com",
+    "contact_phone": "",
+    "website_domain": "",
+    "client_name": "localhost--1760714104179-9f63jg",
+    "logo_colors": "{\"businessBased\": true}",
+    "logo_path": "public/images/clients/localhost--1760714104179-9f63jg/logo.png",
+    "primary_color": "",
+    "secondary_color": "",
+    "accent_color": ""
+  }
+}

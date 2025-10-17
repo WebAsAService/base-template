@@ -928,3 +928,72 @@
   --border-radius-lg: calc(4px * 1.5);
 }
 
+
+
+/* 
+ * Client Theme: Localhost services
+ * Generated on: 2025-10-17 15:16:28
+ * Industry: Technology
+ */
+.theme-localhost--1760714104179-9f63jg {
+  /* Background for visual distinction */
+  background-color: #e8eefb;
+  
+  /* Primary color scale */
+  --color-primary-50: #e8eefb;
+  --color-primary-100: #d2def8;
+  --color-primary-200: #a5bdf2;
+  --color-primary-300: #628ce8;
+  --color-primary-400: #205bde;
+  --color-primary-500: #2563eb;
+  --color-primary-600: #0843c3;
+  --color-primary-700: #063292;
+  --color-primary-800: #042161;
+  --color-primary-900: #02143a;
+  --color-primary-950: #010a1d;
+
+  /* Secondary color scale */
+  --color-secondary-50: #f0f1f4;
+  --color-secondary-100: #e1e4e9;
+  --color-secondary-200: #c3cad4;
+  --color-secondary-300: #96a3b5;
+  --color-secondary-400: #697b95;
+  --color-secondary-500: #475569;
+  --color-secondary-600: #50627b;
+  --color-secondary-700: #3c495c;
+  --color-secondary-800: #28313d;
+  --color-secondary-900: #181d25;
+  --color-secondary-950: #0c0e12;
+
+  /* Accent color scale */
+  --color-accent-50: #e7f9fd;
+  --color-accent-100: #cff4fb;
+  --color-accent-200: #a0eaf7;
+  --color-accent-300: #59dbf1;
+  --color-accent-400: #13cceb;
+  --color-accent-500: #06b6d4;
+  --color-accent-600: #00aecc;
+  --color-accent-700: #008299;
+  --color-accent-800: #005766;
+  --color-accent-900: #00343d;
+  --color-accent-950: #001a1e;
+
+  /* Typography */
+  --font-family-primary: 'Inter', sans-serif;
+  --font-family-heading: 'JetBrains Mono', sans-serif;
+  --font-scale-ratio: 1.25;
+  --font-weight-heading: var(--font-weight-semibold);
+  --letter-spacing-heading: var(--letter-spacing-tight);
+  
+  /* Component theming */
+  --button-radius: 4px;
+  --card-radius: calc(4px * 1.5);
+  --input-radius: calc(4px * 0.75);
+  --card-shadow: var(--shadow-lg);
+  --button-shadow: var(--shadow-sm);
+  
+  /* Border radius */
+  --border-radius-md: 4px;
+  --border-radius-lg: calc(4px * 1.5);
+}
+
