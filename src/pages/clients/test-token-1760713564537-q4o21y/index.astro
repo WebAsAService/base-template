@@ -1,0 +1,74 @@
+---
+/**
+ * Client Page: test-token-1760713564537-q4o21y
+ * Generated automatically by AI workflow
+ */
+
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/layout/Header.astro';
+import HeroSection from '@components/sections/HeroSection.astro';
+import FeaturesSection from '@components/sections/FeaturesSection.astro';
+import ServicesSection from '@components/sections/ServicesSection.astro';
+import TestimonialsSection from '@components/sections/TestimonialsSection.astro';
+import ContactSection from '@components/sections/ContactSection.astro';
+
+// Import client configuration
+import { clientConfig } from '@config/clients/test-token-1760713564537-q4o21y.js';
+
+// Set client theme class
+const clientTheme = 'theme-test-token-1760713564537-q4o21y';
+---
+
+<Layout 
+  title={clientConfig.business.name}
+  description={clientConfig.business.shortDescription}
+  clientTheme={clientTheme}
+>
+  <!-- Header with logo and navigation -->
+  <Header 
+    clientConfig={clientConfig}
+    logo="/images/clients/test-token-1760713564537-q4o21y/logo.png"
+  />
+  
+  <main class="min-h-screen">
+    <!-- Hero Section -->
+    <HeroSection config={clientConfig.content.hero} />
+    
+    <!-- Features Section -->
+    <FeaturesSection 
+      title="Our Features"
+      subtitle="What we offer"
+      features={clientConfig.content.features}
+    />
+    
+    <!-- Services/Pricing Section -->
+    <ServicesSection 
+      title="Our Services"
+      services={clientConfig.content.services}
+    />
+    
+    <!-- Testimonials Section -->
+    <TestimonialsSection 
+      title="What Our Clients Say"
+      testimonials={clientConfig.content.testimonials}
+    />
+    
+    <!-- Contact Section -->
+    <ContactSection 
+      title="Contact Us"
+      subtitle="Get in touch"
+      form={{}}
+      methods={[]}
+      contact={clientConfig.contact}
+      social={clientConfig.social}
+    />
+  </main>
+</Layout>
+
+<style>
+  /* Client-specific page styles can go here */
+  main {
+    /* Ensure theme variables are applied */
+    @apply text-secondary-900;
+  }
+</style>
