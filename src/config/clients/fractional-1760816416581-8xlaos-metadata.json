@@ -1,0 +1,34 @@
+{
+  "client_name": "fractional-1760816416581-8xlaos",
+  "business_name": "Fractional CFO",
+  "industry": "Finance",
+  "generated_at": "2025-10-18T19:41:37.871502",
+  "files_created": [
+    "src/config/clients/fractional-1760816416581-8xlaos.js",
+    "src/styles/client-themes.css"
+  ],
+  "ai_model": "claude-3-5-sonnet-20241022",
+  "generation_steps": [
+    "base_config",
+    "custom_content",
+    "theme_css"
+  ],
+  "content_customized": true,
+  "colors_from_logo": true,
+  "business_data": {
+    "business_name": "Fractional CFO",
+    "business_description": "cash flows and budget forecasts",
+    "industry": "Finance",
+    "target_audience": "Sass Founders",
+    "services": "cash flows and budget forecasts",
+    "contact_email": "jonasgraterol@gmail.com",
+    "contact_phone": "",
+    "website_domain": "",
+    "client_name": "fractional-1760816416581-8xlaos",
+    "logo_colors": "{\"businessBased\": true}",
+    "logo_path": "public/images/clients/fractional-1760816416581-8xlaos/logo.png",
+    "primary_color": "",
+    "secondary_color": "",
+    "accent_color": ""
+  }
+}
