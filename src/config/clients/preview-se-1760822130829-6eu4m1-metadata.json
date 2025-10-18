@@ -1,0 +1,34 @@
+{
+  "client_name": "preview-se-1760822130829-6eu4m1",
+  "business_name": "Preview services",
+  "industry": "Legal",
+  "generated_at": "2025-10-18T21:16:47.168890",
+  "files_created": [
+    "src/config/clients/preview-se-1760822130829-6eu4m1.js",
+    "src/styles/client-themes.css"
+  ],
+  "ai_model": "claude-3-5-sonnet-20241022",
+  "generation_steps": [
+    "base_config",
+    "custom_content",
+    "theme_css"
+  ],
+  "content_customized": true,
+  "colors_from_logo": true,
+  "business_data": {
+    "business_name": "Preview services",
+    "business_description": "Pool maintenance and building construction",
+    "industry": "Legal",
+    "target_audience": "User experience for AI",
+    "services": "Pool maintenance and building construction",
+    "contact_email": "jonasgraterol@gmail.com",
+    "contact_phone": "",
+    "website_domain": "",
+    "client_name": "preview-se-1760822130829-6eu4m1",
+    "logo_colors": "{\"businessBased\": true}",
+    "logo_path": "public/images/clients/preview-se-1760822130829-6eu4m1/logo.png",
+    "primary_color": "",
+    "secondary_color": "",
+    "accent_color": ""
+  }
+}
