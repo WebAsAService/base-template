@@ -928,3 +928,72 @@
   --border-radius-lg: calc(4px * 1.5);
 }
 
+
+
+/* 
+ * Client Theme: Fractional CFO
+ * Generated on: 2025-10-18 19:41:37
+ * Industry: Finance
+ */
+.theme-fractional-1760816416581-8xlaos {
+  /* Background for visual distinction */
+  background-color: #e8fcf6;
+  
+  /* Primary color scale */
+  --color-primary-50: #e8fcf6;
+  --color-primary-100: #d1f9ee;
+  --color-primary-200: #a3f4dd;
+  --color-primary-300: #5eecc4;
+  --color-primary-400: #1ae4ab;
+  --color-primary-500: #065f46;
+  --color-primary-600: #03c891;
+  --color-primary-700: #02966c;
+  --color-primary-800: #016448;
+  --color-primary-900: #003c2b;
+  --color-primary-950: #001e15;
+
+  /* Secondary color scale */
+  --color-secondary-50: #f0f1f4;
+  --color-secondary-100: #e1e4e9;
+  --color-secondary-200: #c3c9d4;
+  --color-secondary-300: #96a2b5;
+  --color-secondary-400: #697a95;
+  --color-secondary-500: #374151;
+  --color-secondary-600: #50617b;
+  --color-secondary-700: #3c485c;
+  --color-secondary-800: #28303d;
+  --color-secondary-900: #181d25;
+  --color-secondary-950: #0c0e12;
+
+  /* Accent color scale */
+  --color-accent-50: #fdf3e7;
+  --color-accent-100: #fbe7cf;
+  --color-accent-200: #f7cfa0;
+  --color-accent-300: #f1ab59;
+  --color-accent-400: #ec8712;
+  --color-accent-500: #d97706;
+  --color-accent-600: #cc6d00;
+  --color-accent-700: #995100;
+  --color-accent-800: #663600;
+  --color-accent-900: #3d2000;
+  --color-accent-950: #1e1000;
+
+  /* Typography */
+  --font-family-primary: 'Inter', sans-serif;
+  --font-family-heading: 'Playfair Display', sans-serif;
+  --font-scale-ratio: 1.25;
+  --font-weight-heading: var(--font-weight-semibold);
+  --letter-spacing-heading: var(--letter-spacing-tight);
+  
+  /* Component theming */
+  --button-radius: 6px;
+  --card-radius: calc(6px * 1.5);
+  --input-radius: calc(6px * 0.75);
+  --card-shadow: var(--shadow-sm);
+  --button-shadow: var(--shadow-sm);
+  
+  /* Border radius */
+  --border-radius-md: 6px;
+  --border-radius-lg: calc(6px * 1.5);
+}
+
