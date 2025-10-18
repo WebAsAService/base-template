@@ -928,3 +928,72 @@
   --border-radius-lg: calc(4px * 1.5);
 }
 
+
+
+/* 
+ * Client Theme: Localhost test
+ * Generated on: 2025-10-18 19:28:09
+ * Industry: Real Estate
+ */
+.theme-localhost--1760815604620-sfdp5g {
+  /* Background for visual distinction */
+  background-color: #e7f5fd;
+  
+  /* Primary color scale */
+  --color-primary-50: #e7f5fd;
+  --color-primary-100: #cfebfb;
+  --color-primary-200: #9fd8f8;
+  --color-primary-300: #58bcf3;
+  --color-primary-400: #109fee;
+  --color-primary-500: #0369a1;
+  --color-primary-600: #0083cc;
+  --color-primary-700: #006299;
+  --color-primary-800: #004166;
+  --color-primary-900: #00273d;
+  --color-primary-950: #00131e;
+
+  /* Secondary color scale */
+  --color-secondary-50: #f0f1f4;
+  --color-secondary-100: #e1e4e9;
+  --color-secondary-200: #c4cad3;
+  --color-secondary-300: #98a3b2;
+  --color-secondary-400: #6c7c92;
+  --color-secondary-500: #64748b;
+  --color-secondary-600: #536278;
+  --color-secondary-700: #3e4a5a;
+  --color-secondary-800: #29313c;
+  --color-secondary-900: #191d24;
+  --color-secondary-950: #0c0e12;
+
+  /* Accent color scale */
+  --color-accent-50: #fdf3e7;
+  --color-accent-100: #fbe7cf;
+  --color-accent-200: #f7cfa0;
+  --color-accent-300: #f1ab59;
+  --color-accent-400: #ec8712;
+  --color-accent-500: #d97706;
+  --color-accent-600: #cc6d00;
+  --color-accent-700: #995100;
+  --color-accent-800: #663600;
+  --color-accent-900: #3d2000;
+  --color-accent-950: #1e1000;
+
+  /* Typography */
+  --font-family-primary: 'Inter', sans-serif;
+  --font-family-heading: 'Inter', sans-serif;
+  --font-scale-ratio: 1.25;
+  --font-weight-heading: var(--font-weight-semibold);
+  --letter-spacing-heading: var(--letter-spacing-tight);
+  
+  /* Component theming */
+  --button-radius: 8px;
+  --card-radius: calc(8px * 1.5);
+  --input-radius: calc(8px * 0.75);
+  --card-shadow: var(--shadow-md);
+  --button-shadow: var(--shadow-sm);
+  
+  /* Border radius */
+  --border-radius-md: 8px;
+  --border-radius-lg: calc(8px * 1.5);
+}
+

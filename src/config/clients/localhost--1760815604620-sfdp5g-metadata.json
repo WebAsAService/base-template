@@ -1,0 +1,34 @@
+{
+  "client_name": "localhost--1760815604620-sfdp5g",
+  "business_name": "Localhost test",
+  "industry": "Real Estate",
+  "generated_at": "2025-10-18T19:28:09.274459",
+  "files_created": [
+    "src/config/clients/localhost--1760815604620-sfdp5g.js",
+    "src/styles/client-themes.css"
+  ],
+  "ai_model": "claude-3-5-sonnet-20241022",
+  "generation_steps": [
+    "base_config",
+    "custom_content",
+    "theme_css"
+  ],
+  "content_customized": true,
+  "colors_from_logo": true,
+  "business_data": {
+    "business_name": "Localhost test",
+    "business_description": "Selling and Buying houses",
+    "industry": "Real Estate",
+    "target_audience": "Businesses any kind",
+    "services": "Selling and Buying houses",
+    "contact_email": "jonasgraterol@gmail.com",
+    "contact_phone": "",
+    "website_domain": "",
+    "client_name": "localhost--1760815604620-sfdp5g",
+    "logo_colors": "{\"businessBased\": true}",
+    "logo_path": "public/images/clients/localhost--1760815604620-sfdp5g/logo.png",
+    "primary_color": "",
+    "secondary_color": "",
+    "accent_color": ""
+  }
+}
