@@ -74,7 +74,6 @@ jobs:
     outputs:
       pr_url: ${{ steps.create_pr.outputs.pr_url }}
       client_name: ${{ steps.setup.outputs.client_name }}
-      client_id: ${{ steps.setup.outputs.client_id }}
 
     steps:
       - name: Checkout repository
@@ -136,8 +135,11 @@ jobs:
             echo "accent_color=$ACCENT_COLOR" >> $GITHUB_OUTPUT
 
             # Generate client_id from business name for compatibility
-            CLIENT_ID=$(echo "${{ github.event.inputs.business_name }}" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-\|-$//g')-$(date +%s)-$(openssl rand -hex 3)
-            echo "client_id=$CLIENT_ID" >> $GITHUB_OUTPUT
+            CLIENT_NAME=$(echo "${{ github.event.inputs.business_name }}" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-\|-$//g')-$(date +%s)-$(openssl rand -hex 3)
+            echo "client_name=$CLIENT_NAME" >> $GITHUB_OUTPUT
+
+            # Use hardcoded webhook for manual dispatch
+            echo "webhook_url=$STATUS_WEBHOOK_URL" >> $GITHUB_OUTPUT
           else
             # Handle repository_dispatch from client portal
             echo "logo_url=${{ github.event.client_payload.logo_url }}" >> $GITHUB_OUTPUT
@@ -149,7 +151,7 @@ jobs:
             echo "contact_email=$(echo '${{ github.event.client_payload.contact_info }}' | sed -n 's/.*email=\([^,]*\).*/\1/p')" >> $GITHUB_OUTPUT
             echo "contact_phone=$(echo '${{ github.event.client_payload.contact_info }}' | sed -n 's/.*phone=\([^,]*\).*/\1/p')" >> $GITHUB_OUTPUT
             echo "client_name=${{ github.event.client_payload.client_name }}" >> $GITHUB_OUTPUT
-            echo "client_id=${{ github.event.client_payload.client_name }}" >> $GITHUB_OUTPUT
+            echo "webhook_url=${{ github.event.client_payload.webhook_url }}" >> $GITHUB_OUTPUT
 
             # Parse metadata JSON for additional fields
             METADATA='${{ github.event.client_payload.metadata }}'
@@ -166,14 +168,14 @@ jobs:
             echo "accent_color=" >> $GITHUB_OUTPUT
           fi
 
-          # Send start webhook with client_id
-          if [ -n "$STATUS_WEBHOOK_URL" ]; then
-            curl -X POST "$STATUS_WEBHOOK_URL" \
+          # Send start webhook using extracted webhook_url
+          WEBHOOK_URL="${{ steps.setup.outputs.webhook_url }}"
+          if [ -n "$WEBHOOK_URL" ]; then
+            curl -X POST "$WEBHOOK_URL" \
               -H "Content-Type: application/json" \
               -d '{
                 "status": "started",
-                "client_id": "'"${{ steps.setup.outputs.client_id }}"'",
-                "client_name": "'"${{ steps.setup.outputs.business_name }}"'",
+                "client_name": "'"${{ steps.setup.outputs.client_name }}"'",
                 "message": "AI generation process initiated",
                 "timestamp": "'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'"
               }' || echo "Webhook failed, continuing..."
@@ -202,14 +204,14 @@ jobs:
               --client-name "${{ steps.setup.outputs.client_name }}" \
               --extract-colors "temp/extracted_colors.json"
 
-            # Send logo processed webhook with client_id
-            if [ -n "$STATUS_WEBHOOK_URL" ]; then
-              curl -X POST "$STATUS_WEBHOOK_URL" \
+            # Send logo processed webhook
+            WEBHOOK_URL="${{ steps.setup.outputs.webhook_url }}"
+            if [ -n "$WEBHOOK_URL" ]; then
+              curl -X POST "$WEBHOOK_URL" \
                 -H "Content-Type: application/json" \
                 -d '{
                   "status": "logo_processed",
-                  "client_id": "'"${{ steps.setup.outputs.client_id }}"'",
-                  "client_name": "'"${{ steps.setup.outputs.business_name }}"'",
+                  "client_name": "'"${{ steps.setup.outputs.client_name }}"'",
                   "message": "Logo downloaded and optimized",
                   "timestamp": "'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'"
                 }' || echo "Webhook failed, continuing..."
@@ -221,14 +223,14 @@ jobs:
             mkdir -p temp
             echo '{"businessBased": true}' > temp/extracted_colors.json
 
-            # Send logo skipped webhook with client_id
-            if [ -n "$STATUS_WEBHOOK_URL" ]; then
-              curl -X POST "$STATUS_WEBHOOK_URL" \
+            # Send logo skipped webhook
+            WEBHOOK_URL="${{ steps.setup.outputs.webhook_url }}"
+            if [ -n "$WEBHOOK_URL" ]; then
+              curl -X POST "$WEBHOOK_URL" \
                 -H "Content-Type: application/json" \
                 -d '{
                   "status": "logo_skipped",
-                  "client_id": "'"${{ steps.setup.outputs.client_id }}"'",
-                  "client_name": "'"${{ steps.setup.outputs.business_name }}"'",
+                  "client_name": "'"${{ steps.setup.outputs.client_name }}"'",
                   "message": "Logo-less generation - using business-based colors",
                   "timestamp": "'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'"
                 }' || echo "Webhook failed, continuing..."
@@ -256,14 +258,14 @@ jobs:
             --secondary-color "${{ steps.setup.outputs.secondary_color }}" \
             --accent-color "${{ steps.setup.outputs.accent_color }}"
 
-          # Send content generated webhook with client_id
-          if [ -n "$STATUS_WEBHOOK_URL" ]; then
-            curl -X POST "$STATUS_WEBHOOK_URL" \
+          # Send content generated webhook
+          WEBHOOK_URL="${{ steps.setup.outputs.webhook_url }}"
+          if [ -n "$WEBHOOK_URL" ]; then
+            curl -X POST "$WEBHOOK_URL" \
               -H "Content-Type: application/json" \
               -d '{
                 "status": "content_generated",
-                "client_id": "'"${{ steps.setup.outputs.client_id }}"'",
-                "client_name": "'"${{ steps.setup.outputs.business_name }}"'",
+                "client_name": "'"${{ steps.setup.outputs.client_name }}"'",
                 "message": "AI content and theme generated",
                 "timestamp": "'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'"
               }' || echo "Webhook failed, continuing..."
@@ -371,13 +373,13 @@ jobs:
       - name: Send completion webhook
         if: success()
         run: |
-          if [ -n "$STATUS_WEBHOOK_URL" ]; then
-            curl -X POST "$STATUS_WEBHOOK_URL" \
+          WEBHOOK_URL="${{ steps.setup.outputs.webhook_url }}"
+          if [ -n "$WEBHOOK_URL" ]; then
+            curl -X POST "$WEBHOOK_URL" \
               -H "Content-Type: application/json" \
               -d '{
                 "status": "completed",
-                "client_id": "'"${{ steps.setup.outputs.client_id }}"'",
-                "client_name": "'"${{ steps.setup.outputs.business_name }}"'",
+                "client_name": "'"${{ steps.setup.outputs.client_name }}"'",
                 "pr_url": "'"${{ steps.create_pr.outputs.pr_url }}"'",
                 "preview_url": "https://webler.netlify.app/clients/'"${{ steps.setup.outputs.client_name }}"'/",
                 "message": "Client site generated successfully",
@@ -388,13 +390,13 @@ jobs:
       - name: Send failure webhook
         if: failure()
         run: |
-          if [ -n "$STATUS_WEBHOOK_URL" ]; then
-            curl -X POST "$STATUS_WEBHOOK_URL" \
+          WEBHOOK_URL="${{ steps.setup.outputs.webhook_url }}"
+          if [ -n "$WEBHOOK_URL" ]; then
+            curl -X POST "$WEBHOOK_URL" \
               -H "Content-Type: application/json" \
               -d '{
                 "status": "failed",
-                "client_id": "'"${{ steps.setup.outputs.client_id }}"'",
-                "client_name": "'"${{ steps.setup.outputs.business_name }}"'",
+                "client_name": "'"${{ steps.setup.outputs.client_name }}"'",
                 "error": "Workflow failed - check GitHub Actions logs",
                 "message": "Client site generation failed",
                 "timestamp": "'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'"
