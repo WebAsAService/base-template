@@ -1,0 +1,34 @@
+{
+  "client_name": "tests-samp-1760820392962-epek0z",
+  "business_name": "TEsts sample",
+  "industry": "Finance",
+  "generated_at": "2025-10-18T20:47:56.158965",
+  "files_created": [
+    "src/config/clients/tests-samp-1760820392962-epek0z.js",
+    "src/styles/client-themes.css"
+  ],
+  "ai_model": "claude-3-5-sonnet-20241022",
+  "generation_steps": [
+    "base_config",
+    "custom_content",
+    "theme_css"
+  ],
+  "content_customized": true,
+  "colors_from_logo": true,
+  "business_data": {
+    "business_name": "TEsts sample",
+    "business_description": " Cash flow inherance and more",
+    "industry": "Finance",
+    "target_audience": "Saas founders",
+    "services": "Cash flow inherance and more",
+    "contact_email": "jonasgraterol@gmail.com",
+    "contact_phone": "",
+    "website_domain": "",
+    "client_name": "tests-samp-1760820392962-epek0z",
+    "logo_colors": "{\"businessBased\": true}",
+    "logo_path": "public/images/clients/tests-samp-1760820392962-epek0z/logo.png",
+    "primary_color": "",
+    "secondary_color": "",
+    "accent_color": ""
+  }
+}
