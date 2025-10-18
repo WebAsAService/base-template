@@ -1,0 +1,34 @@
+{
+  "client_name": "preview-so-1760814783047-b5ugsn",
+  "business_name": "Preview Software",
+  "industry": "Finance",
+  "generated_at": "2025-10-18T19:14:20.272641",
+  "files_created": [
+    "src/config/clients/preview-so-1760814783047-b5ugsn.js",
+    "src/styles/client-themes.css"
+  ],
+  "ai_model": "claude-3-5-sonnet-20241022",
+  "generation_steps": [
+    "base_config",
+    "custom_content",
+    "theme_css"
+  ],
+  "content_customized": true,
+  "colors_from_logo": true,
+  "business_data": {
+    "business_name": "Preview Software",
+    "business_description": "ETsting software and malware",
+    "industry": "Finance",
+    "target_audience": "Developers",
+    "services": "ETsting software and malware",
+    "contact_email": "jonasgraterol@gmail.com",
+    "contact_phone": "",
+    "website_domain": "",
+    "client_name": "preview-so-1760814783047-b5ugsn",
+    "logo_colors": "{\"businessBased\": true}",
+    "logo_path": "public/images/clients/preview-so-1760814783047-b5ugsn/logo.png",
+    "primary_color": "",
+    "secondary_color": "",
+    "accent_color": ""
+  }
+}
