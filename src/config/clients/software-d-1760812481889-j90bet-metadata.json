@@ -1,0 +1,34 @@
+{
+  "client_name": "software-d-1760812481889-j90bet",
+  "business_name": "Software Development",
+  "industry": "Technology",
+  "generated_at": "2025-10-18T18:36:06.253449",
+  "files_created": [
+    "src/config/clients/software-d-1760812481889-j90bet.js",
+    "src/styles/client-themes.css"
+  ],
+  "ai_model": "claude-3-5-sonnet-20241022",
+  "generation_steps": [
+    "base_config",
+    "custom_content",
+    "theme_css"
+  ],
+  "content_customized": true,
+  "colors_from_logo": true,
+  "business_data": {
+    "business_name": "Software Development",
+    "business_description": "Software architecting",
+    "industry": "Technology",
+    "target_audience": "Startups founders",
+    "services": "Software architecting",
+    "contact_email": "jonasgraterol@gmail.com",
+    "contact_phone": "",
+    "website_domain": "",
+    "client_name": "software-d-1760812481889-j90bet",
+    "logo_colors": "{\"businessBased\": true}",
+    "logo_path": "public/images/clients/software-d-1760812481889-j90bet/logo.png",
+    "primary_color": "",
+    "secondary_color": "",
+    "accent_color": ""
+  }
+}
